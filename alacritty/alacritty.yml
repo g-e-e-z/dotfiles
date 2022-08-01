@@ -2,6 +2,8 @@ window:
    opacity: 0.9
 font:
     size: 10
+scrolling:
+  history: 1000
 colors:
    # Default colors
    primary:
