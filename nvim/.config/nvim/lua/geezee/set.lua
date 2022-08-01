@@ -1,31 +1,52 @@
-local O = vim.o
-local G = vim.g
+vim.o.guicursor=""
+vim.o.relativenumber = true
+vim.o.hlsearch = false
+vim.o.hidden = true
+vim.o.errorbells = false
+vim.o.tabstop=4
+vim.o.softtabstop=4
+vim.o.shiftwidth=4
+vim.o.expandtab = true
+vim.o.smartindent = true
+vim.o.nu = true
+vim.o.wrap = false
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.o.undofile = true
+vim.o.incsearch = true
+vim.o.termguicolors = true
+vim.o.scrolloff=8
+vim.o.signcolumn="yes"
+vim.o.cmdheight=1
+vim.o.colorcolumn="80"
+vim.o.cursorline = true
 
+--	While the menu is active these keys have special meanings:
+--
+--	CTRL-Y		- accept the currently selected match and stop
+--			  completion.
+--	CTRL-E		- end completion, go back to what was there before
+--			  selecting a match.
+--	<Left> <Right>	- select previous/next match (like CTRL-P/CTRL-N)
+--	<Down>		- in filename/menu name completion: move into a
+--			  subdirectory or submenu.
+--	<CR>		- in menu completion, when the cursor is just after a
+--			  dot: move into a submenu.
+--	<Up>		- in filename/menu name completion: move up into
+--			  parent directory or parent menu.
 
-O.guicursor=""
-O.relativenumber = true
-O.hlsearch = false
-O.hidden = true
-O.errorbells = false
-O.tabstop=4
-O.softtabstop=4
-O.shiftwidth=4
-O.expandtab = true
-O.smartindent = true
-O.nu = true
-O.wrap = false
-O.swapfile = false
-O.backup = false
-O.undodir = os.getenv("HOME") .. "/.vim/undodir"
-O.undofile = true
-O.incsearch = true
-O.termguicolors = true
-O.scrolloff=8
-O.signcolumn="yes"
-O.cmdheight=1
-O.colorcolumn="80"
-O.cursorline = true
+vim.o.wildmenu = true
+vim.o.wildmode = 'longest,list,full'
 
-G.mapleader=" "
+vim.opt.wildignore = {
+    "*.pyc",
+    "*_build/*",
+    "**/coverage/*",
+    "**/node_modules/*",
+    "**/android/*",
+    "**/ios/*",
+    "**/.git/*"
+}
 
-O.background = "dark"
+vim.g.mapleader=" "

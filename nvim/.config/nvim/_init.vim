@@ -1,4 +1,3 @@
-echo "Hello - init.vim"
 set guicursor=
 set relativenumber
 set nohlsearch
