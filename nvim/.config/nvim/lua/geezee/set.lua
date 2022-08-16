@@ -36,7 +36,7 @@ vim.o.cursorline = true
 --	<Up>		- in filename/menu name completion: move up into
 --			  parent directory or parent menu.
 
-vim.o.wildmenu = true
+-- vim.o.wildmenu = true
 vim.o.wildmode = 'longest,list,full'
 
 vim.opt.wildignore = {
