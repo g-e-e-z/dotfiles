@@ -3,8 +3,7 @@ local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
 
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
 -- Setup nvim-cmp.
 local cmp = require("cmp")
@@ -27,12 +26,35 @@ cmp.setup({
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
-    mapping = cmp.mapping.preset.insert({
-      ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-d>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-y>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
+
+    mapping = {
+      ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+      ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+      ["<C-f>"] = cmp.mapping.scroll_docs(4),
+      ["<C-e>"] = cmp.mapping.abort(),
+      ["<c-y>"] = cmp.mapping(
+        cmp.mapping.confirm {
+          behavior = cmp.ConfirmBehavior.Insert,
+          select = true,
+        },
+        { "i", "c" }
+      ),
+      ["<c-space>"] = cmp.mapping {
+        i = cmp.mapping.complete(),
+        c = function(
+          _ --[[fallback]]
+        )
+          if cmp.visible() then
+            if not cmp.confirm { select = true } then
+              return
+            end
+          else
+            cmp.complete()
+          end
+        end,
+      },
+    },
     formatting = {
 		format = function(entry, vim_item)
 			vim_item.kind = lspkind.presets.default[vim_item.kind]
@@ -49,16 +71,18 @@ cmp.setup({
 	},
     -- TODO: Look into cmp_tabnine completion
     sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'luasnip' }, -- For luasnip users.
-      { name = 'buffer' },
+        {name = 'path'},
+        {name = 'nvim_lsp', keyword_length = 2},
+        {name = 'luasnip', keyword_length = 2},
+        {name = 'buffer', keyword_length = 2},
     })
 })
 
-local function config(_config)
-	return vim.tbl_deep_extend("force", {
+local function config()
+	return {
 		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 		on_attach = function()
+			nnoremap("gD", function() vim.lsp.buf.declaration() end)
 			nnoremap("gd", function() vim.lsp.buf.definition() end)
 			nnoremap("gt", function() vim.lsp.buf.type_definition() end)
 			nnoremap("gi", function() vim.lsp.buf.implementation() end)
@@ -67,6 +91,7 @@ local function config(_config)
 			nnoremap("<leader>vca", function() vim.lsp.buf.code_action() end)
 			nnoremap("<leader>vrr", function() vim.lsp.buf.references() end)
 			nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end)
+			nnoremap("<leader>f", function() vim.lsp.buf.formatting() end)
             -- Future me, read this -> :h vim.diagnostics
 			nnoremap("<leader>vd", function() vim.diagnostic.open_float() end)
 			nnoremap("df", function() vim.diagnostic.goto_next() end)
@@ -74,9 +99,8 @@ local function config(_config)
             -- Verify what this does
 			inoremap("<C-h>", function() vim.lsp.buf.signature_help() end)
 		end,
-	}, _config or {})
+	}
 end
 
-require("lspconfig").pyright.setup{config()}
-
+require("lspconfig").jedi_language_server.setup(config())
 

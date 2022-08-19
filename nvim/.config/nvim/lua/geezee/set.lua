@@ -21,7 +21,6 @@ vim.o.signcolumn="yes"
 vim.o.cmdheight=1
 vim.o.colorcolumn="80"
 vim.o.cursorline = true
-vim.opt.completeopt={"menu","menuone","noselect"}
 
 --	While the menu is active these keys have special meanings:
 --

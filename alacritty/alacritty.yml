@@ -1,10 +1,14 @@
 window:
    opacity: 0.9
 font:
-    size: 10
+    size: 20
+    # Linux Config
+    # size: 10
     normal:
-      family: DejaVu Sans Mono
-      style: Regular
+      family: DejaVuSansMono NF
+      # Linux Config
+      # family: DejaVu Sans Mono
+      # style: Regular
 scrolling:
   history: 1000
 colors:

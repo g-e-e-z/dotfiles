@@ -30,4 +30,11 @@ return require("packer").startup(function()
     -- Undotree
     use("mbbill/undotree")
 
+    -- Comments
+    use{
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
 end)
