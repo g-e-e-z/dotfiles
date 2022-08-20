@@ -31,10 +31,9 @@ cmp.setup({
     mapping = {
       ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
       ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-      ["<C-f>"] = cmp.mapping.scroll_docs(4),
-      ["<C-e>"] = cmp.mapping.abort(),
-      ["<c-y>"] = cmp.mapping(
+      ["<C-d>"] = cmp.mapping.scroll_docs(4),
+      ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+      ["<C-e>"] = cmp.mapping(
         cmp.mapping.confirm {
           behavior = cmp.ConfirmBehavior.Insert,
           select = true,
@@ -73,9 +72,9 @@ cmp.setup({
     -- TODO: Look into cmp_tabnine completion
     sources = cmp.config.sources({
         {name = 'path'},
-        {name = 'nvim_lsp', keyword_length = 2},
-        {name = 'luasnip', keyword_length = 2},
-        {name = 'buffer', keyword_length = 2},
+        {name = 'nvim_lsp'},
+        {name = 'luasnip'},
+        {name = 'buffer'},
     })
 })
 
