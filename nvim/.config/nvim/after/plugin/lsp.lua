@@ -15,11 +15,12 @@ local source_mapping = {
 	path = "[Path]",
 }
 local lspkind = require("lspkind")
+local luasnip = require('luasnip')
 
 cmp.setup({
     snippet = {
       expand = function(args)
-        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        luasnip.lsp_expand(args.body) -- For `luasnip` users.
       end,
     },
     window = {
@@ -40,20 +41,20 @@ cmp.setup({
         },
         { "i", "c" }
       ),
-      ["<c-space>"] = cmp.mapping {
-        i = cmp.mapping.complete(),
-        c = function(
-          _ --[[fallback]]
-        )
-          if cmp.visible() then
-            if not cmp.confirm { select = true } then
-              return
+      ['<C-space>'] = cmp.mapping(function(fallback)
+            if luasnip.jumpable(1) then
+              luasnip.jump(1)
+            else
+              fallback()
             end
-          else
-            cmp.complete()
-          end
-        end,
-      },
+          end, {'i', 's'}),
+      ['<C-b>'] = cmp.mapping(function(fallback)
+            if luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, {'i', 's'}),
     },
     formatting = {
 		format = function(entry, vim_item)
