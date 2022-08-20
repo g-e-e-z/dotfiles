@@ -37,4 +37,5 @@ return require("packer").startup(function()
             require('Comment').setup()
         end
     }
+    use("tjdevries/cyclist.vim")
 end)
