@@ -74,6 +74,7 @@ cmp.setup({
     -- TODO: Look into cmp_tabnine completion
     sources = cmp.config.sources({
         {name = 'path'},
+        {name = 'nvim_lua'},
         {name = 'nvim_lsp'},
         {name = 'luasnip'},
         {name = 'buffer'},
@@ -105,8 +106,8 @@ end
 
 require("lspconfig").jedi_language_server.setup(config())
 
-require("lspconfig").sumneko_lua.setup(config({
-	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+local luadev = require("lua-dev").setup(config({
+    cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 	settings = {
 		Lua = {
 			runtime = {
@@ -129,12 +130,5 @@ require("lspconfig").sumneko_lua.setup(config({
 		},
 	},
 }))
-
-local luadev = require("lua-dev").setup({
-  -- add any options here, or leave empty to use the default settings
-  -- lspconfig = {
-  --   cmd = {"lua-language-server"}
-  -- },
-})
 
 require('lspconfig').sumneko_lua.setup(luadev)
