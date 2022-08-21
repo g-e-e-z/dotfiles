@@ -106,5 +106,6 @@ alias python='python3'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias ndot='cd ~/.dotfiles/nvim/.config/nvim/'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"

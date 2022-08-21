@@ -41,7 +41,15 @@ return require("packer").startup(function()
     --- Literally just for EOL symbol ->
     use("tjdevries/cyclist.vim")
 
+    --- Definitions and shit for lua dev
     use("folke/lua-dev.nvim")
+
+    -- Status Bar
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
+
 
 
 end)

@@ -106,6 +106,19 @@ end
 
 require("lspconfig").jedi_language_server.setup(config())
 
+require("lspconfig").gopls.setup(config({
+	cmd = { "gopls", "serve" },
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+		},
+	}
+}))
+
+
 local luadev = require("lua-dev").setup(config({
     cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 	settings = {
