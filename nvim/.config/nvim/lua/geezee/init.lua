@@ -6,12 +6,12 @@ local autocmd = vim.api.nvim_create_autocmd
 
 local GeezeeGroup= augroup('Geezee', {})
 local yank_group = augroup('HighlightYank', {})
-local test_group = augroup('Test', {})
 
 -- Highlight on Yank
 autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',
+    desc="Highlight text being yanked.",
     callback = function()
         vim.highlight.on_yank({
             higroup = 'IncSearch',
@@ -21,21 +21,41 @@ autocmd('TextYankPost', {
 })
 
 -- Remove Trailing Whitespacec
-autocmd({"BufWritePre"}, {
+autocmd("BufWritePre", {
     group = GeezeeGroup,
     pattern = "*",
+    desc="Remove trailing white space on save",
     command = "%s/\\s\\+$//e",
 })
 
--- Print type of buffer on open
-autocmd({"BufAdd"}, {
-    group = test_group,
+-- Bigger help window
+autocmd("BufAdd", {
+    group = GeezeeGroup,
     pattern = "*/doc/*.txt",
+    desc="Make the help window larger",
     callback = function()
-        print "HowdyHoeaaaa"
         vim.cmd('resize 30')
     end
 })
+
+--[[ local test_group = augroup('Test', {})
+    autocmd("FileType", {
+    pattern = "text",
+    group = test_group,
+    desc = "print file info",
+    callback = function()
+        local data = {
+            buf = vim.fn.expand("<abuf>"),
+            file = vim.fn.expand("<afile>"),
+            match = vim.fn.expand("<amatch>"),
+        }
+
+        vim.schedule(function()
+            print("Getting Called")
+            print(vim.inspect(data))
+        end)
+    end
+}) ]]
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0

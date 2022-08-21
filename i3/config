@@ -174,7 +174,6 @@ assign [class="Brave-browser"]2
 assign [class="discord"]3
 assign [class="gimp"]4
 
-exec_always --no-startup-id ~/.config/i3/autostart.sh
 exec --no-startup-id alacritty
 # exec_always --no-startup-id brave-browser
 exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/brave-browser'

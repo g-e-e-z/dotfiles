@@ -37,5 +37,11 @@ return require("packer").startup(function()
             require('Comment').setup()
         end
     }
+
+    --- Literally just for EOL symbol ->
     use("tjdevries/cyclist.vim")
+
+    use("folke/lua-dev.nvim")
+
+
 end)

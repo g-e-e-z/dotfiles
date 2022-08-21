@@ -2,6 +2,8 @@ local Remap = require("geezee.keymap")
 local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
 
+local sumneko_root_path = "/home/alex/personal/sumneko"
+local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
@@ -78,9 +80,8 @@ cmp.setup({
     })
 })
 
-local function config()
-	return {
-		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+local function config(_config)
+	return vim.tbl_deep_extend("force", {	capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 		on_attach = function()
 			nnoremap("gD", function() vim.lsp.buf.declaration() end)
 			nnoremap("gd", function() vim.lsp.buf.definition() end)
@@ -99,8 +100,41 @@ local function config()
             -- Verify what this does
 			inoremap("<C-h>", function() vim.lsp.buf.signature_help() end)
 		end,
-	}
+	}, _config or {})
 end
 
 require("lspconfig").jedi_language_server.setup(config())
 
+require("lspconfig").sumneko_lua.setup(config({
+	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+				-- Setup your lua path
+				path = vim.split(package.path, ";"),
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = {
+					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+				},
+			},
+		},
+	},
+}))
+
+local luadev = require("lua-dev").setup({
+  -- add any options here, or leave empty to use the default settings
+  -- lspconfig = {
+  --   cmd = {"lua-language-server"}
+  -- },
+})
+
+require('lspconfig').sumneko_lua.setup(luadev)
