@@ -50,3 +50,5 @@ vim.opt.wildignore = {
 }
 
 vim.g.mapleader=" "
+
+vim.cmd('command W w | so %')
