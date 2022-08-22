@@ -9,6 +9,12 @@ done
 
 export GOPATH=$HOME/go
 
+addToPathFront() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$1:$PATH
+    fi
+}
+
 addToPathFront $HOME/go/bin
 addToPathFront $HOME/personal/sumneko/bin
 
