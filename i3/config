@@ -162,6 +162,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status -c ~/.dotfiles/i3/i3status.conf
         tray_output primary
+        position top
 }
 # ------------------------------------------
 # START UP

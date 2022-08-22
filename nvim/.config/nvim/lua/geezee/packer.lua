@@ -1,3 +1,5 @@
+local use = require("packer").use
+
 return require("packer").startup(function()
     use("wbthomason/packer.nvim")
 
@@ -50,6 +52,8 @@ return require("packer").startup(function()
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
+    use("nanotee/luv-vimdocs")
+    use("milismis/nvim-luaref")
 
 
 end)
