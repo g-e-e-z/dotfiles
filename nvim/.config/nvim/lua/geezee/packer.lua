@@ -53,7 +53,7 @@ return require("packer").startup(function()
     }
 
     use("nanotee/luv-vimdocs")
-    use("milismis/nvim-luaref")
+    use("milisims/nvim-luaref")
 
 
 end)
