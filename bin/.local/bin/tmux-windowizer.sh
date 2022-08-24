@@ -13,13 +13,14 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
+echo "---- > $selected_name"
+
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+    tmux new-window -n $selected_name -c $selected
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+if ! tmux has-window-t=$selected_name 2> /dev/null; then
+    tmux new-window -n $selected_name
 fi
 
-tmux switch-client -t $selected_name
