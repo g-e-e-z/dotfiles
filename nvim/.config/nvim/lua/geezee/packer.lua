@@ -55,5 +55,6 @@ return require("packer").startup(function()
     use("nanotee/luv-vimdocs")
     use("milisims/nvim-luaref")
 
+    use "~/personal/plugins/stackmap.nvim/"
 
 end)

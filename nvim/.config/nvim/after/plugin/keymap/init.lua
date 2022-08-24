@@ -33,7 +33,9 @@ nnoremap("<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 nnoremap("<leader>rn", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 nnoremap("<leader>=", ":vertical resize +5<CR>")
+nnoremap("<leader>+", ":resize +5<CR>")
 nnoremap("<leader>-", ":vertical resize -5<CR>")
+nnoremap("<leader>_", ":resize -5<CR>")
 
 nnoremap("<S-Up>", "<cmd>m-2<CR>")
 nnoremap("<S-Down>", "<cmd>m+<CR>")

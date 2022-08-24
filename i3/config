@@ -173,13 +173,11 @@ assign [class="Alacritty"]1
 assign [class="brave-browser"]2
 assign [class="Brave-browser"]2
 assign [class="discord"]3
-assign [class="gimp"]4
 
 exec --no-startup-id alacritty
 # exec_always --no-startup-id brave-browser
 exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/brave-browser'
 exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/discord'
-exec --no-startup-id i3-msg 'workspace 4; exec /usr/bin/gimp'
 #
 # ------------------------------------------
 # CUSTOM KEYS START

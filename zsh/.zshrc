@@ -108,5 +108,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias ndot='cd ~/.dotfiles/nvim/.config/nvim/'
+ckdir() {
+  mkdir -p $1 && cd $1
+}
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
