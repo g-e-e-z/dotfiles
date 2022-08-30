@@ -38,7 +38,7 @@ vim.o.splitright=true
 --			  parent directory or parent menu.
 
 vim.o.wildmenu = true
-vim.o.wildmode = 'longest,list,full'
+vim.o.wildmode = 'longest,full'
 
 vim.opt.wildignore = {
     "*.pyc",

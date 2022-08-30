@@ -39,3 +39,4 @@ nnoremap("<leader>_", ":resize -5<CR>")
 
 nnoremap("<S-Up>", "<cmd>m-2<CR>")
 nnoremap("<S-Down>", "<cmd>m+<CR>")
+

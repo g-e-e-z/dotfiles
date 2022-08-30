@@ -17,7 +17,8 @@ return require("packer").startup(function()
     use("nvim-telescope/telescope-fzy-native.nvim")
 
     -- Colors
-    use("gruvbox-community/gruvbox")
+    -- use("gruvbox-community/gruvbox")
+    use("folke/tokyonight.nvim")
 
     -- LSP
     use("neovim/nvim-lspconfig")
@@ -55,6 +56,6 @@ return require("packer").startup(function()
     use("nanotee/luv-vimdocs")
     use("milisims/nvim-luaref")
 
-    use "~/personal/plugins/stackmap.nvim/"
+    use "~/personal/plugins/neotes.nvim/"
 
 end)
