@@ -1,5 +1,6 @@
 vim.o.background = "dark"
 
-vim.cmd("colorscheme tokyonight")
+vim.cmd([[colorscheme gruvbox]])
+
 vim.cmd("highlight Normal ctermbg=NONE guibg=NONE")
-vim.cmd("hi CursorLineNr guifg=#fabd2f")
+vim.cmd("hi CursorLineNr guifg=#7x7da6ff")
