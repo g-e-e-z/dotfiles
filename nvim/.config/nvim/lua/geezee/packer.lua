@@ -18,7 +18,6 @@ return require("packer").startup(function()
 
     -- Colors
     use("gruvbox-community/gruvbox")
-    -- use("folke/tokyonight.nvim")
 
     -- LSP
     use("neovim/nvim-lspconfig")
@@ -46,6 +45,8 @@ return require("packer").startup(function()
 
     --- Definitions and shit for lua dev
     use("folke/lua-dev.nvim")
+    use("nanotee/luv-vimdocs")
+    use("milisims/nvim-luaref")
 
     -- Status Bar
     use {
@@ -53,8 +54,8 @@ return require("packer").startup(function()
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
-    use("nanotee/luv-vimdocs")
-    use("milisims/nvim-luaref")
+    -- Git
+    use('tpope/vim-fugitive')
 
     -- use "~/personal/plugins/neotes.nvim/"
 

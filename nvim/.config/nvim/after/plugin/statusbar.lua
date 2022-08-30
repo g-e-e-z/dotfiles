@@ -4,9 +4,9 @@ end
 
 require('lualine').setup({
     options = {
-        theme = 'gruvbox',
+        theme = 'gruvbox-material',
         component_separators = { left = '', right = ''},
-        section_separators = { left = ' ', right = ' '},
+        section_separators = { left = '', right = ''},
     },
     sections = {
         lualine_a = {'mode'},
@@ -15,7 +15,8 @@ require('lualine').setup({
         lualine_x = {'encoding', 'fileformat', 'filetype'},
         lualine_y = {'progress'},
         lualine_z = {'location'}
-    }
+    },
+    globalstatus = true,
 })
 --[[ require('lualine').setup {
   options = {
