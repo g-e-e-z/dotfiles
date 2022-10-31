@@ -27,9 +27,6 @@ export PATH="$GOBIN:$PATH"
 
 # Keybinds
 bindkey -v
-bindkey "^Q" beginning-of-line
-bindkey "^D" backward-word
-bindkey "^F" forward-word
 
 # Alias
 alias vim="nvim"
