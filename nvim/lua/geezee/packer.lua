@@ -57,6 +57,6 @@ return require("packer").startup(function()
     -- Git
     use('tpope/vim-fugitive')
 
-    -- use "~/personal/plugins/neotes.nvim/"
+    -- use "~/code/plugins/neotes.nvim/"
 
 end)
