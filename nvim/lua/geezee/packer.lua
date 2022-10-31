@@ -44,7 +44,7 @@ return require("packer").startup(function()
     use("tjdevries/cyclist.vim")
 
     --- Definitions and shit for lua dev
-    use("folke/lua-dev.nvim")
+    use("folke/neodev.nvim")
     use("nanotee/luv-vimdocs")
     use("milisims/nvim-luaref")
 

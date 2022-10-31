@@ -25,7 +25,6 @@ require("Comment").setup {
 
     -- extended mapping
     -- Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
-    extended = true,
   },
 
   -- LHS of toggle mapping in NORMAL + VISUAL mode

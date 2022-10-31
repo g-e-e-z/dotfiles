@@ -82,7 +82,7 @@ cmp.setup({
 })
 
 local function config(_config)
-	return vim.tbl_deep_extend("force", {	capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	return vim.tbl_deep_extend("force", {	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 		on_attach = function()
 			nnoremap("gD", function() vim.lsp.buf.declaration() end)
 			nnoremap("gd", function() vim.lsp.buf.definition() end)
@@ -104,9 +104,20 @@ local function config(_config)
 	}, _config or {})
 end
 
-require("lspconfig").jedi_language_server.setup(config())
+--
+-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+require("neodev").setup({
+    cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+})
 
-require("lspconfig").gopls.setup(config({
+-- Apply Language Server Configs
+local lspconfig = require('lspconfig')
+
+-- Python
+lspconfig.jedi_language_server.setup(config())
+
+-- Go
+lspconfig.gopls.setup(config({
 	cmd = { "gopls", "serve" },
 	settings = {
 		gopls = {
@@ -118,30 +129,28 @@ require("lspconfig").gopls.setup(config({
 	}
 }))
 
+-- Lua
+lspconfig.sumneko_lua.setup({
+  settings = {
+    Lua = {
+        runtime = {
+            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+            version = "LuaJIT",
+            -- Setup your lua path
+            path = vim.split(package.path, ";"),
+        },
+        diagnostics = {
+            -- Get the language server to recognize the `vim` global
+            globals = { "vim" },
+        },
+        workspace = {
+            -- Make the server aware of Neovim runtime files
+            library = {
+                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+            },
+        },
+    }
+  }
+})
 
-local luadev = require("lua-dev").setup(config({
-    cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
-	settings = {
-		Lua = {
-			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-				version = "LuaJIT",
-				-- Setup your lua path
-				path = vim.split(package.path, ";"),
-			},
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { "vim" },
-			},
-			workspace = {
-				-- Make the server aware of Neovim runtime files
-				library = {
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-				},
-			},
-		},
-	},
-}))
-
-require('lspconfig').sumneko_lua.setup(luadev)

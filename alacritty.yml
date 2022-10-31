@@ -1,14 +1,9 @@
 window:
    opacity: 0.9
 font:
-    size: 20
-    # Linux Config
-    # size: 10
+    size: 18
     normal:
       family: DejaVuSansMono NF
-      # Linux Config
-      # family: DejaVu Sans Mono
-      # style: Regular
 scrolling:
   history: 1000
 # Colors (Gruvbox dark)
