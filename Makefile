@@ -1,10 +1,11 @@
 DOTFILE_PATH := $(shell pwd)
 
-$(HOME)/%: %
+$(HOME)/.%: %
 	ln -sf $(DOTFILE_PATH)/$^ $@
 
 zsh: $(HOME)/.zshrc $(HOME)/.zsh_profile
 tmux: $(HOME)/.tmux.conf
+git: $(HOME)/.gitconfig $(HOME)/.githelpers # $(HOME)/.gitignore
 
 alacritty:
 	mkdir -p $(HOME)/.config/alacritty
@@ -16,5 +17,5 @@ neovim:
 bins:
 	ln -sf $(DOTFILE_PATH)/bin $(HOME)
 
-links: zsh tmux alacritty neovim bins
+all: zsh tmux alacritty neovim bins git
 
