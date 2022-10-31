@@ -1,7 +1,7 @@
 # export XDG_CONFIG_HOME=$HOME/.config
 # VIM="nvim"
 #
-# PERSONAL=$XDG_CONFIG_HOME/personal
+# PERSONAL=$XDG_CONFIG_HOME/code
 # # source $PERSONAL/env
 # # for i in `find -L $PERSONAL`; do
 # #     source $i
@@ -16,7 +16,7 @@
 # }
 #
 # addToPathFront $HOME/go/bin
-# addToPathFront $HOME/personal/sumneko/bin
+# addToPathFront $HOME/code/sumneko/bin
 
 # open "https:www.reddit.com$(curl -sA 'Reddit CLI' "https://www.reddit.com/r/neovim/new.json?limit=10" | jq -r '.data.children | .[] | "\(.data.title)\t\(.data.permalink)"' | fzf --delimiter='\t' --with-nth=1 | cut -f2)"
 reddit() {

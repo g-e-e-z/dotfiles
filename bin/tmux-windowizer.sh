@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/personal ~/work ~/.dotfiles -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/code ~/work ~/.dotfiles -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -12,8 +12,6 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
-
-echo "---- > $selected_name"
 
 # Assures order is correct
 tmux move-window -t 0

@@ -2,7 +2,7 @@ local Remap = require("geezee.keymap")
 local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
 
-local sumneko_root_path = "/home/alex/personal/sumneko"
+local sumneko_root_path = "/home/alex/code/sumneko"
 local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
