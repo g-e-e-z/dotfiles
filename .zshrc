@@ -72,7 +72,6 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source ~/.zsh_profile
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -96,20 +95,18 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
+
+source ~/.zsh_profile
 
 alias vim="nvim"
-alias setbg="feh --bg-scale"
-alias brightness='xrandr --output eDP-1 --brightness'
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+alias vvim="vim"
 alias python='python3'
+alias python2='python'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias ndot='cd ~/.dotfiles/nvim/.config/nvim/'
+alias ndot='cd ~/.dotfiles/nvim/'
+
 ckdir() {
   mkdir -p $1 && cd $1
 }
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
