@@ -17,6 +17,11 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+# Work Alias
+if [ -e ~/.zshwork ]
+then
+    source ~/.zshwork
+fi
 # source ~/.zsh_profile
 
 # User configuration
