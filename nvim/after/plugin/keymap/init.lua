@@ -23,6 +23,9 @@ nnoremap("<C-u>", "<C-u>zz")
 
 inoremap("<C-c>", "<Esc>")
 nnoremap("Q", "<nop>")
+nnoremap("<leader>f", function()
+    vim.lsp.buf.format { async = true }
+end)
 
 nnoremap("<C-k>", "<cmd>cnext<CR>zz")
 nnoremap("<C-j>", "<cmd>cprev<CR>zz")

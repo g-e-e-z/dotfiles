@@ -23,7 +23,6 @@ source $ZSH/oh-my-zsh.sh
 export GOPATH="$HOME/code/go"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"
-#
 
 # Keybinds
 bindkey -v

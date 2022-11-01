@@ -93,7 +93,7 @@ local function config(_config)
 			nnoremap("<leader>vca", function() vim.lsp.buf.code_action() end)
 			nnoremap("<leader>vrr", function() vim.lsp.buf.references() end)
 			nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end)
-			nnoremap("<leader>f", function() vim.lsp.buf.formatting() end)
+			nnoremap("<leader>f", function() vim.lsp.buf.format { async = true } end)
             -- Future me, read this -> :h vim.diagnostics
 			nnoremap("<leader>vd", function() vim.diagnostic.open_float() end)
 			nnoremap("df", function() vim.diagnostic.goto_next() end)
