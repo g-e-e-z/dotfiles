@@ -17,5 +17,5 @@ neovim:
 bins:
 	ln -sf $(DOTFILE_PATH)/bin $(HOME)
 
-all: zsh tmux alacritty neovim bins git
+all: zsh tmux alacritty neovim bins
 
