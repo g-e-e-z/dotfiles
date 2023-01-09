@@ -21,6 +21,8 @@ source $ZSH/oh-my-zsh.sh
 if [ -e ~/.zshwork ]
 then
     source ~/.zshwork
+else
+    git config --global user.email "gordon112524@gmail.com"
 fi
 
 # User configuration
