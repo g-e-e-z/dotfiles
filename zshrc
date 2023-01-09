@@ -22,7 +22,6 @@ if [ -e ~/.zshwork ]
 then
     source ~/.zshwork
 fi
-# source ~/.zsh_profile
 
 # User configuration
 export GOPATH="$HOME/code/go"
