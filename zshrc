@@ -17,12 +17,10 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-# Work Alias
-if [ -e ~/.zshwork ]
+# Machine Specific Alias
+if [ -e ~/.zshmachine ]
 then
-    source ~/.zshwork
-else
-    git config --global user.email "gordon112524@gmail.com"
+    source ~/.zshmachine
 fi
 
 # User configuration
