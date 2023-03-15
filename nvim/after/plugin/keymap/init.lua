@@ -9,6 +9,8 @@ nnoremap("<leader>pd", ":Ex<CR>")
 nnoremap("<leader>pp", ":Vex<CR>")
 nnoremap("<leader>u", ":UndotreeShow<CR>")
 
+vim.keymap.set("x", "<leader>p", "\"_dP")
+
 vnoremap("J", ":m '>+1<CR>gv=gv")
 vnoremap("K", ":m '<-2<CR>gv=gv")
 
@@ -27,6 +29,8 @@ nnoremap("<leader>f", function()
     vim.lsp.buf.format { async = true }
 end)
 
+nnoremap('<leader>gd', ':vsplit | lua vim.lsp.buf.definition()<CR>')
+
 nnoremap("<C-k>", "<cmd>cnext<CR>zz")
 nnoremap("<C-j>", "<cmd>cprev<CR>zz")
 nnoremap("<leader>k", "<cmd>lnext<CR>zz")
@@ -42,4 +46,3 @@ nnoremap("<leader>_", ":resize -5<CR>")
 
 nnoremap("<S-Up>", "<cmd>m-2<CR>")
 nnoremap("<S-Down>", "<cmd>m+<CR>")
-

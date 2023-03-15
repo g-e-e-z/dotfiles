@@ -36,6 +36,7 @@ alias vim="nvim"
 alias vvim="vim"
 alias python='python3'
 alias python2='python'
+alias pip_='pip'
 alias pip='pip3'
 alias ll='ls -alF'
 alias la='ls -A'
