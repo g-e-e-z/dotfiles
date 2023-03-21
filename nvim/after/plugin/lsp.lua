@@ -2,8 +2,8 @@ local Remap = require("geezee.keymap")
 local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
 
-local sumneko_root_path = "/home/alex/code/sumneko"
-local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
+-- local sumneko_root_path = "/home/alex/code/sumneko"
+-- local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
@@ -106,9 +106,9 @@ end
 
 --
 -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-require("neodev").setup({
-    cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
-})
+-- require("neodev").setup({
+--     cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+-- })
 
 -- Apply Language Server Configs
 local lspconfig = require('lspconfig')
@@ -130,27 +130,27 @@ lspconfig.gopls.setup(config({
 }))
 
 -- Lua
-lspconfig.sumneko_lua.setup({
-  settings = {
-    Lua = {
-        runtime = {
-            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-            version = "LuaJIT",
-            -- Setup your lua path
-            path = vim.split(package.path, ";"),
-        },
-        diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = { "vim" },
-        },
-        workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = {
-                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-            },
-        },
-    }
-  }
-})
+-- lspconfig.sumneko_lua.setup({
+--   settings = {
+--     Lua = {
+--         runtime = {
+--             -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+--             version = "LuaJIT",
+--             -- Setup your lua path
+--             path = vim.split(package.path, ";"),
+--         },
+--         diagnostics = {
+--             -- Get the language server to recognize the `vim` global
+--             globals = { "vim" },
+--         },
+--         workspace = {
+--             -- Make the server aware of Neovim runtime files
+--             library = {
+--                 [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+--                 [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+--             },
+--         },
+--     }
+--   }
+-- })
 
