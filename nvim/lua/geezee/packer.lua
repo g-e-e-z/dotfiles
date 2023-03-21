@@ -29,11 +29,25 @@ return require("packer").startup(function()
     use('saadparwaiz1/cmp_luasnip')
     use("onsails/lspkind-nvim")
 
+    -- Testing
+    use("folke/neodev.nvim")
+    use {
+        "nvim-neotest/neotest",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-neotest/neotest-go",
+        }
+    }
+    -- use("nanotee/luv-vimdocs")
+    -- use("milisims/nvim-luaref")
+
     -- Undotree
     use("mbbill/undotree")
 
     -- Comments
-    use{
+    use {
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup()
@@ -43,15 +57,11 @@ return require("packer").startup(function()
     --- Literally just for EOL symbol ->
     use("tjdevries/cyclist.vim")
 
-    --- Definitions and shit for lua dev
-    use("folke/neodev.nvim")
-    use("nanotee/luv-vimdocs")
-    use("milisims/nvim-luaref")
 
     -- Status Bar
     use {
-      'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
     -- Git
