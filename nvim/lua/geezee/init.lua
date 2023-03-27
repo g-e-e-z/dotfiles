@@ -1,6 +1,5 @@
+require("geezee.remap")
 require("geezee.set")
-require("geezee.packer")
-require("geezee.globals")
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
@@ -28,34 +27,3 @@ autocmd("BufWritePre", {
     desc="Remove trailing white space on save",
     command = "%s/\\s\\+$//e",
 })
-
--- Bigger help window
-autocmd("BufAdd", {
-    group = GeezeeGroup,
-    pattern = "*/doc/*.txt",
-    desc="Make the help window larger",
-    callback = function()
-        vim.cmd('resize 30')
-    end
-})
-
---[[ local test_group = augroup('Test', {})
-    autocmd("FileType", {
-    pattern = "text",
-    group = test_group,
-    desc = "print file info",
-    callback = function()
-        local data = {
-            buf = vim.fn.expand("<abuf>"),
-            file = vim.fn.expand("<afile>"),
-            match = vim.fn.expand("<amatch>"),
-        }
-
-        vim.schedule(function()
-            print("Getting Called")
-            print(vim.inspect(data))
-        end)
-    end
-}) ]]
-
-vim.g.netrw_browse_split = 0

@@ -1,59 +1,27 @@
-vim.o.guicursor=""
-vim.o.relativenumber = true
-vim.o.hlsearch = false
-vim.o.hidden = true
-vim.o.errorbells = false
-vim.o.tabstop=4
-vim.o.softtabstop=4
-vim.o.shiftwidth=4
-vim.o.expandtab = true
-vim.o.smartindent = true
-vim.o.nu = true
-vim.o.wrap = false
-vim.o.swapfile = false
-vim.o.backup = false
-vim.o.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.o.undofile = true
-vim.o.incsearch = true
-vim.o.termguicolors = true
+vim.opt.guicursor=""
+vim.opt.relativenumber = true
+vim.opt.hlsearch = false
+vim.opt.hidden = true
+vim.opt.errorbells = false
+vim.opt.tabstop=4
+vim.opt.softtabstop=4
+vim.opt.shiftwidth=4
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.nu = true
+vim.opt.wrap = false
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+vim.opt.incsearch = true
 vim.opt.termguicolors = true
-vim.o.scrolloff=8
-vim.o.signcolumn="yes"
-vim.o.cmdheight=1
-vim.o.colorcolumn="80"
-vim.o.cursorline = true
-vim.o.splitright=true
-vim.o.formatoptions="cro"
-
---	While the menu is active these keys have special meanings:
---
---	CTRL-Y		- accept the currently selected match and stop
---			  completion.
---	CTRL-E		- end completion, go back to what was there before
---			  selecting a match.
---	<Left> <Right>	- select previous/next match (like CTRL-P/CTRL-N)
---	<Down>		- in filename/menu name completion: move into a
---			  subdirectory or submenu.
---	<CR>		- in menu completion, when the cursor is just after a
---			  dot: move into a submenu.
---	<Up>		- in filename/menu name completion: move up into
---			  parent directory or parent menu.
-
-vim.o.wildmenu = true
-vim.o.wildmode = 'longest,full'
-
-vim.opt.wildignore = {
-    "*.pyc",
-    "*_build/*",
-    "**/coverage/*",
-    "**/node_modules/*",
-    "**/android/*",
-    "**/ios/*",
-    "**/.git/*"
-}
-
+vim.opt.scrolloff=8
+vim.opt.signcolumn="yes"
+vim.opt.cmdheight=1
+vim.opt.updatetime=50
+vim.opt.colorcolumn="80"
+vim.opt.cursorline = true
+vim.opt.splitright=true
+vim.opt.formatoptions="cro"
 vim.g.mapleader=" "
-
-vim.cmd('command! W w | so %')
-vim.cmd('command! Q q')
-

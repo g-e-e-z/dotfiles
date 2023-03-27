@@ -100,6 +100,11 @@ _G.packer_plugins = {
     path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-nvim-lua"] = {
+    loaded = true,
+    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
+    url = "https://github.com/hrsh7th/cmp-nvim-lua"
+  },
   ["cmp-path"] = {
     loaded = true,
     path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/cmp-path",
@@ -110,30 +115,36 @@ _G.packer_plugins = {
     path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["cyclist.vim"] = {
+  ["friendly-snippets"] = {
     loaded = true,
-    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/cyclist.vim",
-    url = "https://github.com/tjdevries/cyclist.vim"
+    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
   },
   gruvbox = {
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24colorscheme gruvbox\bcmd\bvim\0" },
     loaded = true,
     path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/gruvbox",
-    url = "https://github.com/gruvbox-community/gruvbox"
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
-  ["lspkind-nvim"] = {
+  harpoon = {
     loaded = true,
-    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
-    url = "https://github.com/onsails/lspkind-nvim"
+    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/theprimeagen/harpoon"
   },
-  ["lualine.nvim"] = {
+  ["lsp-zero.nvim"] = {
     loaded = true,
-    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/lualine.nvim",
-    url = "https://github.com/nvim-lualine/lualine.nvim"
+    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
+    url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
-  ["neodev.nvim"] = {
+  ["mason-lspconfig.nvim"] = {
     loaded = true,
-    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/neodev.nvim",
-    url = "https://github.com/folke/neodev.nvim"
+    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
   },
   neotest = {
     loaded = true,
@@ -144,6 +155,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/neotest-go",
     url = "https://github.com/nvim-neotest/neotest-go"
+  },
+  ["neotest-python"] = {
+    loaded = true,
+    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/neotest-python",
+    url = "https://github.com/nvim-neotest/neotest-python"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -160,46 +176,31 @@ _G.packer_plugins = {
     path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
-  ["nvim-treesitter-context"] = {
-    loaded = true,
-    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
-    url = "https://github.com/romgrk/nvim-treesitter-context"
-  },
   ["nvim-web-devicons"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
+    loaded = true,
+    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
-  playground = {
-    loaded = true,
-    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/playground",
-    url = "https://github.com/nvim-treesitter/playground"
-  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["popup.nvim"] = {
-    loaded = true,
-    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/popup.nvim",
-    url = "https://github.com/nvim-lua/popup.nvim"
-  },
-  ["telescope-fzy-native.nvim"] = {
-    loaded = true,
-    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim",
-    url = "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["trouble.nvim"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0" },
+    loaded = true,
+    path = "/Users/alexgordon/.local/share/nvim/site/pack/packer/start/trouble.nvim",
+    url = "https://github.com/folke/trouble.nvim"
   },
   undotree = {
     loaded = true,
@@ -214,10 +215,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+time([[Config for trouble.nvim]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: gruvbox
+time([[Config for gruvbox]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24colorscheme gruvbox\bcmd\bvim\0", "config", "gruvbox")
+time([[Config for gruvbox]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

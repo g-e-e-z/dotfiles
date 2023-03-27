@@ -1,6 +1,11 @@
-vim.o.background = "dark"
+function Colors(color)
+	color = color or 'gruvbox'
+	vim.cmd.colorscheme(color)
 
-vim.cmd([[colorscheme gruvbox]])
+	vim.api.nvim_set_hl(0, 'Normal', { bg = "none" })
+	vim.api.nvim_set_hl(0, 'NormalFloat', { bg = "none" })
 
-vim.cmd("highlight Normal ctermbg=NONE guibg=NONE")
-vim.cmd("hi CursorLineNr guifg=#7x7da6ff")
+end
+
+Colors()
+

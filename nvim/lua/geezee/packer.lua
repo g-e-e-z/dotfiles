@@ -1,72 +1,74 @@
-local use = require("packer").use
+-- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
-return require("packer").startup(function()
-    use("wbthomason/packer.nvim")
+-- Only required if you have packer configured as `opt`
+vim.cmd.packadd('packer.nvim')
 
-    -- Tree Sitter
-    use("nvim-treesitter/nvim-treesitter", {
-        run = ":TSUpdate"
-    })
-    use("nvim-treesitter/playground")
-    use("romgrk/nvim-treesitter-context")
+return require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
+  use {
+	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
+	  requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  use {
+          'ellisonleao/gruvbox.nvim',
+          as = 'gruvbox',
+          config = function()
+        	  vim.cmd('colorscheme gruvbox')
+          end
+  }
 
-    -- TJ created lodash of neovim
-    use("nvim-lua/plenary.nvim")
-    use("nvim-lua/popup.nvim")
-    use("nvim-telescope/telescope.nvim")
-    use("nvim-telescope/telescope-fzy-native.nvim")
+  use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
+  use("theprimeagen/harpoon")
+  use("mbbill/undotree")
+  use("tpope/vim-fugitive")
 
-    -- Colors
-    use("gruvbox-community/gruvbox")
+  use {
+	  'VonHeikemen/lsp-zero.nvim',
+	  branch = 'v1.x',
+	  requires = {
+		  -- LSP Support
+		  {'neovim/nvim-lspconfig'},             -- Required
+		  {'williamboman/mason.nvim'},           -- Optional
+		  {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-    -- LSP
-    use("neovim/nvim-lspconfig")
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/cmp-path")
-    use("hrsh7th/nvim-cmp")
-    use('L3MON4D3/LuaSnip')
-    use('saadparwaiz1/cmp_luasnip')
-    use("onsails/lspkind-nvim")
+		  -- Autocompletion
+		  {'hrsh7th/nvim-cmp'},         -- Required
+		  {'hrsh7th/cmp-nvim-lsp'},     -- Required
+		  {'hrsh7th/cmp-buffer'},       -- Optional
+		  {'hrsh7th/cmp-path'},         -- Optional
+		  {'saadparwaiz1/cmp_luasnip'}, -- Optional
+		  {'hrsh7th/cmp-nvim-lua'},     -- Optional
 
-    -- Testing
-    use("folke/neodev.nvim")
-    use {
-        "nvim-neotest/neotest",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-            "antoinemadec/FixCursorHold.nvim",
-            "nvim-neotest/neotest-go",
-        }
-    }
-    -- use("nanotee/luv-vimdocs")
-    -- use("milisims/nvim-luaref")
-
-    -- Undotree
-    use("mbbill/undotree")
-
-    -- Comments
-    use {
+		  -- Snippets
+		  {'L3MON4D3/LuaSnip'},             -- Required
+		  {'rafamadriz/friendly-snippets'}, -- Optional
+	  }
+  }
+  use {
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup()
         end
     }
-
-    --- Literally just for EOL symbol ->
-    use("tjdevries/cyclist.vim")
-
-
-    -- Status Bar
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
-
-    -- Git
-    use('tpope/vim-fugitive')
-
-    -- use "~/code/plugins/neotes.nvim/"
-
+  use {
+      "nvim-neotest/neotest",
+      requires = {
+          "nvim-lua/plenary.nvim",
+          "nvim-treesitter/nvim-treesitter",
+          "antoinemadec/FixCursorHold.nvim",
+          "nvim-neotest/neotest-python",
+          "nvim-neotest/neotest-go",
+      }
+  }
+  use {
+      "folke/trouble.nvim",
+      requires = "nvim-tree/nvim-web-devicons",
+      config = function()
+          require("trouble").setup {
+              -- your configuration comes here
+              -- or leave it empty to use the default settings
+              -- refer to the configuration section below
+          }
+      end
+  }
 end)
