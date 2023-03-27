@@ -4,10 +4,6 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
   'jedi_language_server',
-  'gopls',
-  'tsserver',
-  'tailwindcss',
-  'rust_analyzer',
 })
 
 -- Fix Undefined global 'vim'
