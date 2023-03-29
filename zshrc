@@ -24,7 +24,7 @@ then
 fi
 
 # User configuration
-export GOPATH="$HOME/code/go"
+export GOPATH="$HOME/code/go;$HOME/work"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"
 
