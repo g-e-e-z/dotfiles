@@ -4,6 +4,7 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
   'jedi_language_server',
+  'gopls',
 })
 
 -- Fix Undefined global 'vim'
