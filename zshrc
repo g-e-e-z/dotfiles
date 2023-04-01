@@ -17,16 +17,11 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-# Machine Specific Alias
-if [ -e ~/.zshmachine ]
-then
-    source ~/.zshmachine
-fi
 
 # User configuration
 export GOPATH="$HOME/code/go;$HOME/work"
 export GOBIN="$GOPATH/bin"
-export PATH="$GOBIN:$PATH"
+export PATH="$GOBIN:$GOPATH:$PATH"
 
 # Keybinds
 bindkey -v
@@ -43,6 +38,9 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ndot='cd ~/.dotfiles/nvim/'
 
+# docker
+alias dc="docker compose "
+
 # tmux
 alias tma='tmux attach -t'
 alias tmn='tmux new -s'
@@ -57,3 +55,9 @@ alias -g .....='../../../..'
 ckdir() {
   mkdir -p $1 && cd $1
 }
+#
+# Machine Specific Alias
+if [ -e ~/.zshmachine ]
+then
+    source ~/.zshmachine
+fi
