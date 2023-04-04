@@ -5,6 +5,7 @@ vim.cmd.packadd('packer.nvim')
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
+  use 'sbdchd/neoformat'
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
 	  requires = { {'nvim-lua/plenary.nvim'} }
@@ -45,6 +46,7 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'}, -- Optional
 	  }
   }
+
   use {
         'numToStr/Comment.nvim',
         config = function()
