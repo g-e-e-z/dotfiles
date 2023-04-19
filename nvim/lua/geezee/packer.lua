@@ -74,4 +74,6 @@ return require('packer').startup(function(use)
           }
       end
   }
+
+  use {"NvChad/nvim-colorizer.lua"}
 end)
