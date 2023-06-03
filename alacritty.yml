@@ -1,20 +1,21 @@
+env:
+  COLORTERM: truecolor
 window:
    opacity: 1
-
-# https://www.jetbrains.com/lp/mono/
+# https://www.nerdfonts.com/font-downloads
 font:
     size: 18
     normal:
-      family: JetBrains Mono
+      family: JetBrainsMono Nerd Font Mono
       style: Regular
     bold:
-      family: JetBrains Mono
+      family: JetBrainsMono Nerd Font Mono
       style: Bold
     italic:
-      family: JetBrains Mono
+      family: JetBrainsMono Nerd Font Mono
       style: Italic
     bold_italic:
-      family: JetBrains Mono
+      family: JetBrainsMono Nerd Font Mono
       style: Bold Italic
 
 scrolling:
