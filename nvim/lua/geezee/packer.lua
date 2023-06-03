@@ -84,4 +84,6 @@ return require('packer').startup(function(use)
       cmd = 'CodeActionMenu',
   })
 
+  use({"nvim-neorg/neorg", run = ":Neorg sync-parsers"})
+
 end)
