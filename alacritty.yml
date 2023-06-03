@@ -1,11 +1,25 @@
 window:
-   opacity: 0.9
+   opacity: 1
+
+# https://www.jetbrains.com/lp/mono/
 font:
     size: 18
     normal:
-      family: DejaVuSansMono NF
+      family: JetBrains Mono
+      style: Regular
+    bold:
+      family: JetBrains Mono
+      style: Bold
+    italic:
+      family: JetBrains Mono
+      style: Italic
+    bold_italic:
+      family: JetBrains Mono
+      style: Bold Italic
+
 scrolling:
-  history: 1000
+  history: 5000
+    #
 # Colors (Gruvbox dark)
 colors:
   # Default colors
