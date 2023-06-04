@@ -25,3 +25,4 @@ vim.opt.cursorline = true
 vim.opt.splitright=true
 vim.opt.formatoptions="co"
 vim.g.mapleader=" "
+vim.opt.conceallevel = 2

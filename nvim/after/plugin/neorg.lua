@@ -18,7 +18,11 @@ require('neorg').setup {
             config = {
                 neorg_leader = ","
             }
-        }
+        },
+        ["core.presenter"] = {
+          config = {
+            zen_mode = "zen-mode",
+          },
+        },
     }
 }
-vim.opt.conceallevel = 2

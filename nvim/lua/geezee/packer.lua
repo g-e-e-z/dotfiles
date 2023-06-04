@@ -86,4 +86,6 @@ return require('packer').startup(function(use)
 
   use({"nvim-neorg/neorg", run = ":Neorg sync-parsers"})
 
+  use({"folke/zen-mode.nvim"})
+
 end)
