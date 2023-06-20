@@ -11,7 +11,7 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
   'gopls',
-  'jedi_language_server',
+  'pyright',
   'tsserver'
 })
 
