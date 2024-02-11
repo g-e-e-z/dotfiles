@@ -1,0 +1,15 @@
+import = ["/Users/alexgordon/.dotfiles/gruvbox_dark.toml"]
+
+[font]
+size = 20
+
+
+[font.normal]
+family = "UbuntuMono Nerd Font"
+
+[window]
+decorations = "none"
+
+[window.padding]
+x = 7
+y = 0

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# Copied from the primeagen
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
