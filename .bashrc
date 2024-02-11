@@ -212,22 +212,17 @@ alias fishies=asciiquarium
 export VISUAL=nvim
 export EDITOR=nvim
 
-# fzf aliases
-# use fp to do a fzf search and preview the files
-alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-# search for a file with fzf and open it in vim
-alias vf='v $(fp)'
-
 # sourcing
 source "$HOME/.privaterc"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	# source "$HOME/.fzf.bash"
+    source "/opt/homebrew/opt/fzf/shell/completion.bash"
+    source "/opt/homebrew/opt/fzf/shell/key-bindings.bash"
 	# echo "I'm on Mac!"
 
 	# brew bash completion
 	[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
-	# [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 else
 	#	source /usr/share/fzf/key-bindings.bash
 	#	source /usr/share/fzf/completion.bash
