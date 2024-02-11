@@ -1,14 +1,18 @@
 import = ["/Users/alexgordon/.dotfiles/gruvbox_dark.toml"]
 
+[shell]
+program = "/opt/homebrew/bin/bash"
+args = ["-l", "-c", "tmux"]
+
 [font]
 size = 20
-
 
 [font.normal]
 family = "UbuntuMono Nerd Font"
 
 [window]
 decorations = "none"
+startup_mode = "Maximized"
 
 [window.padding]
 x = 7

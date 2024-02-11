@@ -4,6 +4,7 @@ mkdir -p "$XDG_CONFIG_HOME"/alacritty
 mkdir -p "$XDG_CONFIG_HOME"/skhd
 mkdir -p "$XDG_CONFIG_HOME"/k9s
 # mkdir -p "$XDG_CONFIG_HOME"/wezterm
+mkdir -p ~/Repos
 
 # set up git prompt
 # curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh >"$XDG_CONFIG_HOME"/bash/git-prompt.sh
