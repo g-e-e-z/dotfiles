@@ -13,6 +13,7 @@ family = "UbuntuMono Nerd Font"
 [window]
 decorations = "none"
 startup_mode = "Maximized"
+opacity = 0.95
 
 [window.padding]
 x = 7

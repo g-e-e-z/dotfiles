@@ -33,8 +33,6 @@ export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
 # export GOPATH="$HOME/.local/share/go"
 export GOPATH="$HOME/go/"
 
-# dotnet (unused)
-# export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
 # ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
 
 export HISTFILE=~/.histfile
@@ -42,14 +40,8 @@ export HISTSIZE=25000
 export SAVEHIST=25000
 export HISTCONTROL=ignorespace
 
-# ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~ (figure out what this does)
-
-include () {
-    [[ -f "$1" ]] && source "$1"
-}
-
-
-# This function is stolen from rwxrob
+# ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
+# This function is stolen from rwxrob (figure out what this does)
 
 # clone() {
 # 	local repo="$1" user
@@ -130,20 +122,14 @@ alias scripts='cd $SCRIPTS'
 alias dot='cd $GHREPOS/dotfiles'
 alias repos='cd $REPOS'
 alias cdgo='cd $GHREPOS/go/'
-# alias rwdot='cd $REPOS/github.com/rwxrob/dot'
 alias c="clear"
 # alias icloud="cd \$ICLOUD"
-# alias rob='cd $REPOS/github.com/rwxrob'
-# alias homelab='cd $REPOS/github.com/mischavandenburg/homelab/'
-# alias hl='homelab'
-# alias hlp='cd $REPOS/github.com/mischavandenburg/homelab-private/'
-# alias hlps='cd $REPOS/github.com/mischavandenburg/homelab-private-staging/'
-# alias hlpp='cd $REPOS/github.com/mischavandenburg/homelab-private-production/'
 
 # ls
-alias ls='ls --color=auto'
-alias ll='ls -la'
-alias la='ls -lathr'
+alias ls='eza --color=auto'
+alias ll='eza -la'
+alias la='eza -lahr'
+alias tree='eza -TL'
 
 # finds all files recursively and sorts by last modification, ignore hidden files
 alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
@@ -161,10 +147,7 @@ alias gst='git status'
 alias lg='lazygit'
 
 # ricing
-# alias et='v ~/.config/awesome/themes/powerarrow/theme-personal.lua'
-# alias ett='v ~/.config/awesome/themes/powerarrow-dark/theme-personal.lua'
-# alias er='v ~/.config/awesome/rc.lua'
-alias eb='v ~/.bashrc'
+alias ebr='v ~/.bashrc'
 # alias ev='cd ~/.config/nvim/ && v init.lua'
 # alias sz='source ~/.zshrc'
 alias sbr='source ~/.bashrc'
@@ -174,9 +157,6 @@ alias sbr='source ~/.bashrc'
 # alias sb="cd \$SECOND_BRAIN"
 # alias in="cd \$SECOND_BRAIN/0-inbox/"
 # alias vbn='python ~/git/python/brainfile.py'
-
-# starting programmes
-# alias cards='python3 /opt/homebrew/lib/python3.11/site-packages/mtg_proxy_printer/'
 
 # terraform
 # alias tp='terraform plan'
