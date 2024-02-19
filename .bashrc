@@ -149,7 +149,6 @@ alias lg='lazygit'
 # ricing
 alias ebr='v ~/.bashrc'
 # alias ev='cd ~/.config/nvim/ && v init.lua'
-# alias sz='source ~/.zshrc'
 alias sbr='source ~/.bashrc'
 # alias s='startx'
 

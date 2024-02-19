@@ -1,8 +1,7 @@
-# vim: filetype=sh
-#
+#!/bin/bash
 # Installs
 # brew packages Mac
-# fzf nvim eza bash-completion newsboat kubectl
+brew install fzf nvim eza bash-completion newsboat kubectl
 # maybes: hugo
 
 export XDG_CONFIG_HOME="$HOME"/.config
@@ -11,8 +10,8 @@ mkdir -p "$XDG_CONFIG_HOME"/alacritty
 mkdir -p "$XDG_CONFIG_HOME"/k9s
 mkdir -p ~/Repos
 
-# set up git prompt
-# curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh >"$XDG_CONFIG_HOME"/bash/git-prompt.sh
+#  set up git prompt
+curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh >"$XDG_CONFIG_HOME"/bash/git-prompt.sh
 
 # Symbolic links
 ln -sf "$PWD/alacritty.toml" "$XDG_CONFIG_HOME"/alacritty/alacritty.toml
@@ -22,8 +21,8 @@ ln -sf "$PWD/.bashrc" "$HOME"/.bashrc
 ln -sf "$PWD/.inputrc" "$HOME"/.inputrc
 ln -sf "$PWD/.tmux.conf" "$HOME"/.tmux.conf
 ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"/nvim
-# ln -sf "$PWD/newsboat/config" "$HOME"/.newsboat/config
-# ln -sf "$PWD/newsboat/urls" "$HOME"/.newsboat/urls
+ln -sf "$PWD/newsboat/config" "$HOME"/.newsboat/config
+ln -sf "$PWD/newsboat/urls" "$HOME"/.newsboat/urls
 
 # set up blog
 # git clone git@github.com:mischavandenburg/hugo-PaperModX-theme.git themes/PaperModX --depth=1
