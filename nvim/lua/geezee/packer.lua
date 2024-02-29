@@ -56,4 +56,11 @@ return require('packer').startup(function(use)
 
   use("github/copilot.vim")
 
+  use({
+      "kdheepak/lazygit.nvim",
+      requires = {
+          "nvim-lua/plenary.nvim",
+      },
+  })
+
 end)
