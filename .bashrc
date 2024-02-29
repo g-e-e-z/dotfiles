@@ -119,9 +119,12 @@ alias gl='git pull'
 alias gst='git status'
 alias lg='lazygit'
 
+# docker
+alias dc='docker compose'
+
 # ricing
 alias ebr='v ~/.bashrc'
-# alias ev='cd ~/.config/nvim/ && v init.lua'  # Refactor nvim later
+alias ev='cd ~/.config/nvim/ && vim lua/geezee/packer.lua'  # Refactor nvim later
 alias sbr='source ~/.bashrc'
 
 # vim & second brain
@@ -163,5 +166,5 @@ else
     #	Figure this out when I start using a Linux machine
 	#	source /usr/share/fzf/key-bindings.bash
 	#	source /usr/share/fzf/completion.bash
-	# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+	[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 fi
