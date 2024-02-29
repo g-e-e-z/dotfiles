@@ -22,7 +22,6 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter-context'
   use("theprimeagen/harpoon")
   use("mbbill/undotree")
-  use("tpope/vim-fugitive")
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -53,34 +52,8 @@ return require('packer').startup(function(use)
             require('Comment').setup()
         end
     }
-  use {
-      "nvim-neotest/neotest",
-      requires = {
-          "nvim-lua/plenary.nvim",
-          "nvim-treesitter/nvim-treesitter",
-          "antoinemadec/FixCursorHold.nvim",
-          "nvim-neotest/neotest-python",
-          "nvim-neotest/neotest-go",
-      }
-  }
-  use {
-      "folke/trouble.nvim",
-      requires = "nvim-tree/nvim-web-devicons",
-      config = function()
-          require("trouble").setup {
-              -- your configuration comes here
-              -- or leave it empty to use the default settings
-              -- refer to the configuration section below
-          }
-      end
-  }
-
   use {"NvChad/nvim-colorizer.lua"}
 
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
-
-  use({"nvim-neorg/neorg", run = ":Neorg sync-parsers"})
-
-  use({"folke/zen-mode.nvim"})
 
 end)
