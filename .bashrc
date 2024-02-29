@@ -5,15 +5,10 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# PS1='[\u@\h \W]\$ '
-
 # Set to superior editing mode
 set -o vi
 
-# keybinds
-# bind -x '"\C-l":clear'
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
-
 # config
 export BROWSER="chrome"
 
@@ -41,30 +36,8 @@ export SAVEHIST=25000
 export HISTCONTROL=ignorespace
 
 # ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
-# This function is stolen from rwxrob (figure out what this does)
-
-# clone() {
-# 	local repo="$1" user
-# 	local repo="${repo#https://github.com/}"
-# 	local repo="${repo#git@github.com:}"
-# 	if [[ $repo =~ / ]]; then
-# 		user="${repo%%/*}"
-# 	else
-# 		user="$GITUSER"
-# 		[[ -z "$user" ]] && user="$USER"
-# 	fi
-# 	local name="${repo##*/}"
-# 	local userd="$REPOS/github.com/$user"
-# 	local path="$userd/$name"
-# 	[[ -d "$path" ]] && cd "$path" && return
-# 	mkdir -p "$userd"
-# 	cd "$userd"
-# 	echo gh repo clone "$user/$name" -- --recurse-submodule
-# 	gh repo clone "$user/$name" -- --recurse-submodule
-# 	cd "$name"
-# } && export -f clone
-
-# ~~~~~~~~~~~~~~~ SSH ~~~~~~~~~~~~~~~~~~~~~~~~
+#
+# ~~~~~~~~~~~~~~~ SSH ~~~~~~~~~~~~~~~~~~~~~~~~ Figure this out
 # SSH Script from arch wiki
 
 # if ! pgrep -u "$USER" ssh-agent >/dev/null; then
@@ -148,9 +121,8 @@ alias lg='lazygit'
 
 # ricing
 alias ebr='v ~/.bashrc'
-# alias ev='cd ~/.config/nvim/ && v init.lua'
+# alias ev='cd ~/.config/nvim/ && v init.lua'  # Refactor nvim later
 alias sbr='source ~/.bashrc'
-# alias s='startx'
 
 # vim & second brain
 # alias sb="cd \$SECOND_BRAIN"
@@ -159,9 +131,6 @@ alias sbr='source ~/.bashrc'
 
 # terraform
 # alias tp='terraform plan'
-
-# fun
-alias fishies=asciiquarium
 
 # kubectl
 # alias k='kubectl'
@@ -174,18 +143,8 @@ alias fishies=asciiquarium
 # alias kcs='kubectl config use-context admin@homelab-staging'
 # alias kcp='kubectl config use-context admin@homelab-production'
 
-# flux
-# source <(flux completion bash)
-# alias fgk='flux get kustomizations'
-
-# talos
-# source <(talosctl completion bash)
-
 # EDB
 # source <(kubectl-cnp completion bash)
-
-# cilium
-# source <(cilium completion bash)
 
 # env variables
 export VISUAL=nvim
@@ -195,15 +154,14 @@ export EDITOR=nvim
 source "$HOME/.privaterc"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	# source "$HOME/.fzf.bash"
     source "/opt/homebrew/opt/fzf/shell/completion.bash"
     source "/opt/homebrew/opt/fzf/shell/key-bindings.bash"
-	# echo "I'm on Mac!"
 
 	# brew bash completion
 	[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 else
+    #	Figure this out when I start using a Linux machine
 	#	source /usr/share/fzf/key-bindings.bash
 	#	source /usr/share/fzf/completion.bash
-	[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+	# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 fi
