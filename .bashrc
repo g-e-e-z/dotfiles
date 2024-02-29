@@ -74,6 +74,9 @@ export GIT_PS1_SHOWUPSTREAM="auto git"
 if [[ -f "$XDG_CONFIG_HOME/bash/gitprompt.sh" ]]; then
 	source "$XDG_CONFIG_HOME/bash/gitprompt.sh"
 fi
+if [[ -f "$XDG_CONFIG_HOME/bash/git-prompt.sh" ]]; then
+	source "$XDG_CONFIG_HOME/bash/git-prompt.sh"
+fi
 
 # colorized prompt
 PROMPT_COMMAND='__git_ps1 "\[\e[33m\]\u\[\e[0m\]@\[\e[34m\]\h\[\e[0m\]:\[\e[35m\]\W\[\e[0m\]" " \n$ "'
@@ -157,11 +160,21 @@ export EDITOR=nvim
 source "$HOME/.privaterc"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    source "/opt/homebrew/opt/fzf/shell/completion.bash"
-    source "/opt/homebrew/opt/fzf/shell/key-bindings.bash"
+    # echo "macOS detected"
+    if [[ $(uname -m) == 'arm64' ]]; then
+        # echo "M1"
+        source "/opt/homebrew/opt/fzf/shell/completion.bash"
+        source "/opt/homebrew/opt/fzf/shell/key-bindings.bash"
+        # brew bash completion
+        [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+    else
+        # echo "Intel"
+        source "/usr/local/Cellar/fzf/0.46.1/shell/completion.bash"
+        source "/usr/local/Cellar/fzf/0.46.1/shell/key-bindings.bash"
+        # brew bash completion
+        [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+    fi
 
-	# brew bash completion
-	[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 else
     #	Figure this out when I start using a Linux machine
 	#	source /usr/share/fzf/key-bindings.bash

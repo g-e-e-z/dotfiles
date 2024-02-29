@@ -1,7 +1,15 @@
+export XDG_CONFIG_HOME="$HOME"/.config
+
 # Only run on macOS
 if [[ "$OSTYPE" == "darwin"* ]]; then
   # needed for brew
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  if [[ $(uname -m) == 'arm64' ]]; then
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+      eval "$(/usr/local/bin/brew shellenv)"
+      export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+  else
+      eval "$(/usr/local/Homebrew/bin/brew shellenv)"
+  fi
 fi
 
 # # Only run these on Ubuntu
@@ -14,7 +22,5 @@ if [ -r ~/.bashrc ]; then
   source ~/.bashrc
 fi
 
-export XDG_CONFIG_HOME="$HOME"/.config
-
 # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
