@@ -121,6 +121,8 @@ alias gp='git push'
 alias gl='git pull'
 alias gst='git status'
 alias lg='lazygit'
+git config --global alias.co checkout
+git config --global alias.br branch
 
 # docker
 alias dc='docker compose'
