@@ -4,10 +4,12 @@ export XDG_CONFIG_HOME="$HOME"/.config
 if [[ "$OSTYPE" == "darwin"* ]]; then
   # needed for brew
   if [[ $(uname -m) == 'arm64' ]]; then
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-      eval "$(/usr/local/bin/brew shellenv)"
-      export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+      # TODO: try to eliminate if else for M1/ Intel with prefix
+      # Also refresh on what the below line actually does
+      eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+      export PATH="$HOMEBREW_PREFIX/opt/postgresql@15/bin:$PATH"
   else
+      eval "$(/usr/local/bin/brew shellenv)"
       eval "$(/usr/local/Homebrew/bin/brew shellenv)"
   fi
 fi
