@@ -10,4 +10,3 @@ end)
 vim.keymap.set('n', '<leader>pb', builtin.buffers, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
-

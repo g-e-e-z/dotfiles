@@ -1,7 +1,7 @@
 #!/bin/bash
 # Installs
 # brew packages Mac
-brew install fzf nvim eza bash-completion newsboat kubectl
+brew install fzf nvim eza bash-completion newsboat kubectl gsed
 # maybes: hugo
 
 export XDG_CONFIG_HOME="$HOME"/.config
