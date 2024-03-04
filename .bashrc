@@ -120,6 +120,7 @@ alias syu='sudo pacman -Syu'
 alias gp='git push'
 alias gl='git pull'
 alias gst='git status'
+alias gcd='git checkout development'
 alias lg='lazygit'
 git config --global alias.co checkout
 git config --global alias.br branch
@@ -131,6 +132,9 @@ alias dc='docker compose'
 alias ebr='v ~/.bashrc'
 alias ev='cd ~/.config/nvim/ && vim lua/geezee/packer.lua'  # Refactor nvim later
 alias sbr='source ~/.bashrc'
+
+# other
+alias sed='gsed'
 
 # vim & second brain
 # alias sb="cd \$SECOND_BRAIN"
