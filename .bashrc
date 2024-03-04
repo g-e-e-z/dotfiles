@@ -162,22 +162,10 @@ export EDITOR=nvim
 source "$HOME/.privaterc"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    # echo "macOS detected"
-    if [[ $(uname -m) == 'arm64' ]]; then
-        # echo "M1"
-        # TODO: Modify intel to use the prefix and eliminate if/else if possible
-        source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.bash"
-        source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.bash"
-        # brew bash completion: TODO: What is this syntax below actually doing
-        [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
-    else
-        # echo "Intel"
-        source "/usr/local/Cellar/fzf/0.46.1/shell/completion.bash"
-        source "/usr/local/Cellar/fzf/0.46.1/shell/key-bindings.bash"
-        # brew bash completion
-        [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-    fi
-
+    source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.bash"
+    source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.bash"
+    # brew bash completion: TODO: What is this syntax below actually doing
+    [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 else
     #	Figure this out when I start using a Linux machine
 	#	source /usr/share/fzf/key-bindings.bash
