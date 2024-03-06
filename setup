@@ -26,7 +26,7 @@ ln -sf "$PWD/newsboat/urls" "$HOME"/.newsboat/urls
 # Install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install --cask alacritty
-brew install tmux fzf neovim eza bash-completion@2 newsboat kubectl rg gsed
+brew install tmux fzf neovim eza bash-completion@2 newsboat kubectl rg gsed jq
 # maybes: hugo
 
 
