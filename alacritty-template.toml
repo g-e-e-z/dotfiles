@@ -1,4 +1,4 @@
-import = ["/Users/alexgordon/.dotfiles/gruvbox_dark.toml"]
+import = ["~/.config/alacritty/themes/gruvbox_dark.toml"]
 
 [shell]
 program = "HOMEBREW_PREFIX/bin/bash"
