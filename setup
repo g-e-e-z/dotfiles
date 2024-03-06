@@ -1,9 +1,4 @@
 #!/bin/bash
-# Installs
-# brew packages Mac
-brew install alacritty tmux fzf nvim eza bash-completion@2 newsboat kubectl rg gsed
-# maybes: hugo
-
 export XDG_CONFIG_HOME="$HOME"/.config
 mkdir -p "$XDG_CONFIG_HOME"/bash
 mkdir -p "$XDG_CONFIG_HOME"/alacritty
@@ -27,6 +22,13 @@ ln -sf "$PWD/.tmux.conf" "$HOME"/.tmux.conf
 ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"/nvim
 ln -sf "$PWD/newsboat/config" "$HOME"/.newsboat/config
 ln -sf "$PWD/newsboat/urls" "$HOME"/.newsboat/urls
+
+# Install brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install --cask alacritty
+brew install tmux fzf neovim eza bash-completion@2 newsboat kubectl rg gsed
+# maybes: hugo
+
 
 # set up blog
 # git clone git@github.com:mischavandenburg/hugo-PaperModX-theme.git themes/PaperModX --depth=1
