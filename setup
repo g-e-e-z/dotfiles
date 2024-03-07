@@ -26,9 +26,9 @@ ln -sf "$PWD/newsboat/urls" "$HOME"/.newsboat/urls
 # Install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install --cask alacritty
+# brew install --cask obsidian
 brew install tmux fzf neovim eza bash-completion@2 newsboat kubectl rg gsed jq
 # maybes: hugo
-
 
 # set up blog
 # git clone git@github.com:mischavandenburg/hugo-PaperModX-theme.git themes/PaperModX --depth=1
