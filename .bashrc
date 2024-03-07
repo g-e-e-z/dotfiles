@@ -19,7 +19,7 @@ export DOTFILES="$GHREPOS/dotfiles"
 # export LAB="$GHREPOS/lab"
 export SCRIPTS="$DOTFILES/scripts"
 export ICLOUD="$HOME/icloud"
-# export SECOND_BRAIN="$HOME/garden"
+export SECOND_BRAIN="$HOME/notes"
 
 # Go related. In general all executables and scripts go in .local/bin
 export GOBIN="$HOME/.local/bin"
@@ -142,8 +142,8 @@ alias sbr='source ~/.bashrc'
 alias sed='gsed'
 
 # vim & second brain
-# alias sb="cd \$SECOND_BRAIN"
-# alias in="cd \$SECOND_BRAIN/0-inbox/"
+alias sb="cd \$SECOND_BRAIN"
+alias in="cd \$SECOND_BRAIN/0-inbox/"
 # alias vbn='python ~/git/python/brainfile.py'
 
 # terraform
