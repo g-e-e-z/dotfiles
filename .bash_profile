@@ -1,6 +1,8 @@
 export XDG_CONFIG_HOME="$HOME"/.config
 
-HOMEBREW_PREFIX=${HOMEBREW_PREFIX:-'/opt/homebrew/'}
+if [ -z "$HOMEBREW_PREFIX" ]; then
+  HOMEBREW_PREFIX="$(brew --prefix)"
+fi
 
 # Only run on macOS
 if [[ "$OSTYPE" == "darwin"* ]]; then
