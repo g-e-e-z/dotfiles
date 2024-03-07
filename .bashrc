@@ -143,7 +143,7 @@ alias sed='gsed'
 
 # vim & second brain
 alias sb="cd \$SECOND_BRAIN"
-alias in="cd \$SECOND_BRAIN/personal/0-inbox/"
+alias in="cd \$SECOND_BRAIN/0-inbox/"
 # alias vbn='python ~/git/python/brainfile.py'
 
 # terraform
