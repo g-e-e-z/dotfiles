@@ -9,7 +9,8 @@ mkdir -p ~/Repos
 curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh >"$XDG_CONFIG_HOME"/bash/git-prompt.sh
 
 # Setup homebrewprefix for alacritty
-cp "$PWD/gruvbox_dark.toml" "~/.config/alacritty/themes/"
+mkdir -p ~/.config/alacritty/themes
+cp "$PWD/gruvbox_dark.toml" ~/.config/alacritty/themes/
 sed "s|HOMEBREW_PREFIX|${HOMEBREW_PREFIX}|" alacritty-template.toml > alacritty.toml
 
 # Symbolic links
