@@ -7,7 +7,6 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Set to superior editing mode
 set -o vi
-
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 # config
 export BROWSER="chrome"
@@ -27,6 +26,10 @@ export GOBIN="$HOME/.local/bin"
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
 # export GOPATH="$HOME/.local/share/go"
 export GOPATH="$HOME/go/"
+
+if [ -z "$HOMEBREW_PREFIX" ]; then
+  HOMEBREW_PREFIX="$(brew --prefix)"
+fi
 
 # ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
 
