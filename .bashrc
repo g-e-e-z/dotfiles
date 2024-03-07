@@ -25,8 +25,11 @@ export ICLOUD="$HOME/icloud"
 # Go related. In general all executables and scripts go in .local/bin
 export GOBIN="$HOME/.local/bin"
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
-# export GOPATH="$HOME/.local/share/go"
+export GOPATH="$HOME/.local/share/go"
 export GOPATH="$HOME/go/"
+
+# ~~~~~~~~~~~~~~~ Path configuration ~~~~~~~~~~~~~~~~~~~~~~~~
+export PATH="$SCRIPTS:$PATH"
 
 # ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
 
