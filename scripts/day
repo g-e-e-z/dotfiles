@@ -2,7 +2,11 @@
 
 today=$(date +"%Y-%m-%d")
 tomorrow=$(gdate -d "tomorrow" '+%Y-%m-%d')
-yesterday=$(gdate -d "yesterday" '+%Y-%m-%d')
+# yesterday=$(gdate -d "yesterday" '+%Y-%m-%d')
+
+last_file=$(eza -As name "$SECOND_BRAIN"'/periodic-notes/daily-notes/' | tail -n 1)
+last_date=${last_file%.*}
+
 file="$SECOND_BRAIN"'/periodic-notes/daily-notes/'$(date +"%Y-%m-%d").md
 
 cd "$SECOND_BRAIN" || exit
@@ -14,7 +18,7 @@ new_note() {
 	cat <<EOF >"$file"
 # $today
 
-[[$yesterday]] - [[$tomorrow]]
+[[$last_date]] - [[$tomorrow]]
 
 ## Intention
 
