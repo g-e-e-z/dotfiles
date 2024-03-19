@@ -4,7 +4,8 @@ today=$(date +"%Y-%m-%d")
 tomorrow=$(gdate -d "tomorrow" '+%Y-%m-%d')
 # yesterday=$(gdate -d "yesterday" '+%Y-%m-%d')
 
-last_file=$(eza -As name "$SECOND_BRAIN"'/periodic-notes/daily-notes/' | tail -n 1)
+daily_dir="$SECOND_BRAIN"'/periodic-notes/daily-notes/'
+last_file=$(eza -As name "$daily_dir" | tail -n 1)
 last_date=${last_file%.*}
 
 file="$SECOND_BRAIN"'/periodic-notes/daily-notes/'$(date +"%Y-%m-%d").md
@@ -18,7 +19,7 @@ new_note() {
 	cat <<EOF >"$file"
 # $today
 
-[[$last_date]] - [[$tomorrow]]
+[[$last_date]] - [_placeholder_]
 
 ## Intention
 
@@ -34,10 +35,14 @@ EOF
 
 }
 
+
 # If the daily note does not exist, create a new one.
 # this uses the test command with the -f flag.
 if [ ! -f "$file" ]; then
 	echo "File does not exist, creating new daily note."
+    # Populate the previous note with link to new note
+    gsed -i "s/_placeholder_/\[$today\]/" "$daily_dir""$last_file"
+    # Create new note
 	new_note
 fi
 
