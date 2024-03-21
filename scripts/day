@@ -23,14 +23,11 @@ new_note() {
 
 $(cal -h)
 
-## Intention
+## Previous Tasks
+$(cat $daily_dir$last_file | grep "\- \[ \]")
 
-What do I want to achieve today and tomorrow?
-
-## Tracking
-
+## Tasks
 - [ ] Task 1
-- [ ] Task 2
 
 ## Log
 EOF
