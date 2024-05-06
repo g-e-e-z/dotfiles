@@ -12,7 +12,7 @@ curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-com
 
 # Setup homebrewprefix for alacritty
 mkdir -p ~/.config/alacritty/themes
-cp "$PWD/gruvbox_dark.toml" ~/.config/alacritty/themes/
+cp -a "$PWD/alacritty_themes/." ~/.config/alacritty/themes/
 sed "s|HOMEBREW_PREFIX|${HOMEBREW_PREFIX}|" alacritty-template.toml > alacritty.toml
 
 # Symbolic links

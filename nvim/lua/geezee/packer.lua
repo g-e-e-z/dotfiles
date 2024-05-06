@@ -16,10 +16,10 @@ return require('packer').startup(function(use)
     --     end
     -- }
     use {
-        'savq/melange-nvim',
-        as = 'melange',
+        'folke/tokyonight.nvim',
+        as = 'tokyonight',
         config = function()
-            vim.cmd('colorscheme melange')
+            vim.cmd('colorscheme tokyonight-night')
         end
     }
 
