@@ -43,6 +43,7 @@ require('mason-lspconfig').setup({
         end
     },
 })
+require 'lspconfig'.pyright.setup {}
 
 
 -- AUTOCOMPLETION CONFIG
