@@ -136,6 +136,7 @@ git config --global alias.br branch
 
 # docker
 alias dc='docker compose'
+alias dcb='docker compose up --build'
 
 # ricing
 alias ebr='v ~/.bashrc'

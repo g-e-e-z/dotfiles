@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# if a day is provided generate that week
+if [ "$1" != "" ]; then
+    current_date=$1
+else
+    # Get the current date
+    current_date=$(date "+%Y-%m-%d")
+fi
+
+# Get the day of the week (1=Monday, 7=Sunday) for the current date
+day_of_week=$(date -j -f "%Y-%m-%d" "$current_date" "+%u")
+
+# Calculate the date of Monday for the current week
+monday_date=$(date -j -v-"$((day_of_week - 1))"d -f "%Y-%m-%d" "$current_date" "+%Y-%m-%d")
+
+# Initialize an array to store the dates
+dates=()
+
+# Loop over the days of the week starting from Monday
+for ((i = 0; i < 5; i++)); do
+    # Calculate the date for the current day in the loop
+    date=$(date -j -v+"$i"d -f "%Y-%m-%d" "$monday_date" "+%Y-%m-%d")
+    # Add the date to the array
+    dates+=("$date")
+done
+
+
+NOTES_DIR="$SECOND_BRAIN"'/periodic-notes/daily-notes/'
+for date in ${dates[@]}; do
+    # Check if file exists
+    file="$NOTES_DIR""$date".md
+    if [[ -e $file ]]; then
+        # If grep returns true
+        if grep -q "\- \[x\]" "$file"; then  # -q = quiet
+            echo "###" "[[$date]]" $(date -j -f "%Y-%m-%d" "$date" "+%A")
+
+            grep "\- \[x\]" $file | gsed 's/^/    /'
+        fi
+    fi
+done
