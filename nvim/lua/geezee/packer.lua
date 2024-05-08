@@ -8,18 +8,11 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
-    -- use {
-    --     'ellisonleao/gruvbox.nvim',
-    --     as = 'gruvbox',
-    --     config = function()
-    --         vim.cmd('colorscheme gruvbox')
-    --     end
-    -- }
     use {
-        'folke/tokyonight.nvim',
-        as = 'tokyonight',
+        'ellisonleao/gruvbox.nvim',
+        as = 'gruvbox',
         config = function()
-            vim.cmd('colorscheme tokyonight-night')
+            vim.cmd('colorscheme gruvbox')
         end
     }
 
