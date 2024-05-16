@@ -23,3 +23,4 @@ if [ -r ~/.bashrc ]; then
 fi
 
 # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
