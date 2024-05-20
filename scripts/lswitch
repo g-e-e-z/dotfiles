@@ -1,0 +1,15 @@
+#!/bin/bash
+
+ALAC="$DOTFILES/alacritty.toml"
+VIMD="$DOTFILES/nvim/after/plugin/colors.lua"
+
+if [[ $(grep "light" $ALAC) ]]; then
+    gsed -i "s|light|dark|" $ALAC
+    gsed -i "s|light|dark|" $VIMD
+else
+    gsed -i "s|dark|light|" $ALAC
+    gsed -i "s|dark|light|" $VIMD
+fi
+
+clear
+echo "******* Click! *******"
