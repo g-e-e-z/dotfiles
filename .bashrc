@@ -140,8 +140,9 @@ alias dcb='docker compose up --build'
 
 # ricing
 alias ebr='v ~/.bashrc'
-alias ev='cd ~/.config/nvim/ && vim lua/geezee/packer.lua'  # Refactor nvim later
 alias sbr='source ~/.bashrc'
+alias ea="v $DOTFILES/alacritty.toml"
+alias ev='cd ~/.config/nvim/ && vim lua/geezee/packer.lua'
 
 # other
 alias sed='gsed'
