@@ -1,0 +1,5 @@
+#!/bin/bash
+
+selected=$(docker ps | awk 'NR>1{print $NF}' | fzf)
+
+docker exec -it $selected bash
