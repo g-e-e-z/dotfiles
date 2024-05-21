@@ -10,6 +10,8 @@ if [[ $(grep "light" $ALAC) ]]; then
     gsed -i "s|light|dark|" $ALAC
     gsed -i "s|light|dark|" $VIMD
     osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"${PICS}/gruvbox-dark.png\" as POSIX file"
+    osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to true'
+
     echo "            "
     echo "           _    "
     echo "          (~)    "
@@ -19,6 +21,7 @@ else
     gsed -i "s|dark|light|" $ALAC
     gsed -i "s|dark|light|" $VIMD
     osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"${PICS}/gruvbox-light.png\" as POSIX file"
+    osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to false'
     echo "           :"
     echo "       '.  _  .'"
     echo "      -=  (~)  =-"
