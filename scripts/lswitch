@@ -2,45 +2,26 @@
 
 ALAC="$DOTFILES/alacritty.toml"
 VIMD="$DOTFILES/nvim/after/plugin/colors.lua"
-PICS="~/Pictures/Backgrounds"
+BG_DIR="Users/$USER/Pictures/Backgrounds"
+LIGHT_FILE="gruvbox-light.png"
+DARK_FILE="gruvbox-dark.png"
 
 clear
-echo "******* Click! *******"
-if [[ $(grep "light" $ALAC) ]]; then
-    gsed -i "s|light|dark|" $ALAC
-    gsed -i "s|light|dark|" $VIMD
-    osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"${PICS}/gruvbox-dark.png\" as POSIX file"
-    osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to true'
 
-    echo "            "
-    echo "           _    "
-    echo "          (~)    "
-    echo "           #    "
-    echo ""
-else
+MODE=$(defaults read -g AppleInterfaceStyle 2>/dev/null)
+
+if [[ $MODE == "Dark" ]]; then
+    # Switch to light
     gsed -i "s|dark|light|" $ALAC
     gsed -i "s|dark|light|" $VIMD
-    osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"${PICS}/gruvbox-light.png\" as POSIX file"
-    osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to false'
-    echo "           :"
-    echo "       '.  _  .'"
-    echo "      -=  (~)  =-"
-    echo "       .'  #  '."
-    echo ""
+    FILE=$LIGHT_FILE
+else
+    # Switch to dark
+    gsed -i "s|light|dark|" $ALAC
+    gsed -i "s|light|dark|" $VIMD
+    FILE=$DARK_FILE
 fi
 
-
-# set_wallpaper(){
-#     osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"${1}\" as POSIX file"
-# }
-#
-# case $1 in
-#     help)
-#         help
-#         ;;
-#     *)
-#         [ -z "$1" ] && help && exit 1
-#         set_wallpaper "$1"
-#         shift
-#         ;;
-# esac
+/usr/libexec/PlistBuddy -c "set AllSpacesAndDisplays:Desktop:Content:Choices:0:Files:0:relative file:///$BG_DIR/$FILE" ~/Library/Application\ Support/com.apple.wallpaper/Store/Index.plist && \
+killall WallpaperAgent
+osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to not dark mode'
