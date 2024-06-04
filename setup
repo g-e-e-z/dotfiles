@@ -5,6 +5,12 @@ mkdir -p "$XDG_CONFIG_HOME"/alacritty
 mkdir -p "$XDG_CONFIG_HOME"/k9s
 mkdir -p ~/Repos
 
+# Install brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install --cask alacritty
+# brew install --cask obsidian
+brew install tmux fzf neovim eza bash-completion@2 newsboat kubectl rg gsed jq coreutils httpie
+
 #  set up git prompt
 curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh >"$XDG_CONFIG_HOME"/bash/git-prompt.sh
 # Git branch auto completion
@@ -26,8 +32,3 @@ ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"/nvim
 ln -sf "$PWD/newsboat/config" "$HOME"/.newsboat/config
 ln -sf "$PWD/newsboat/urls" "$HOME"/.newsboat/urls
 
-# Install brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install --cask alacritty
-# brew install --cask obsidian
-brew install tmux fzf neovim eza bash-completion@2 newsboat kubectl rg gsed jq coreutils httpie
