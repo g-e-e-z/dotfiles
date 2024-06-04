@@ -111,10 +111,10 @@ alias python2='python'
 alias python='python3'
 
 # ls
-alias ls='eza --color=auto'
-alias ll='eza -la'
-alias la='eza -lahr'
-alias tree='eza -TL'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
 
 # finds all files recursively and sorts by last modification, ignore hidden files
 alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'

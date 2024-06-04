@@ -24,3 +24,5 @@ fi
 
 # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
