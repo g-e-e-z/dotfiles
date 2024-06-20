@@ -9,7 +9,7 @@ mkdir -p ~/Repos
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install --cask alacritty
 # brew install --cask obsidian
-brew install tmux fzf neovim bash-completion@2 newsboat kubectl rg gsed jq coreutils httpie
+brew install tmux fzf neovim bash-completion@2 newsboat kubectl rg gsed jq jd coreutils httpie
 
 #  set up git prompt
 curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh >"$XDG_CONFIG_HOME"/bash/git-prompt.sh
@@ -31,4 +31,3 @@ ln -sf "$PWD/.tmux.conf" "$HOME"/.tmux.conf
 ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"/nvim
 ln -sf "$PWD/newsboat/config" "$HOME"/.newsboat/config
 ln -sf "$PWD/newsboat/urls" "$HOME"/.newsboat/urls
-
