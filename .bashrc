@@ -22,10 +22,6 @@ export GOBIN="$HOME/.local/bin"
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
 # export GOPROXY=direct # Revisit this
 
-if [ -z "$HOMEBREW_PREFIX" ]; then
-  HOMEBREW_PREFIX="$(brew --prefix)"
-fi
-
 # ~~~~~~~~~~~~~~~ Path ~~~~~~~~~~~~~~~~~~~~~~~~
 export PATH="$SCRIPTS:$PATH:$GOPATH"
 
@@ -58,7 +54,7 @@ pathprepend \
 	"$GHREPOS/cmd-"* \
 	/usr/local/go/bin \
 	/usr/local/bin \
-    "$HOMEBREW_PREFIX/bin"\
+    /opt/homebrew/bin \
 	"$SCRIPTS"
 
 pathappend \
@@ -218,10 +214,10 @@ export EDITOR=nvim
 source "$HOME/.privaterc"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.bash"
-    source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.bash"
+    source /opt/homebrew/opt/fzf/shell/completion.bash
+    source /opt/homebrew/opt/fzf/shell/key-bindings.bash
     # brew bash completion: TODO: What is this syntax below actually doing
-    [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+    [[ -r ""/opt/homebrew/etc/profile.d/bash_completion.sh"" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 else
     #	Figure this out when I start using a Linux machine
 	#	source /usr/share/fzf/key-bindings.bash
