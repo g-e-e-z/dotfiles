@@ -1,12 +1,8 @@
 # ~/.bashrc
 
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Set to superior editing mode
-set -o vi
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 # config
 export BROWSER="chrome"
@@ -24,15 +20,60 @@ export SECOND_BRAIN="$HOME/notes"
 # Go related. In general all executables and scripts go in .local/bin
 export GOBIN="$HOME/.local/bin"
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
-export GOPATH="$HOME/.local/share/go"
-export GOPATH="$HOME/go/"
+# export GOPROXY=direct # Revisit this
 
 if [ -z "$HOMEBREW_PREFIX" ]; then
   HOMEBREW_PREFIX="$(brew --prefix)"
 fi
 
-# ~~~~~~~~~~~~~~~ Path configuration ~~~~~~~~~~~~~~~~~~~~~~~~
-export PATH="$SCRIPTS:$PATH"
+# ~~~~~~~~~~~~~~~ Path ~~~~~~~~~~~~~~~~~~~~~~~~
+export PATH="$SCRIPTS:$PATH:$GOPATH"
+
+pathappend() {
+	declare arg
+	for arg in "$@"; do
+		test -d "$arg" || continue
+		PATH=${PATH//":$arg:"/:}
+		PATH=${PATH/#"$arg:"/}
+		PATH=${PATH/%":$arg"/}
+		export PATH="${PATH:+"$PATH:"}$arg"
+	done
+} && export -f pathappend
+
+pathprepend() {
+	for arg in "$@"; do
+		test -d "$arg" || continue
+		PATH=${PATH//:"$arg:"/:}
+		PATH=${PATH/#"$arg:"/}
+		PATH=${PATH/%":$arg"/}
+		export PATH="$arg${PATH:+":${PATH}"}"
+	done
+} && export -f pathprepend
+
+# remember last arg will be first in path
+pathprepend \
+	"$HOME/.local/bin" \
+	"$HOME/.local/go/bin" \
+	"$HOME/.nimble/bin" \
+	"$GHREPOS/cmd-"* \
+	/usr/local/go/bin \
+	/usr/local/bin \
+    "$HOMEBREW_PREFIX/bin"\
+	"$SCRIPTS"
+
+pathappend \
+	/usr/local/opt/coreutils/libexec/gnubin \
+	/usr/local/bin \
+	/usr/local/sbin \
+	/usr/local/games \
+	/usr/games \
+	/usr/sbin \
+	/usr/bin \
+	/snap/bin \
+	/sbin \
+	/bin
+
+
 # ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
 
 export HISTFILE=~/.histfile
