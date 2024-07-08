@@ -24,7 +24,11 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 
 -- MASON LANGUAGE SERVERS OVERRIDES
-require('mason').setup({})
+require('mason').setup({
+    ui = {
+        border = "single"
+    }
+})
 require('mason-lspconfig').setup({
     ensure_installed = { 'gopls', 'pyright', 'marksman', 'tsserver', 'lua_ls' },
     handlers = {
