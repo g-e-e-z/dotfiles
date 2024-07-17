@@ -1,4 +1,10 @@
 require("oil").setup({
+    keymaps = {
+          ["<C-h>"] = false,
+          ["<C-l>"] = false,
+          ["<C-k>"] = false,
+          ["<C-j>"] = false,
+        },
     float = {
         -- Padding around the floating window
         padding = 5,
