@@ -91,4 +91,10 @@ return require('packer').startup(function(use)
             require("nvim-autopairs").setup {}
         end
     }
+    use({
+        "stevearc/oil.nvim",
+        config = function()
+            require("oil").setup()
+        end,
+    })
 end)

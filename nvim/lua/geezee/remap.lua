@@ -1,6 +1,7 @@
 vim.g.mapleader=" "
-vim.keymap.set("n", "<leader>pd", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>pp", vim.cmd.Vex)
+-- vim.keymap.set("n", "<leader>pd", "<CMD>Oil<CR>")
+vim.keymap.set("n", "<leader>pd", require("oil").toggle_float)
+vim.keymap.set("n", "<leader>pp", function() vim.cmd("vsplit | wincmd r") require("oil").open() end)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
