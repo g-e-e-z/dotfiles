@@ -7,6 +7,7 @@ export XDG_CONFIG_HOME="$HOME"/.config
 mkdir -p "$XDG_CONFIG_HOME"/bash
 mkdir -p "$XDG_CONFIG_HOME"/alacritty
 mkdir -p "$XDG_CONFIG_HOME"/k9s
+mkdir -p ~/Pictures/Backgrounds
 mkdir -p ~/Repos
 mkdir -p "$HOME"/.newsboat/config
 mkdir -p "$HOME"/.newsboat/urls
@@ -34,9 +35,10 @@ curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-
 # Git branch auto completion
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 
-# Setup alacritty themes
+# Setup themes
 mkdir -p "$XDG_CONFIG_HOME"/alacritty/themes
 cp -a "$PWD/alacritty_themes/." "$XDG_CONFIG_HOME"/alacritty/themes
+cp -a "$PWD/wallpapers/* ~/Pictures/Backgrounds"
 
 # Symbolic links
 ln -sf "$PWD/alacritty.toml" "$XDG_CONFIG_HOME"/alacritty/alacritty.toml
