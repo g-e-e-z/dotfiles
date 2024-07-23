@@ -55,12 +55,14 @@ pathprepend \
 	/usr/local/go/bin \
 	/usr/local/bin \
     /opt/homebrew/bin \
+    /opt/homebrew/opt/postgresql@15/bin \
 	"$SCRIPTS"
 
 pathappend \
 	/usr/local/opt/coreutils/libexec/gnubin \
 	/usr/local/bin \
 	/usr/local/sbin \
+    /usr/local/opt/ruby/bin \
 	/usr/local/games \
 	/usr/games \
 	/usr/sbin \
@@ -137,8 +139,6 @@ alias vim=nvim
 # cd
 alias ..="cd .."
 alias scripts='cd $SCRIPTS'
-# alias cdblog="cd ~/websites/blog"
-# alias cdpblog='cd $SECOND_BRAIN/2-areas/blog/content'
 alias dot='cd $GHREPOS/dotfiles'
 alias repos='cd $REPOS'
 alias cdgo='cd $GHREPOS/go/'
