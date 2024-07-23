@@ -38,7 +38,7 @@ curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-com
 # Setup themes
 mkdir -p "$XDG_CONFIG_HOME"/alacritty/themes
 cp -a "$PWD/alacritty_themes/." "$XDG_CONFIG_HOME"/alacritty/themes
-cp -a "$PWD/wallpapers/* ~/Pictures/Backgrounds"
+cp -a $PWD/wallpapers/* ~/Pictures/Backgrounds
 
 # Symbolic links
 ln -sf "$PWD/alacritty.toml" "$XDG_CONFIG_HOME"/alacritty/alacritty.toml
