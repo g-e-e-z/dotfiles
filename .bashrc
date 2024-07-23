@@ -219,11 +219,13 @@ else
 fi
 
 
+export FZF_DEFAULT_OPTS="--color=fg+:-1,bg+:-1,bg:-1,hl+:#cc241d,hl:#cc241d"
 if [[ "$OSTYPE" == "darwin"* ]]; then
     source /opt/homebrew/opt/fzf/shell/completion.bash
     source /opt/homebrew/opt/fzf/shell/key-bindings.bash
     # brew bash completion: TODO: What is this syntax below actually doing
     [[ -r ""/opt/homebrew/etc/profile.d/bash_completion.sh"" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
 else
     #	Figure this out when I start using a Linux machine
 	#	source /usr/share/fzf/key-bindings.bash
