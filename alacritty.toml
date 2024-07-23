@@ -1,7 +1,7 @@
 import = ["~/.config/alacritty/themes/gruvbox_light.toml"]
 
 [shell]
-program = "HOMEBREW_PREFIX/bin/bash"
+program = "/opt/homebrew/bin/bash"
 args = ["-l", "-c", "tmux"]
 
 [font]

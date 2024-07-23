@@ -1,25 +1,37 @@
 #!/bin/bash
+# Change shell to bash
+chsh -s /bin/bash
+
+# XDG compliance
 export XDG_CONFIG_HOME="$HOME"/.config
 mkdir -p "$XDG_CONFIG_HOME"/bash
 mkdir -p "$XDG_CONFIG_HOME"/alacritty
 mkdir -p "$XDG_CONFIG_HOME"/k9s
 mkdir -p ~/Repos
+mkdir -p "$HOME"/.newsboat/config
+mkdir -p "$HOME"/.newsboat/urls
 
 # Install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Required commands for brew
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/alexgordon/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 brew install --cask alacritty
+brew install --cask font-ubuntu-mono-nerd-font
+brew install --cask docker # May not work, update next time
 # brew install --cask obsidian
-brew install tmux fzf neovim bash-completion@2 newsboat kubectl rg gsed jq jd coreutils httpie
+brew install tmux fzf neovim bash-completion@2 newsboat kubectl rg gsed jq jd coreutils httpie lazygit lazydocker
 
 #  set up git prompt
 curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh >"$XDG_CONFIG_HOME"/bash/git-prompt.sh
 # Git branch auto completion
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 
-# Setup homebrewprefix for alacritty
-mkdir -p ~/.config/alacritty/themes
-cp -a "$PWD/alacritty_themes/." ~/.config/alacritty/themes/
-sed "s|HOMEBREW_PREFIX|${HOMEBREW_PREFIX}|" template-alacritty.toml > alacritty.toml
+# Setup alacritty themes
+mkdir -p "$XDG_CONFIG_HOME"/alacritty/themes
+cp -a "$PWD/alacritty_themes/." "$XDG_CONFIG_HOME"/alacritty/themes
 
 # Symbolic links
 ln -sf "$PWD/alacritty.toml" "$XDG_CONFIG_HOME"/alacritty/alacritty.toml

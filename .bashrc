@@ -172,6 +172,7 @@ git config --global alias.co checkout
 git config --global alias.br branch
 
 # docker
+alias ldo='lazydocker'
 alias dc='docker compose'
 alias dcb='docker compose up --build'
 
@@ -211,7 +212,12 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 # sourcing
-source "$HOME/.privaterc"
+if test -f "$HOME/.privaterc"; then
+    source "$HOME/.privaterc"
+else
+    echo "No .privaterc found"
+fi
+
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     source /opt/homebrew/opt/fzf/shell/completion.bash
