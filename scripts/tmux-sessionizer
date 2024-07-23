@@ -3,7 +3,8 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/Repos/github.com/* ~/code ~/notes -mindepth 1 -maxdepth 1 -type d | fzf)
+    repos=$(find ~/Repos/github.com/* ~/code ~/notes -mindepth 1 -maxdepth 1 -type d)
+    selected=$(echo "$repos" | fzf --color=16 --reverse --preview 'tree -CL 2 {} | head -200' --preview-window=right:45%)
 fi
 
 if [[ -z $selected ]]; then
