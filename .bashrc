@@ -62,7 +62,7 @@ pathappend \
 	/usr/local/opt/coreutils/libexec/gnubin \
 	/usr/local/bin \
 	/usr/local/sbin \
-    /usr/local/opt/ruby/bin \
+    /opt/homebrew/opt/ruby/bin \
 	/usr/local/games \
 	/usr/games \
 	/usr/sbin \
