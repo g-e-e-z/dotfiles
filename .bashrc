@@ -219,7 +219,8 @@ else
 fi
 
 
-export FZF_DEFAULT_OPTS="--color=fg+:-1,bg+:-1,bg:-1,hl+:#cc241d,hl:#cc241d"
+export FZF_DEFAULT_OPTS="--color=fg+:-1,bg+:-1,bg:-1,hl+:#cc241d,hl:#fb4934,prompt:#fb4934,pointer:#fb4934,spinner:#fb4934"
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
     source /opt/homebrew/opt/fzf/shell/completion.bash
     source /opt/homebrew/opt/fzf/shell/key-bindings.bash

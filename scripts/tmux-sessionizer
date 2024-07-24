@@ -3,8 +3,13 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    repos=$(find ~/Repos/github.com/* ~/code ~/notes -mindepth 1 -maxdepth 1 -type d)
-    selected=$(echo "$repos" | fzf --color=16 --reverse --preview 'tree -CL 2 {} | head -200' --preview-window=right:45%)
+    repos=$(find ~/Repos/github.com/* ~/notes -mindepth 1 -maxdepth 1 -type d)
+    selected=$(
+        echo "$repos" | \
+        # Note: defaults are not copied to new tmux shell, copy and pasted colors from bashrc
+        fzf --color=fg+:-1,bg+:-1,bg:-1,hl+:#cc241d,hl:#fb4934,prompt:#fb4934,pointer:#fb4934,spinner:#fb4934 \
+            --tmux 90% --reverse --preview 'tree -CL 2 {} | head -200' \
+            --preview-window=right:45% --prompt="Select a directory: ")
 fi
 
 if [[ -z $selected ]]; then
