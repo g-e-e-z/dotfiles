@@ -1,0 +1,10 @@
+#!/bin/bash
+
+NOTESDIR="$HOME"/notes
+mkdir -p "$NOTESDIR"/0-inbox
+mkdir -p "$NOTESDIR"/1-project
+mkdir -p "$NOTESDIR"/2-areas
+mkdir -p "$NOTESDIR"/3-resources
+mkdir -p "$NOTESDIR"/4-archive
+mkdir -p "$NOTESDIR"/periodic-notes
+mkdir -p "$NOTESDIR"/periodic-notes/daily-notes
