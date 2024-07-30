@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ALAC="$DOTFILES/alacritty.toml"
+K9S="$DOTFILES/k9s/config.yml"
 VIMD="$DOTFILES/nvim/after/plugin/colors.lua"
 BG_DIR="Users/$USER/Pictures/Backgrounds"
 LIGHT_FILE="gruvbox-light.png"
@@ -14,11 +15,13 @@ if [[ $MODE == "Dark" ]]; then
     # Switch to light
     gsed -i "s|dark|light|" $ALAC
     gsed -i "s|dark|light|" $VIMD
+    gsed -i "s|dark|light|" $K9S
     FILE=$LIGHT_FILE
 else
     # Switch to dark
     gsed -i "s|light|dark|" $ALAC
     gsed -i "s|light|dark|" $VIMD
+    gsed -i "s|light|dark|" $K9S
     FILE=$DARK_FILE
 fi
 

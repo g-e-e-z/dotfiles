@@ -194,13 +194,13 @@ alias in="cd \$SECOND_BRAIN/0-inbox/"
 # alias tp='terraform plan'
 
 # kubectl
-# alias k='kubectl'
-# source <(kubectl completion bash)
-# complete -o default -F __start_kubectl k
-# alias kgp='kubectl get pods'
+alias k='kubectl'
+source <(kubectl completion bash)
+complete -o default -F __start_kubectl k
+alias kgp='kubectl get pods'
 # alias kc='kubectx'
 # alias kn='kubens'
-#
+
 # alias kcs='kubectl config use-context admin@homelab-staging'
 # alias kcp='kubectl config use-context admin@homelab-production'
 
