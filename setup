@@ -9,8 +9,7 @@ mkdir -p "$XDG_CONFIG_HOME"/alacritty
 mkdir -p "$XDG_CONFIG_HOME"/k9s
 mkdir -p ~/Pictures/Backgrounds
 mkdir -p ~/Repos
-mkdir -p "$HOME"/.newsboat/config
-mkdir -p "$HOME"/.newsboat/urls
+mkdir -p "$HOME"/.newsboat
 
 # Install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

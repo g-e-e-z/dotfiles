@@ -30,7 +30,7 @@ require('mason').setup({
     }
 })
 require('mason-lspconfig').setup({
-    ensure_installed = { 'gopls', 'pyright', 'marksman', 'tsserver', 'lua_ls' },
+    ensure_installed = { 'gopls', 'pyright', 'ruff', 'marksman', 'tsserver', 'lua_ls' },
     handlers = {
         lsp_zero.default_setup,
         ["lua_ls"] = function()

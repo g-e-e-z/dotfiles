@@ -6,6 +6,12 @@ https://manga4life.com/rss/Jujutsu-Kaisen.xml
 https://cloud.google.com/feeds/gcp-release-notes.xml
 https://kubernetes.io/feed.xml
 
+# Golang
+https://go.dev/blog/feed.atom?format=xml
+
+# Python
+https://www.blog.pythonlibrary.org/feed/
+
 # Programming
 https://ludic.mataroa.blog/rss/
 https://registerspill.thorstenball.com/feed
