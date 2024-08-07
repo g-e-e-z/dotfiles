@@ -20,7 +20,10 @@ export SECOND_BRAIN="$HOME/notes"
 # Go related. In general all executables and scripts go in .local/bin
 export GOBIN="$HOME/.local/bin"
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
-# export GOPROXY=direct # Revisit this
+
+# Needede for postgresql
+export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
 
 # ~~~~~~~~~~~~~~~ Path ~~~~~~~~~~~~~~~~~~~~~~~~
 export PATH="$SCRIPTS:$PATH:$GOPATH"
@@ -63,6 +66,7 @@ pathappend \
 	/usr/local/bin \
 	/usr/local/sbin \
     /opt/homebrew/opt/ruby/bin \
+    /opt/homebrew/opt/libpq/bin \
 	/usr/local/games \
 	/usr/games \
 	/usr/sbin \

@@ -6,6 +6,6 @@ function Colors(color)
 	vim.api.nvim_set_hl(0, 'NormalFloat', { bg = "none" })
 
 end
-vim.o.background = "light"
+vim.o.background = "dark"
 
 Colors()

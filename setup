@@ -22,7 +22,7 @@ brew install --cask alacritty
 brew install --cask font-ubuntu-mono-nerd-font
 brew install --cask docker # May not work, update next time
 # brew install --cask obsidian
-brew install tmux fzf neovim bash-completion@2 newsboat kubectl rg gsed jq jd coreutils httpie lazygit lazydocker tree node go
+brew install tmux fzf neovim bash-completion@2 newsboat kubectl rg gsed jq jd coreutils httpie lazygit lazydocker tree node go libpq
 
 # TODO: Migrate away from packer:
 # Install packer
