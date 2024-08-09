@@ -3,6 +3,6 @@ export XDG_CONFIG_HOME="$HOME"/.config
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-if [ -r ~/.bashrc ]; then
-  source ~/.bashrc
+if [ -r ~/.zshrc ]; then
+  source ~/.zshrc
 fi

@@ -1,6 +1,4 @@
 #!/bin/bash
-# Change shell to bash
-chsh -s /bin/bash
 
 # XDG compliance
 export XDG_CONFIG_HOME="$HOME"/.config
@@ -22,17 +20,12 @@ brew install --cask alacritty
 brew install --cask font-ubuntu-mono-nerd-font
 brew install --cask docker # May not work, update next time
 # brew install --cask obsidian
-brew install tmux fzf neovim bash-completion@2 newsboat kubectl rg gsed jq jd coreutils httpie lazygit lazydocker tree node go
+brew install tmux fzf neovim newsboat kubectl rg gsed jq jd coreutils httpie lazygit lazydocker tree node go pure zsh-syntax-highlighting docker-completion
 
 # TODO: Migrate away from packer:
 # Install packer
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-#  set up git prompt
-curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh >"$XDG_CONFIG_HOME"/bash/git-prompt.sh
-# Git branch auto completion
-curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 
 # Setup themes
 mkdir -p "$XDG_CONFIG_HOME"/alacritty/themes
@@ -42,8 +35,8 @@ cp -a $PWD/wallpapers/* ~/Pictures/Backgrounds
 # Symbolic links
 ln -sf "$PWD/alacritty.toml" "$XDG_CONFIG_HOME"/alacritty/alacritty.toml
 ln -sf "$PWD/k9s" "$XDG_CONFIG_HOME"
-ln -sf "$PWD/.bash_profile" "$HOME"/.bash_profile
-ln -sf "$PWD/.bashrc" "$HOME"/.bashrc
+ln -sf "$PWD/.zprofile" "$HOME"/.zprofile
+ln -sf "$PWD/.zshrc" "$HOME"/.zshrc
 ln -sf "$PWD/.inputrc" "$HOME"/.inputrc
 ln -sf "$PWD/.tmux.conf" "$HOME"/.tmux.conf
 ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"
