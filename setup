@@ -14,9 +14,11 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew install --cask alacritty
 brew install --cask font-ubuntu-mono-nerd-font
-brew install --cask docker # May not work, update next time
+# brew install --cask docker # May not work, update next time
 # brew install --cask obsidian
-brew install tmux fzf neovim newsboat kubectl rg gsed jq jd coreutils httpie lazygit lazydocker tree node go pure zsh-syntax-highlighting docker-completion
+brew install tmux fzf neovim newsboat kubectl rg gsed jq jd coreutils httpie \
+    lazygit lazydocker tree node go pure zsh-syntax-highlighting \
+    docker-completion
 
 # TODO: Migrate away from packer:
 # Install packer
@@ -27,8 +29,6 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 cp -a $PWD/wallpapers/* ~/Pictures/Backgrounds
 
 # Symbolic links files
-# ln -sf "$PWD/newsboat/config" "$HOME/.newsboat/config"
-# ln -sf "$PWD/newsboat/urls" "$HOME/.newsboat/urls"
 ln -sf "$PWD/.zprofile" "$HOME/.zprofile"
 ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
 ln -sf "$PWD/.inputrc" "$HOME/.inputrc"
