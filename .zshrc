@@ -171,6 +171,7 @@ alias dc='docker compose'
 alias dcb='docker compose up --build'
 
 # ricing
+zstyle :prompt:pure:path color '#d79921'
 alias ez='v ~/.zshrc'
 alias sz='source ~/.zshrc'
 alias ea="v $DOTFILES/alacritty.toml"
