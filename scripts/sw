@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ALAC="$DOTFILES/alacritty.toml"
+ALAC="$DOTFILES/alacritty/alacritty.toml"
 K9S="$DOTFILES/k9s/config.yaml"
 VIMD="$DOTFILES/nvim/after/plugin/colors.lua"
 BG_DIR="Users/$USER/Pictures/Backgrounds"
