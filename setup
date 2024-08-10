@@ -1,16 +1,11 @@
 #!/bin/bash
 
-# XDG compliance
+# XDG
 export XDG_CONFIG_HOME="$HOME"/.config
-mkdir -p ~/Pictures/Backgrounds
 mkdir -p ~/Repos
 
 # Install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Required commands for brew
-(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/alexgordon/.zprofile
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew install --cask alacritty
 brew install --cask font-ubuntu-mono-nerd-font
@@ -25,8 +20,6 @@ brew install tmux fzf neovim newsboat kubectl rg gsed jq jd coreutils httpie \
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
-# Setup themes
-cp -a $PWD/wallpapers/* ~/Pictures/Backgrounds
 
 # Symbolic links files
 ln -sf "$PWD/.zprofile" "$HOME/.zprofile"
@@ -35,8 +28,9 @@ ln -sf "$PWD/.inputrc" "$HOME/.inputrc"
 ln -sf "$PWD/.tmux.conf" "$HOME/.tmux.conf"
 
 # Symbolic links dirs
-ln -sf "$PWD/.newsboat" "$HOME"
+ln -sf "$PWD/Backgrounds" "$HOME/Pictures"
 ln -sf "$PWD/alacritty" "$XDG_CONFIG_HOME"
 ln -sf "$PWD/k9s" "$XDG_CONFIG_HOME"
 ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"
+ln -sf "$PWD/.newsboat" "$HOME"
 
