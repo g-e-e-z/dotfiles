@@ -4,7 +4,6 @@
 export XDG_CONFIG_HOME="$HOME"/.config
 mkdir -p ~/Pictures/Backgrounds
 mkdir -p ~/Repos
-mkdir -p "$HOME"/.newsboat
 
 # Install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -28,15 +27,15 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 cp -a $PWD/wallpapers/* ~/Pictures/Backgrounds
 
 # Symbolic links files
-ln -sf "$PWD/newsboat/config" "$HOME/.newsboat/config"
-ln -sf "$PWD/newsboat/urls" "$HOME/.newsboat/urls"
+# ln -sf "$PWD/newsboat/config" "$HOME/.newsboat/config"
+# ln -sf "$PWD/newsboat/urls" "$HOME/.newsboat/urls"
 ln -sf "$PWD/.zprofile" "$HOME/.zprofile"
 ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
 ln -sf "$PWD/.inputrc" "$HOME/.inputrc"
 ln -sf "$PWD/.tmux.conf" "$HOME/.tmux.conf"
 
 # Symbolic links dirs
-# ln -sf "$PWD/alacritty.toml" "$XDG_CONFIG_HOME/alacritty/alacritty.toml"
+ln -sf "$PWD/.newsboat" "$HOME"
 ln -sf "$PWD/alacritty" "$XDG_CONFIG_HOME"
 ln -sf "$PWD/k9s" "$XDG_CONFIG_HOME"
 ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"
