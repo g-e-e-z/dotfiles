@@ -2,9 +2,6 @@
 
 # XDG compliance
 export XDG_CONFIG_HOME="$HOME"/.config
-mkdir -p "$XDG_CONFIG_HOME"/bash
-mkdir -p "$XDG_CONFIG_HOME"/alacritty
-mkdir -p "$XDG_CONFIG_HOME"/k9s
 mkdir -p ~/Pictures/Backgrounds
 mkdir -p ~/Repos
 mkdir -p "$HOME"/.newsboat
@@ -28,17 +25,19 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 # Setup themes
-mkdir -p "$XDG_CONFIG_HOME"/alacritty/themes
-cp -a "$PWD/alacritty_themes/." "$XDG_CONFIG_HOME"/alacritty/themes
 cp -a $PWD/wallpapers/* ~/Pictures/Backgrounds
 
-# Symbolic links
-ln -sf "$PWD/alacritty.toml" "$XDG_CONFIG_HOME"/alacritty/alacritty.toml
+# Symbolic links files
+ln -sf "$PWD/newsboat/config" "$HOME/.newsboat/config"
+ln -sf "$PWD/newsboat/urls" "$HOME/.newsboat/urls"
+ln -sf "$PWD/.zprofile" "$HOME/.zprofile"
+ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
+ln -sf "$PWD/.inputrc" "$HOME/.inputrc"
+ln -sf "$PWD/.tmux.conf" "$HOME/.tmux.conf"
+
+# Symbolic links dirs
+# ln -sf "$PWD/alacritty.toml" "$XDG_CONFIG_HOME/alacritty/alacritty.toml"
+ln -sf "$PWD/alacritty" "$XDG_CONFIG_HOME"
 ln -sf "$PWD/k9s" "$XDG_CONFIG_HOME"
-ln -sf "$PWD/.zprofile" "$HOME"/.zprofile
-ln -sf "$PWD/.zshrc" "$HOME"/.zshrc
-ln -sf "$PWD/.inputrc" "$HOME"/.inputrc
-ln -sf "$PWD/.tmux.conf" "$HOME"/.tmux.conf
 ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"
-ln -sf "$PWD/newsboat/config" "$HOME"/.newsboat/config
-ln -sf "$PWD/newsboat/urls" "$HOME"/.newsboat/urls
+
