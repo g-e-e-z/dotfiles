@@ -115,6 +115,7 @@ setopt SHARE_HISTORY
 # ssh-add -q ~/.ssh/id_ed25519
 # ssh-add -q ~/.ssh/vanoord
 #} &>/dev/null
+# alias sk='killall ssh-agent && source ~/.zshrc'
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -157,10 +158,8 @@ alias tree='tree -C'
 alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 
 alias sv='sudoedit'
-alias sk='killall ssh-agent && source ~/.bashrc'
 alias t='tmux'
 alias e='exit'
-alias syu='sudo pacman -Syu'
 
 # git
 alias gp='git push'
@@ -178,9 +177,15 @@ alias dcb='docker compose up --build'
 
 # ricing
 zstyle :prompt:pure:path color '#d79921'
+zstyle :prompt:pure:git:branch color '#458588'
+zstyle :prompt:pure:git:dirty color '#cc241d'
+zstyle :prompt:pure:git:action color '#cc241d'
+
+export FZF_DEFAULT_OPTS="--color=fg+:-1,bg+:-1,bg:-1,hl+:#cc241d,hl:#fb4934,prompt:#fb4934,pointer:#fb4934,spinner:#fb4934"
+
 alias ez='v ~/.zshrc'
 alias sz='source ~/.zshrc'
-alias ea="v $DOTFILES/alacritty.toml"
+alias ea="v $DOTFILES/alacritty/alacritty.toml"
 alias ev='cd ~/.config/nvim/ && vim lua/geezee/packer.lua'
 
 # other
@@ -189,10 +194,6 @@ alias sed='gsed'
 # vim & second brain
 alias sb="cd \$SECOND_BRAIN"
 alias in="cd \$SECOND_BRAIN/0-inbox/"
-# alias vbn='python ~/git/python/brainfile.py'
-
-# terraform
-# alias tp='terraform plan'
 
 # kubectl
 alias k='kubectl'
@@ -226,19 +227,14 @@ compinit -u
 
 zstyle ':completion:*' menu select
 
-
 # Example to install completion:
 # talosctl completion zsh > ~/.zfunc/_talosctl
 
 
-
-
-export FZF_DEFAULT_OPTS="--color=fg+:-1,bg+:-1,bg:-1,hl+:#cc241d,hl:#fb4934,prompt:#fb4934,pointer:#fb4934,spinner:#fb4934"
-
 if [[ "$OSTYPE" == "darwin"* ]]; then
     source /opt/homebrew/opt/fzf/shell/completion.zsh
     source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
-    # brew bash completion: TODO: What is this syntax below actually doing
+    # brew zsh completion: TODO: What is this syntax below actually doing
     [[ -r ""/opt/homebrew/etc/profile.d/zsh_completion.sh"" ]] && . "/opt/homebrew/etc/profile.d/zsh_completion.sh"
 
 else
