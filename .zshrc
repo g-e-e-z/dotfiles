@@ -25,6 +25,10 @@ export SECOND_BRAIN="$HOME/notes"
 export GOBIN="$HOME/.local/bin"
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
 
+# Needede for postgresql
+export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+
 # ~~~~~~~~~~~~~~~ Path ~~~~~~~~~~~~~~~~~~~~~~~~
 export PATH="$SCRIPTS:$PATH:$GOPATH"
 
@@ -54,6 +58,7 @@ pathprepend() {
 pathprepend \
 	"$HOME/.local/bin" \
 	"$HOME/.local/go/bin" \
+    "$HOME/.cargo/bin" \
 	"$HOME/.nimble/bin" \
 	/usr/local/go/bin \
 	/usr/local/bin \
@@ -66,6 +71,7 @@ pathappend \
 	/usr/local/bin \
 	/usr/local/sbin \
     /opt/homebrew/opt/ruby/bin \
+    /opt/homebrew/opt/libpq/bin \
 	/usr/local/games \
 	/usr/games \
 	/usr/sbin \
