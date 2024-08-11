@@ -1,7 +1,11 @@
-# ~/.bashrc
+# ~/.zshrc
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+# Enable Zsh's extended globbing and null_glob options
+setopt extended_glob null_glob
+
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 # config
@@ -29,25 +33,26 @@ export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
 export PATH="$SCRIPTS:$PATH:$GOPATH"
 
 pathappend() {
-	declare arg
-	for arg in "$@"; do
-		test -d "$arg" || continue
-		PATH=${PATH//":$arg:"/:}
-		PATH=${PATH/#"$arg:"/}
-		PATH=${PATH/%":$arg"/}
-		export PATH="${PATH:+"$PATH:"}$arg"
-	done
-} && export -f pathappend
+    local arg
+    for arg in "$@"; do
+        test -d "$arg" || continue
+        PATH=${PATH//":$arg:"/:}
+        PATH=${PATH/#"$arg:"/}
+        PATH=${PATH/%":$arg"/}
+        export PATH="${PATH:+"$PATH:"}$arg"
+    done
+}
 
 pathprepend() {
-	for arg in "$@"; do
-		test -d "$arg" || continue
-		PATH=${PATH//:"$arg:"/:}
-		PATH=${PATH/#"$arg:"/}
-		PATH=${PATH/%":$arg"/}
-		export PATH="$arg${PATH:+":${PATH}"}"
-	done
-} && export -f pathprepend
+    local arg
+    for arg in "$@"; do
+        test -d "$arg" || continue
+        PATH=${PATH//:"$arg:"/:}
+        PATH=${PATH/#"$arg:"/}
+        PATH=${PATH/%":$arg"/}
+        export PATH="$arg${PATH:+":${PATH}"}"
+    done
+}
 
 # remember last arg will be first in path
 pathprepend \
@@ -55,7 +60,6 @@ pathprepend \
 	"$HOME/.local/go/bin" \
     "$HOME/.cargo/bin" \
 	"$HOME/.nimble/bin" \
-	"$GHREPOS/cmd-"* \
 	/usr/local/go/bin \
 	/usr/local/bin \
     /opt/homebrew/bin \
@@ -78,11 +82,13 @@ pathappend \
 
 
 # ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
 
-export HISTFILE=~/.histfile
-export HISTSIZE=25000
-export SAVEHIST=25000
-export HISTCONTROL=ignorespace
+setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_DUPS
+setopt SHARE_HISTORY
 
 # ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
 #
@@ -112,30 +118,17 @@ export HISTCONTROL=ignorespace
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-# Explicitly unset color (default anyhow). Use 1 to set it.
-export GIT_PS1_SHOWCOLORHINTS=1
-export GIT_PS1_DESCRIBE_STYLE="branch"
-export GIT_PS1_SHOWUPSTREAM="auto git"
-
-if [[ -f "$XDG_CONFIG_HOME/bash/gitprompt.sh" ]]; then
-	source "$XDG_CONFIG_HOME/bash/gitprompt.sh"
-fi
-if [[ -f "$XDG_CONFIG_HOME/bash/git-prompt.sh" ]]; then
-	source "$XDG_CONFIG_HOME/bash/git-prompt.sh"
+if [[ "$OSTYPE" == darwin* ]]; then
+  fpath+=("$(brew --prefix)/share/zsh/site-functions")
+else
+  fpath+=($HOME/.zsh/pure)
 fi
 
-# colorized prompt
-PROMPT_COMMAND='__git_ps1 "\[\e[33m\]\u\[\e[0m\]@\[\e[34m\]\h\[\e[0m\]:\[\e[35m\]\W\[\e[0m\]" " \n$ "'
+autoload -U promptinit; promptinit
+prompt pure
 
-# The __git_ps1 function prompt is provided by the bash completion installed by brew. See https://github.com/mischavandenburg/dotfiles/issues/5
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Add git autocompletion
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
 alias v=nvim
@@ -157,6 +150,8 @@ alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF'
 alias ls='ls --color=auto'
+
+alias tree='tree -C'
 
 # finds all files recursively and sorts by last modification, ignore hidden files
 alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
@@ -182,8 +177,9 @@ alias dc='docker compose'
 alias dcb='docker compose up --build'
 
 # ricing
-alias ebr='v ~/.bashrc'
-alias sbr='source ~/.bashrc'
+zstyle :prompt:pure:path color '#d79921'
+alias ez='v ~/.zshrc'
+alias sz='source ~/.zshrc'
 alias ea="v $DOTFILES/alacritty.toml"
 alias ev='cd ~/.config/nvim/ && vim lua/geezee/packer.lua'
 
@@ -200,37 +196,50 @@ alias in="cd \$SECOND_BRAIN/0-inbox/"
 
 # kubectl
 alias k='kubectl'
-source <(kubectl completion bash)
-complete -o default -F __start_kubectl k
+# source <(kubectl completion bash)
+# complete -o default -F __start_kubectl k
 alias kgp='kubectl get pods'
 # alias kc='kubectx'
 # alias kn='kubens'
-
-# alias kcs='kubectl config use-context admin@homelab-staging'
-# alias kcp='kubectl config use-context admin@homelab-production'
-
-# EDB
-# source <(kubectl-cnp completion bash)
 
 # env variables
 export VISUAL=nvim
 export EDITOR=nvim
 
-# sourcing
+# ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~
 if test -f "$HOME/.privaterc"; then
     source "$HOME/.privaterc"
 else
     echo "No .privaterc found"
 fi
 
+# ~~~~~~~~~~~~~~~ Completion ~~~~~~~~~~~~~~~~~~~~~~~~
+
+fpath+=~/.zfunc
+
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+fi
+
+autoload -Uz compinit
+compinit -u
+
+zstyle ':completion:*' menu select
+
+
+# Example to install completion:
+# talosctl completion zsh > ~/.zfunc/_talosctl
+
+
+
 
 export FZF_DEFAULT_OPTS="--color=fg+:-1,bg+:-1,bg:-1,hl+:#cc241d,hl:#fb4934,prompt:#fb4934,pointer:#fb4934,spinner:#fb4934"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    source /opt/homebrew/opt/fzf/shell/completion.bash
-    source /opt/homebrew/opt/fzf/shell/key-bindings.bash
+    source /opt/homebrew/opt/fzf/shell/completion.zsh
+    source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
     # brew bash completion: TODO: What is this syntax below actually doing
-    [[ -r ""/opt/homebrew/etc/profile.d/bash_completion.sh"" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+    [[ -r ""/opt/homebrew/etc/profile.d/zsh_completion.sh"" ]] && . "/opt/homebrew/etc/profile.d/zsh_completion.sh"
 
 else
     #	Figure this out when I start using a Linux machine
