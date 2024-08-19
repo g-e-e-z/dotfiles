@@ -1,0 +1,8 @@
+#!/bin/bash
+current=$(gcloud config get-value project)
+selected=$(gcloud projects list | awk 'NR > 1 {print $1}' | fzf --tmux 50% --reverse --prompt="($current) Select Project: " --preview="gcloud projects describe {}" --preview-window=right:40%)
+if [ -z "$selected" ]; then
+    exit 1
+fi
+gcloud config set project $selected
+echo $selected

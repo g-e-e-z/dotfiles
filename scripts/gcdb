@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Refactor to be independent of other scripts/ check for tmux
+# This script connects to a given project
+# gcen
+# Get gcloud project
+project=$(gcloud config get-value project)
+IFS="-"
+read env _ <<< "$project"
+IFS=""
+
+selecteddb=$(gcloud secrets list | grep db | awk 'NR > 1 {print $1}' | fzf --tmux 60% --prompt="Select a database: " --reverse --preview 'gcloud secrets describe {}' | awk '{print $1}' )
+
+if [ -z "$selecteddb" ]; then
+    echo "No database selected"
+    exit 1
+fi
+
+secret=$(gcloud secrets versions access latest --secret=$selecteddb)
+
+if
+external_host="$selecteddb"-proxy.cape-gcp-"$env".com
+
+echo $secret | jq | psql "postgresql://$(jq -r '.DB_USER' -):$(jq -r '.DB_PASSWORD' -)@$external_host/$(jq -r '.DB_NAME' -)"

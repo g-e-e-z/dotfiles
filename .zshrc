@@ -149,7 +149,7 @@ alias python='python3'
 # ls
 alias l='ls -CF'
 alias la='ls -A'
-alias ll='ls -alF'
+alias ll='ls -alFh'
 alias ls='ls --color=auto'
 
 alias tree='tree -C'
@@ -175,6 +175,9 @@ alias ldo='lazydocker'
 alias dc='docker compose'
 alias dcb='docker compose up --build'
 
+# gcloud
+alias gproj='gcloud config get-value project'
+
 # ricing
 zstyle :prompt:pure:path color '#d79921'
 zstyle :prompt:pure:git:branch color '#458588'
@@ -193,7 +196,7 @@ alias sed='gsed'
 
 # vim & second brain
 alias sb="cd \$SECOND_BRAIN"
-alias in="cd \$SECOND_BRAIN/0-inbox/"
+alias in="pushd .> /dev/null; cd \$SECOND_BRAIN/0-inbox/"
 
 # kubectl
 alias k='kubectl'
