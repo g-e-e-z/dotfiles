@@ -71,7 +71,14 @@ return require('packer').startup(function(use)
         ft = { "markdown" },
     })
 
-    use { "zbirenbaum/copilot.lua" }
+    use {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({})
+        end,
+    }
 
     use {
         "zbirenbaum/copilot-cmp",

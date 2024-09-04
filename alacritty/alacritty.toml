@@ -5,7 +5,7 @@ program = "/opt/homebrew/bin/zsh"
 args = ["-l", "-c", "tmux"]
 
 [font]
-size = 20
+size = 25
 
 [font.normal]
 family = "UbuntuMono Nerd Font"
