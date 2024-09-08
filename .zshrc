@@ -5,6 +5,7 @@
 
 # Enable Zsh's extended globbing and null_glob options
 setopt extended_glob null_glob
+setopt inc_append_history
 
 bindkey -v
 

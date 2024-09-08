@@ -11,6 +11,8 @@ brew install --cask alacritty
 brew install --cask font-ubuntu-mono-nerd-font
 # brew install --cask docker # May not work, update next time
 # brew install --cask obsidian
+# brew install --cask darktable
+# brew install --cask gimp
 brew install tmux fzf neovim newsboat kubectl rg gsed jq jd coreutils httpie \
     lazygit lazydocker tree node go pure zsh-syntax-highlighting \
     docker-completion libpq
