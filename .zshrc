@@ -212,6 +212,9 @@ alias kgp='kubectl get pods'
 export VISUAL=nvim
 export EDITOR=nvim
 
+export BAT_THEME="gruvbox-dark"
+alias cat='bat --paging=never'
+
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~
 if test -f "$HOME/.privaterc"; then
     source "$HOME/.privaterc"
