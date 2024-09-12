@@ -71,22 +71,16 @@ return require('packer').startup(function(use)
         ft = { "markdown" },
     })
 
-    use {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
-        config = function()
-            require("copilot").setup({})
-        end,
-    }
+    use { "zbirenbaum/copilot.lua" }
 
-    use {
-        "zbirenbaum/copilot-cmp",
-        after = { "copilot.lua" },
-        config = function()
-            require("copilot_cmp").setup()
-        end
-    }
+    use { "zbirenbaum/copilot-cmp" }
+    -- use {
+    --     "zbirenbaum/copilot-cmp",
+    --     after = { "copilot.lua" },
+    --     config = function()
+    --         require("copilot_cmp").setup()
+    --     end
+    -- }
 
     use({
         "kdheepak/lazygit.nvim",
@@ -97,13 +91,13 @@ return require('packer').startup(function(use)
 
     use('lewis6991/gitsigns.nvim')
     use('windwp/nvim-ts-autotag')
-    use {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = function()
-            require("nvim-autopairs").setup {}
-        end
-    }
+    -- use {
+    --     "windwp/nvim-autopairs",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         require("nvim-autopairs").setup {}
+    --     end
+    -- }
     use({
         "stevearc/oil.nvim",
         config = function()

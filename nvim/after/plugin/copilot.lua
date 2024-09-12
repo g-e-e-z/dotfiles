@@ -41,3 +41,5 @@ require('copilot').setup({
   copilot_node_command = 'node', -- Node.js version must be > 18.x
   server_opts_overrides = {},
 })
+
+require("copilot_cmp").setup()
