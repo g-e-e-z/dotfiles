@@ -1,7 +1,6 @@
 vim.g.mapleader=" "
--- vim.keymap.set("n", "<leader>pd", "<CMD>Oil<CR>")
-vim.keymap.set("n", "<leader>pd", require("oil").toggle_float)
-vim.keymap.set("n", "<leader>pp", function() vim.cmd("vsplit | wincmd r") require("oil").open() end)
+vim.keymap.set("n", "<leader>fd", require("oil").toggle_float)
+vim.keymap.set("n", "<leader>fp", function() vim.cmd("vsplit | wincmd r") require("oil").open() end)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -26,7 +25,7 @@ vim.keymap.set("i","<C-c>", "<Esc>")
 vim.keymap.set("n","Q", "<nop>")
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
 
 vim.keymap.set("n",'<leader>gd', ':vsplit | lua vim.lsp.buf.definition()<CR>')
 
