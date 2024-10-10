@@ -61,12 +61,6 @@ return require('packer').startup(function(use)
     }
     use { "NvChad/nvim-colorizer.lua" }
 
-    -- install without yarn or npm
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
-
     use({
         "iamcco/markdown-preview.nvim",
         run = "cd app && npm install",
@@ -76,17 +70,6 @@ return require('packer').startup(function(use)
         end,
         ft = { "markdown" },
     })
-
-    use { "zbirenbaum/copilot.lua" }
-
-    use { "zbirenbaum/copilot-cmp" }
-    -- use {
-    --     "zbirenbaum/copilot-cmp",
-    --     after = { "copilot.lua" },
-    --     config = function()
-    --         require("copilot_cmp").setup()
-    --     end
-    -- }
 
     use({
         "kdheepak/lazygit.nvim",
