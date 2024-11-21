@@ -16,7 +16,7 @@ brew install --cask hammerspoon
 # brew install --cask gimp
 brew install tmux fzf neovim newsboat kubectl rg gsed jq jd coreutils httpie \
     lazygit lazydocker tree node go pure zsh-syntax-highlighting \
-    docker-completion libpq
+    docker-completion libpq cmake luarocks
 
 # TODO: Migrate away from packer:
 # Install packer
