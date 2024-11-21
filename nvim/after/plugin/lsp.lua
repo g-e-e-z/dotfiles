@@ -39,8 +39,13 @@ require('mason-lspconfig').setup({
                 settings = {
                     Lua = {
                         diagnostics = {
-                            globals = { "vim" }
-                        }
+                            globals = { "vim", "hs" }
+                        },
+                        workspace = {
+                            library = {
+                              string.format('%s/.hammerspoon/Spoons/EmmyLua.spoon/annotations', os.getenv 'HOME')
+                            }
+                          },
                     }
                 }
             }

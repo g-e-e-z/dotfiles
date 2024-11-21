@@ -9,6 +9,7 @@ mkdir -p ~/Repos
 
 brew install --cask alacritty
 brew install --cask font-ubuntu-mono-nerd-font
+brew install --cask hammerspoon
 # brew install --cask docker # May not work, update next time
 # brew install --cask obsidian
 # brew install --cask darktable
@@ -36,4 +37,4 @@ ln -sf "$PWD/alacritty" "$XDG_CONFIG_HOME"
 ln -sf "$PWD/k9s" "$XDG_CONFIG_HOME"
 ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"
 ln -sf "$PWD/.newsboat" "$HOME"
-
+ln -sf "$PWD/.hammerspoon" "$HOME"
