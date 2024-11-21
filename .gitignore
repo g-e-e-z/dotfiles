@@ -2,3 +2,5 @@ nvim/plugin/*
 nvim/pack/*
 
 scripts/gcdb
+
+.newsboat/cache.db
