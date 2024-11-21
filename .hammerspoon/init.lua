@@ -15,3 +15,5 @@ function reloadConfig(files)
 end
 myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 hs.notify.new({title = "Hammerspoon", informativeText = "Config Reloaded"}):send()
+-- voice = hs.speech.new("Zarvox")
+-- voice:speak("why hello there, obi wan.")

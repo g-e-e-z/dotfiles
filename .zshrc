@@ -27,7 +27,7 @@ export SECOND_BRAIN="$HOME/notes"
 export GOBIN="$HOME/.local/bin"
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
 
-# Needede for postgresql
+# Needed for postgresql
 export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
 
