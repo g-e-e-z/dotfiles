@@ -8,9 +8,6 @@ SHELLS := /private/etc/shells
 BIN := $(HOMEBREW_PREFIX)/bin
 export XDG_CONFIG_HOME = $(HOME)/.config
 export STOW_DIR = $(DOTFILES_DIR)
-export ACCEPT_EULA=Y
-
-.PHONY: test
 
 all: $(OS)
 
@@ -32,7 +29,7 @@ stow-macos: brew
 stow-linux: core-linux
 	is-executable stow || apt-get -y install stow
 
-packages: brew-packages cask-apps # node-packages rust-packages TODO: add python management
+packages: brew-packages cask-apps misc # TODO: add python management
 
 link: stow-$(OS)
 	for FILE in $$(\ls -A dotfiles); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
@@ -40,13 +37,11 @@ link: stow-$(OS)
 	mkdir -p "$(XDG_CONFIG_HOME)"
 	stow -t "$(HOME)" dotfiles
 	stow -t "$(XDG_CONFIG_HOME)" config
-	# mkdir -p $(HOME)/.local/runtime
-	# chmod 700 $(HOME)/.local/runtime
 
 unlink: stow-$(OS)
 	stow --delete -t "$(HOME)" dotfiles
 	stow --delete -t "$(XDG_CONFIG_HOME)" config
-	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \
+	for FILE in $$(\ls -A dotfiles); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
 brew:
@@ -62,8 +57,13 @@ zsh: brew
 git: brew
 	brew install git #git-extras TODO: this
 
+misc: git
+	is-executable git || git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+	is-executable git || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+
 brew-packages: brew
-	xargs brew install $(DOTFILES_DIR)/install/brew.txt || true
+	brew install $(shell cat $(DOTFILES_DIR)/install/brew.txt) || true
 
 cask-apps: brew
-	xargs brew install --cask $(DOTFILES_DIR)/install/cask.txt || true
+	brew install $(shell cat $(DOTFILES_DIR)/install/cask.txt) || true
