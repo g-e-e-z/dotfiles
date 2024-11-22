@@ -13,7 +13,7 @@ brew install --cask alacritty font-ubuntu-mono-nerd-font hammerspoon postman \
 # brew install --cask darktable gimp discord
 brew install tmux fzf neovim newsboat kubectl rg gsed jq jd coreutils httpie \
     lazygit lazydocker tree node go pure zsh-syntax-highlighting \
-    docker-completion libpq cmake luarocks
+    docker-completion libpq cmake luarocks stow
 
 # TODO: Migrate away from packer to lazy:
 # Install packer

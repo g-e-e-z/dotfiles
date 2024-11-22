@@ -1,0 +1,10 @@
+alacritty
+docker
+firefox
+hammerspoon
+slack
+spotify
+font-ubuntu-mono-nerd-font
+postman
+zoom
+1password
