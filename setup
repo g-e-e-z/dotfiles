@@ -7,13 +7,10 @@ mkdir -p ~/Repos
 # Install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew install --cask alacritty
-brew install --cask font-ubuntu-mono-nerd-font
-brew install --cask hammerspoon
+brew install --cask alacritty font-ubuntu-mono-nerd-font hammerspoon postman \
+    zoom spotify firefox 1password
 # brew install --cask docker # May not work, update next time
-# brew install --cask obsidian
-# brew install --cask darktable
-# brew install --cask gimp
+# brew install --cask darktable gimp discord
 brew install tmux fzf neovim newsboat kubectl rg gsed jq jd coreutils httpie \
     lazygit lazydocker tree node go pure zsh-syntax-highlighting \
     docker-completion libpq cmake luarocks
@@ -28,6 +25,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Symbolic links files
 ln -sf "$PWD/.zprofile" "$HOME/.zprofile"
 ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
+ln -sf "$PWD/.inputrc" "$HOME/.inputrc"
 ln -sf "$PWD/.inputrc" "$HOME/.inputrc"
 ln -sf "$PWD/.tmux.conf" "$HOME/.tmux.conf"
 
