@@ -1,8 +1,8 @@
 #!/bin/bash
 
-ALAC="$DOTFILES/alacritty/alacritty.toml"
-K9S="$DOTFILES/k9s/config.yaml"
-VIMD="$DOTFILES/nvim/after/plugin/colors.lua"
+ALAC="$XDG_CONFIG_HOME/alacritty/alacritty.toml"
+K9S="$XDG_CONFIG_HOME/k9s/config.yaml"
+VIMD="$XDG_CONFIG_HOME/nvim/after/plugin/colors.lua"
 BG_DIR="Users/$USER/Pictures/Backgrounds"
 LIGHT_FILE="gruvbox-light.png"
 DARK_FILE="gruvbox-dark.png"
