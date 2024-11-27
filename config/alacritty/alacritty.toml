@@ -1,7 +1,6 @@
-
 [terminal.shell]
 program = "/opt/homebrew/bin/zsh"
-args = ["-l", "-c", "tmux"]
+args = ["-l", "-c", "export PATH=$PATH:/opt/homebrew/bin && tmux a || tmux new-session; exec zsh"]
 
 [font]
 size = 25

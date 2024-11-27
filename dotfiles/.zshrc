@@ -190,7 +190,7 @@ export FZF_DEFAULT_OPTS="--color=fg+:-1,bg+:-1,bg:-1,hl+:#cc241d,hl:#fb4934,prom
 
 alias ez='v ~/.zshrc'
 alias sz='source ~/.zshrc'
-alias ea="v $DOTFILES/alacritty/alacritty.toml"
+alias ea="v $XDG_CONFIG_HOME/alacritty/alacritty.toml"
 alias ev='cd ~/.config/nvim/ && vim lua/geezee/packer.lua'
 
 # other

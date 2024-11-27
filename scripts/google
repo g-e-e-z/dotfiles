@@ -8,4 +8,4 @@ case "$1" in
     *)    s="$*"; query="search?q=${s//[[:space:]]/+}" ;;
 esac
 
-open /Applications/Google\ Chrome.app/ "http://www.google.com/${query}"
+open /Applications/Firefox.app/ "http://www.google.com/${query}"
