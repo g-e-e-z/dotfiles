@@ -46,4 +46,4 @@ if [ ! -f "$file" ]; then
 fi
 
 # Open the daily note at the bottom of the file in insert mode
-nvim '+ normal Gzzo' "$file"
+nvim "$file"
