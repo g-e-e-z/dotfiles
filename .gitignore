@@ -1,6 +1,7 @@
-nvim/plugin/*
-nvim/pack/*
+./config/nvim/plugin/packer_compiled.lua
+./config/nvim/plugin/*
+./config/nvim/pack/*
 
 scripts/gcdb
 
-.newsboat/cache.db
+./dotfiles/.newsboat/cache.db
