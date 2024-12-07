@@ -3,7 +3,7 @@
 ALAC="$XDG_CONFIG_HOME/alacritty/alacritty.toml"
 K9S="$XDG_CONFIG_HOME/k9s/config.yaml"
 VIMD="$XDG_CONFIG_HOME/nvim/after/plugin/colors.lua"
-BG_DIR="Users/$USER/Pictures/Backgrounds"
+BG_DIR="$HOME/Pictures/Backgrounds"
 LIGHT_FILE="gruvbox-light.png"
 DARK_FILE="gruvbox-dark.png"
 
