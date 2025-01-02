@@ -11,31 +11,61 @@ fi
 # Get the day of the week (1=Monday, 7=Sunday) for the current date
 day_of_week=$(date -j -f "%Y-%m-%d" "$current_date" "+%u")
 
-# Calculate the date of Monday for the current week
-monday_date=$(date -j -v-"$((day_of_week - 1))"d -f "%Y-%m-%d" "$current_date" "+%Y-%m-%d")
+# Calculate the date of Sunday for the current week
+sunday_date=$(date -j -v-"$((day_of_week % 7))"d -f "%Y-%m-%d" "$current_date" "+%Y-%m-%d")
 
-# Initialize an array to store the dates
-dates=()
+# Calculate the date of Saturday for the current week
+saturday_date=$(date -j -v+6d -f "%Y-%m-%d" "$sunday_date" "+%Y-%m-%d")
 
-# Loop over the days of the week starting from Monday
-for ((i = 0; i < 5; i++)); do
-    # Calculate the date for the current day in the loop
-    date=$(date -j -v+"$i"d -f "%Y-%m-%d" "$monday_date" "+%Y-%m-%d")
-    # Add the date to the array
-    dates+=("$date")
-done
+echo $day_of_week
+echo $sunday_date
+echo $saturday_date
+
+FILE_NAME="$sunday_date"'_'"$saturday_date"
+NOTES_DIR="$SECOND_BRAIN"'/periodic-notes/weekly-notes/'
+# Check if file exists
+file="$NOTES_DIR""$FILE_NAME".md
 
 
-NOTES_DIR="$SECOND_BRAIN"'/periodic-notes/daily-notes/'
-for date in ${dates[@]}; do
-    # Check if file exists
-    file="$NOTES_DIR""$date".md
-    if [[ -e $file ]]; then
-        # If grep returns true
-        if grep -q "\- \[x\]" "$file"; then  # -q = quiet
-            echo "###" "[[$date]]" $(date -j -f "%Y-%m-%d" "$date" "+%A")
+# May want to do this in python if it gets more complex
+# - Add sprint number
+# - Pull tasks from JIRA API?
+new_note() {
+	touch "$file"
 
-            grep "\- \[x\]" $file | gsed 's/^/    /'
-        fi
-    fi
-done
+	cat <<EOF >"$file"
+# Weekly Plan | $sunday_date - $saturday_date
+
+## **High-Level Objectives**
+- **Current Projects**
+    -
+- **Personal Development**
+    -
+
+## **Weekly Overview**
+- **Main Focus**
+    -
+- **Key Deliverables**
+    -
+
+## **Weekly Review**
+- **What was accomplished?**
+    -
+- **What will be carried over to next week?**
+    -
+EOF
+}
+
+
+
+
+if [ ! -f "$file" ]; then
+	echo "File does not exist, creating new daily note."
+    # Populate the previous note with link to new note
+    # gsed -i "s/_placeholder_/\[$today\]/" "$daily_dir""$last_file"
+    # Create new note
+	new_note
+fi
+
+# Open the daily note at the bottom of the file in insert mode
+nvim "$file"

@@ -12,7 +12,7 @@ bindkey -v
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 # config
-export BROWSER="chrome"
+export BROWSER="firefox"
 
 # directories
 export REPOS="$HOME/Repos"
