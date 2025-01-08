@@ -17,10 +17,6 @@ sunday_date=$(date -j -v-"$((day_of_week % 7))"d -f "%Y-%m-%d" "$current_date" "
 # Calculate the date of Saturday for the current week
 saturday_date=$(date -j -v+6d -f "%Y-%m-%d" "$sunday_date" "+%Y-%m-%d")
 
-echo $day_of_week
-echo $sunday_date
-echo $saturday_date
-
 FILE_NAME="$sunday_date"'_'"$saturday_date"
 NOTES_DIR="$SECOND_BRAIN"'/periodic-notes/weekly-notes/'
 # Check if file exists
