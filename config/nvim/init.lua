@@ -21,13 +21,12 @@ vim.opt.runtimepath:prepend(lazypath)
 
 -- NOTE: Load plugins
 require("lazy").setup({
-  -- {
-  --   "NvChad/NvChad",
-  --   lazy = false,
-  --   branch = "v2.5",
-  --   import = "nvchad.plugins",
-  -- },
-
   { import = "plugins" },
 }, lazy_config)
 
+require "options"
+require "core.commands"
+require "core.autocommands"
+-- require "core.filetypes"
+require "core.utils"
+require "mappings"
