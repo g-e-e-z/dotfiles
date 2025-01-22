@@ -2,6 +2,7 @@
 -- NOTE: File explorer like vim-vinegar
 return {
   "stevearc/oil.nvim",
+  lazy = false,
   init = function()
     vim.keymap.set("n", "<leader>fd", function()
       if vim.bo.filetype == "oil" then
@@ -58,7 +59,7 @@ return {
             { "name", "asc" },
         },
     },
-  },
+  }
 }
 
 
