@@ -1,27 +1,33 @@
--- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  local out = vim.fn.system({ 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
-      { out, 'WarningMsg' },
-      { '\nPress any key to exit...' },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
+require "core.globals"
+require "core.env"
+
+if vim.version().minor >= 11 then
+  vim.tbl_add_reverse_lookup = function(tbl)
+    for k, v in pairs(tbl) do
+      tbl[v] = k
+    end
   end
 end
-vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = '\\'
+-- bootstrap lazy and all plugins
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
--- Setup lazy.nvim
-require('lazy').setup('plugins')
+if not vim.loop.fs_stat(lazypath) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
+end
 
-require('core')
+vim.opt.runtimepath:prepend(lazypath)
+
+-- NOTE: Load plugins
+require("lazy").setup({
+  -- {
+  --   "NvChad/NvChad",
+  --   lazy = false,
+  --   branch = "v2.5",
+  --   import = "nvchad.plugins",
+  -- },
+
+  { import = "plugins" },
+}, lazy_config)
+
