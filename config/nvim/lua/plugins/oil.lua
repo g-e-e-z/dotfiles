@@ -2,15 +2,15 @@
 -- NOTE: File explorer like vim-vinegar
 return {
   "stevearc/oil.nvim",
-  -- init = function()
-  --   vim.keymap.set("n", "<leader>O", function()
-  --     if vim.bo.filetype == "oil" then
-  --       vim.cmd "Bdelete!"
-  --     else
-  --       vim.cmd "Oil"
-  --     end
-  --   end, { desc = "Oil | Toggle Oil" })
-  -- end,
+  init = function()
+    vim.keymap.set("n", "<leader>fd", function()
+      if vim.bo.filetype == "oil" then
+        vim.cmd "Bdelete!"
+      else
+        vim.cmd "Oil --float"
+      end
+    end, { desc = "Oil | Toggle Oil" })
+  end,
   cmd = "Oil",
   opts = {
     keymaps = {

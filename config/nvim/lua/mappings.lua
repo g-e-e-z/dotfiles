@@ -1,6 +1,3 @@
-vim.keymap.set("n", "<leader>fd", require("oil").toggle_float)
-vim.keymap.set("n", "<leader>fp", function() vim.cmd("vsplit | wincmd r") require("oil").open() end)
-
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
