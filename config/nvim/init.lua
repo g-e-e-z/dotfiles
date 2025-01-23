@@ -1,6 +1,6 @@
-require "core.globals"
-require "core.env"
-require "options"
+require("core.globals")
+require("core.env")
+require("options")
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -787,7 +787,8 @@ require("lazy").setup({
 	--  Here are some example plugins that I've included in the Kickstart repository.
 	--  Uncomment any of the lines below to enable them (you will need to restart nvim).
 	--
-	require("plugins.oil"),
+    require("plugins.oil"),
+    require("plugins.utils"),
 	-- require 'kickstart.plugins.debug',
 	-- require 'kickstart.plugins.indent_line',
 	-- require 'kickstart.plugins.lint',
@@ -823,6 +824,17 @@ require("lazy").setup({
 			start = "🚀",
 			task = "📌",
 			lazy = "💤 ",
+		},
+	},
+	performance = {
+		rtp = {
+			disabled_plugins = {
+				"netrw",
+				"netrwPlugin",
+				"netrwSettings",
+				"netrwFileHandlers",
+          "tutor",
+			},
 		},
 	},
 })
