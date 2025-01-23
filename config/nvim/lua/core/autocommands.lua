@@ -25,6 +25,14 @@ autocmd("VimEnter", {
   desc = "Open Telescope when it's a Directory",
 })
 
+-- Remove Trailing Whitespaces
+autocmd("BufWritePre", {
+    group = general,
+    pattern = "*",
+    desc="Remove trailing white space on save",
+    command = "%s/\\s\\+$//e",
+})
+
 -- Enable Line Number in Telescope Preview
 autocmd("User", {
   pattern = "TelescopePreviewerLoaded",

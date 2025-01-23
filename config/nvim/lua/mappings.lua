@@ -27,4 +27,70 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- remap
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+vim.keymap.set("n","J", "mzJ`z")
+
+vim.keymap.set("n","<C-d>", "<C-d>zz")
+vim.keymap.set("n","<C-u>", "<C-u>zz")
+
+vim.keymap.set("n","n", "nzzzv")
+vim.keymap.set("n","N", "Nzzzv")
+
+vim.keymap.set("x", "<leader>p", "\"_dP")
+
+-- vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+-- vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+
+vim.keymap.set("i","<C-c>", "<Esc>")
+
+vim.keymap.set("n","Q", "<nop>")
+
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
+
+vim.keymap.set("n",'<leader>gd', ':vsplit | lua vim.lsp.buf.definition()<CR>')
+
+vim.keymap.set("n","<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n","<leader>rn", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+
+vim.keymap.set("n","<leader>=", ":vertical resize +5<CR>")
+vim.keymap.set("n","<leader>+", ":resize +5<CR>")
+vim.keymap.set("n","<leader>-", ":vertical resize -5<CR>")
+vim.keymap.set("n","<leader>_", ":resize -5<CR>")
+
+vim.keymap.set("n","<S-Up>", "<cmd>m-2<CR>")
+vim.keymap.set("n","<S-Down>", "<cmd>m+<CR>")
+
+
+-- NOTE: 
+local fn = vim.fn
+local cwd = vim.fn.stdpath "config" .. "/"
+local config_dir = { cwd }
+-- local utils = require "core.utils"
+
+-- Remove All Text
+vim.keymap.set("n", "<leader>R", "<cmd>%d+<cr>", { desc = "General | Remove All Text", silent = true })
+
+-- Yank All Text
+vim.keymap.set("n", "<leader>y", "<cmd>%y+<cr>", { desc = "General | Yank All Text", silent = true })
+
+-- Quit
+vim.keymap.set("n", "<leader>q", "<cmd>qa!<cr>", { desc = "General | Quit", silent = true })
+
+-- Close Buffer
+vim.keymap.set("n", "<leader>c", "<cmd>Bdelete!<cr>", { desc = "General | Close Buffer", silent = true })
+
+
+vim.keymap.set("n", "<leader>oS", function()
+  vim.wo.spell = not vim.wo.spell
+  if vim.wo.spell then
+    vim.notify("Toggled On", vim.log.levels.INFO, { title = "Spell Check" })
+  else
+    vim.notify("Toggled Off", vim.log.levels.INFO, { title = "Spell Check" })
+  end
+end, { desc = "Options | Toggle Spell Check", silent = true })
