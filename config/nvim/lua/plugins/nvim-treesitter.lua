@@ -31,6 +31,25 @@ return {
 		},
 		indent = { enable = true, disable = { "ruby" } },
 	},
+	dependencies = {
+		{
+			"nvim-treesitter/nvim-treesitter-context",
+			init = function()
+				vim.keymap.set(
+					"n",
+					"<leader>oc",
+					"<cmd>TSContextToggle<cr>",
+					{ desc = "Treesitter | Toggle Context", silent = true }
+				)
+				vim.keymap.set("n", "[c", function()
+					require("treesitter-context").go_to_context(vim.v.count1)
+				end, { desc = "Treesitter | Jumping to context (upwards)", silent = true })
+			end,
+			opts = {
+				enable = true,
+			},
+		},
+	},
 	-- There are additional nvim-treesitter modules that you can use to interact
 	-- with nvim-treesitter. You should go explore a few and see what interests you:
 	--
