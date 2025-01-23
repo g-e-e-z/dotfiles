@@ -54,3 +54,9 @@ command("FormatToggle", function(args)
     end
   end
 end, { desc = "Toggle Autoformat", bang = true })
+
+
+command("LuaSnipEdit", function()
+  require("luasnip.loaders").edit_snippet_files()
+end, { desc = "Edit the available snippets in the filetype" })
+
