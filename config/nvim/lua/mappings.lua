@@ -53,8 +53,6 @@ vim.keymap.set("n","Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
 
-vim.keymap.set("n",'<leader>gd', ':vsplit | lua vim.lsp.buf.definition()<CR>')
-
 vim.keymap.set("n","<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n","<leader>rn", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 

@@ -41,6 +41,20 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
+		local config = {
+			virtual_text = true,
+			update_in_insert = false,
+			underline = true,
+			severity_sort = true,
+			float = {
+				focusable = false,
+				style = "minimal",
+				border = "rounded",
+				source = "always",
+				header = "",
+				prefix = "",
+			},
+		}
 		--  This function gets run when an LSP attaches to a particular buffer.
 		--    That is to say, every time a new file is opened that is associated with
 		--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -58,7 +72,12 @@ return {
 					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
 				vim.keymap.set("n", "<leader>lf", "<cmd>Format<cr>", { desc = "LSP | Format", silent = true })
-				vim.keymap.set("n", "<leader>lF", "<cmd>FormatToggle<cr>", { desc = "LSP | Toggle Autoformat", silent = true })
+				vim.keymap.set(
+					"n",
+					"<leader>lF",
+					"<cmd>FormatToggle<cr>",
+					{ desc = "LSP | Toggle Autoformat", silent = true }
+				)
 				vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP | Info", silent = true })
 				vim.keymap.set("n", "<leader>lR", "<cmd>LspRestart<cr>", { desc = "LSP | Restart", silent = true })
 
@@ -146,15 +165,38 @@ return {
 			end,
 		})
 
-		-- Change diagnostic symbols in the sign column (gutter)
-		if vim.g.have_nerd_font then
-			local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
-			local diagnostic_signs = {}
+		local signs = { Error = "", Warn = "", Hint = "󰌵", Info = "" }
+
+		if vim.version().minor >= 11 then
+			config.signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = signs.Error,
+					[vim.diagnostic.severity.WARN] = signs.Warn,
+					[vim.diagnostic.severity.HINT] = signs.Hint,
+					[vim.diagnostic.severity.INFO] = signs.Info,
+				},
+				linehl = {
+					[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+					[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+					[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+					[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+				},
+				numhl = {
+					[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+					[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+					[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+					[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+				},
+			}
+		else
 			for type, icon in pairs(signs) do
-				diagnostic_signs[vim.diagnostic.severity[type]] = icon
+				local hl = "DiagnosticSign" .. type
+				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 			end
-			vim.diagnostic.config({ signs = { text = diagnostic_signs } })
+			config.signs = { active = signs }
 		end
+
+		vim.diagnostic.config(config)
 
 		-- LSP servers and clients are able to communicate to each other what features they support.
 		--  By default, Neovim doesn't support everything that is in the LSP specification.
