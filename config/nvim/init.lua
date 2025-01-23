@@ -14,12 +14,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-local lazy_config = require "core.lazy"
+local lazy_config = require("core.lazy")
 
 require("lazy").setup({
 	-- "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	{ import = "plugins" },
-  }, lazy_config)
+}, lazy_config)
 
 require("core.commands")
 require("core.autocommands")
