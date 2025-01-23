@@ -67,11 +67,11 @@ vim.keymap.set("n","<S-Up>", "<cmd>m-2<CR>")
 vim.keymap.set("n","<S-Down>", "<cmd>m+<CR>")
 
 
--- NOTE: 
+-- NOTE:
 local fn = vim.fn
 local cwd = vim.fn.stdpath "config" .. "/"
 local config_dir = { cwd }
--- local utils = require "core.utils"
+local utils = require "core.utils"
 
 -- Remove All Text
 vim.keymap.set("n", "<leader>R", "<cmd>%d+<cr>", { desc = "General | Remove All Text", silent = true })
@@ -86,6 +86,11 @@ vim.keymap.set("n", "<leader>q", "<cmd>qa!<cr>", { desc = "General | Quit", sile
 vim.keymap.set("n", "<leader>c", "<cmd>Bdelete!<cr>", { desc = "General | Close Buffer", silent = true })
 
 
+
+
+
+
+
 vim.keymap.set("n", "<leader>oS", function()
   vim.wo.spell = not vim.wo.spell
   if vim.wo.spell then
@@ -94,3 +99,81 @@ vim.keymap.set("n", "<leader>oS", function()
     vim.notify("Toggled Off", vim.log.levels.INFO, { title = "Spell Check" })
   end
 end, { desc = "Options | Toggle Spell Check", silent = true })
+
+-- Find Config Files
+vim.keymap.set("n", "<leader>nf", function()
+  require("telescope.builtin").find_files {
+    prompt_title = "Config Files",
+    search_dirs = config_dir,
+    cwd = cwd,
+  }
+end, { desc = "Neovim | Find Config Files", silent = true })
+
+-- Grep Config Files
+vim.keymap.set("n", "<leader>ng", function()
+  require("telescope.builtin").live_grep {
+    prompt_title = "Config Files",
+    search_dirs = config_dir,
+    cwd = cwd,
+  }
+end, { desc = "Neovim | Grep Config Files", silent = true })
+
+-- Toggle Cheatsheet
+-- vim.keymap.set("n", "<leader>nc", "<cmd>NvCheatsheet<cr>", { desc = "Neovim | Toggle Cheatsheet", silent = true })
+
+-- Inspect
+vim.keymap.set("n", "<leader>ni", function()
+  if vim.version().minor >= 9 then
+    vim.cmd "Inspect"
+  else
+    vim.notify("Inspect isn't available in this neovim version", vim.log.levels.WARN, { title = "Inspect" })
+  end
+end, { desc = "Neovim | Inspect", silent = true }) -- only available on neovim >= 0.9
+
+-- Messages
+vim.keymap.set("n", "<leader>nm", "<cmd>messages<cr>", { desc = "Neovim | Messages", silent = true })
+
+-- Health
+vim.keymap.set("n", "<leader>nh", "<cmd>checkhealth<cr>", { desc = "Neovim | Health", silent = true })
+
+-- Version
+vim.keymap.set("n", "<leader>nv", function()
+  local version = vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
+  return vim.notify(version, vim.log.levels.INFO, { title = "Neovim Version" })
+end, { desc = "Neovim | Version", silent = true })
+
+-- Run Code
+vim.keymap.set("n", "<leader>nr", function()
+  utils.run_code()
+end, { desc = "Neovim | Run Code", silent = true })
+
+-- Clean
+vim.keymap.set("n", "<leader>pc", "<cmd>Lazy clean<cr>", { desc = "Lazy | Clean", silent = true })
+
+-- Check
+vim.keymap.set("n", "<leader>pC", "<cmd>Lazy check<cr>", { desc = "Lazy | Check", silent = true })
+
+-- Debug
+vim.keymap.set("n", "<leader>pd", "<cmd>Lazy debug<cr>", { desc = "Lazy | Debug", silent = true })
+
+-- Install
+vim.keymap.set("n", "<leader>pi", "<cmd>Lazy install<cr>", { desc = "Lazy | Install", silent = true })
+
+-- Sync
+vim.keymap.set("n", "<leader>ps", "<cmd>Lazy sync<cr>", { desc = "Lazy | Sync", silent = true })
+
+-- Log
+vim.keymap.set("n", "<leader>pl", "<cmd>Lazy log<cr>", { desc = "Lazy | Log", silent = true })
+
+-- Home
+vim.keymap.set("n", "<leader>ph", "<cmd>Lazy home<cr>", { desc = "Lazy | Home", silent = true })
+
+-- Help
+vim.keymap.set("n", "<leader>pH", "<cmd>Lazy help<cr>", { desc = "Lazy | Help", silent = true })
+
+-- Profile
+vim.keymap.set("n", "<leader>pp", "<cmd>Lazy profile<cr>", { desc = "Lazy | Profile", silent = true })
+
+-- Update
+vim.keymap.set("n", "<leader>pu", "<cmd>Lazy update<cr>", { desc = "Lazy | Update", silent = true })
+
