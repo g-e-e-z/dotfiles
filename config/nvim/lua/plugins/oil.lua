@@ -2,7 +2,7 @@
 return {
 	"stevearc/oil.nvim",
 	init = function()
-		vim.keymap.set("n", "<leader>fd", function()
+		vim.keymap.set("n", "<leader>O", function()
 			if vim.bo.filetype == "oil" then
 				vim.cmd(":q")
 			else
