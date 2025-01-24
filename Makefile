@@ -55,12 +55,10 @@ zsh: brew
 	fi
 
 git: brew
-	brew install git #git-extras TODO: this
+	brew install git
 
 misc: git
-	is-executable git || git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 	is-executable git || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 
 brew-packages: brew
 	brew install $(shell cat $(DOTFILES_DIR)/install/brew.txt) || true
