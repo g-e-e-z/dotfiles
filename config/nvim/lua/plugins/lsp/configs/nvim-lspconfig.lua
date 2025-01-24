@@ -167,6 +167,8 @@ return {
 		local on_attach = require("plugins.lsp.opts").on_attach
 		local on_init = require("plugins.lsp.opts").on_init
 		local capabilities = require("plugins.lsp.opts").capabilities
+		capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 		mason_lspconfig.setup_handlers({
 			-- Automatically configure the LSP installed
 			function(server_name)
