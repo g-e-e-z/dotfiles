@@ -24,13 +24,7 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n","J", "mzJ`z")
-
-
 vim.keymap.set("x", "<leader>p", "\"_dP")
-
--- vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
--- vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
@@ -121,10 +115,10 @@ vim.keymap.set("v", "<", "<gv", { desc = "General | Indent backward", silent = t
 vim.keymap.set("v", ">", ">gv", { desc = "General | Indent forward", silent = true })
 
 -- Move the line up
-vim.keymap.set("n", "<S-j>", "<cmd>m .+1<CR>==", { desc = "General | Move the line up", silent = true })
+vim.keymap.set("n", "<A-j>", "<cmd>m .+1<CR>==", { desc = "General | Move the line up", silent = true })
 
 -- Move the line down
-vim.keymap.set("n", "<S-k>", "<cmd>m .-2<CR>==", { desc = "General | Move the line down", silent = true })
+vim.keymap.set("n", "<A-k>", "<cmd>m .-2<CR>==", { desc = "General | Move the line down", silent = true })
 
 -- Toggle Wrap
 vim.keymap.set("n", "<leader>ow", function()
