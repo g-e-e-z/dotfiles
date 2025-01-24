@@ -1,7 +1,9 @@
--- [[ Basic Keymaps ]]
+-- NOTE: Keymaps
 --  See `:help vim.keymap.set()`
+local cwd = vim.fn.stdpath "config" .. "/"
+local config_dir = { cwd }
+local utils = require "core.utils"
 
--- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
@@ -17,27 +19,13 @@ vim.keymap.set("n", "dj", vim.diagnostic.goto_prev, { desc = "Go to previous [D]
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-
--- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
 --
---  See `:help wincmd` for a list of all window commands
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-
 -- remap
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n","J", "mzJ`z")
 
-vim.keymap.set("n","<C-d>", "<C-d>zz")
-vim.keymap.set("n","<C-u>", "<C-u>zz")
-
-vim.keymap.set("n","n", "nzzzv")
-vim.keymap.set("n","N", "Nzzzv")
 
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
@@ -51,25 +39,8 @@ vim.keymap.set("i","<C-c>", "<Esc>")
 vim.keymap.set("n","Q", "<nop>")
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
 
 vim.keymap.set("n","<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-vim.keymap.set("n","<leader>rn", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
-
-vim.keymap.set("n","<leader>=", ":vertical resize +5<CR>")
-vim.keymap.set("n","<leader>+", ":resize +5<CR>")
-vim.keymap.set("n","<leader>-", ":vertical resize -5<CR>")
-vim.keymap.set("n","<leader>_", ":resize -5<CR>")
-
-vim.keymap.set("n","<S-Up>", "<cmd>m-2<CR>")
-vim.keymap.set("n","<S-Down>", "<cmd>m+<CR>")
-
-
--- NOTE:
-local fn = vim.fn
-local cwd = vim.fn.stdpath "config" .. "/"
-local config_dir = { cwd }
-local utils = require "core.utils"
 
 -- Remove All Text
 vim.keymap.set("n", "<leader>R", "<cmd>%d+<cr>", { desc = "General | Remove All Text", silent = true })
@@ -83,11 +54,102 @@ vim.keymap.set("n", "<leader>q", "<cmd>qa!<cr>", { desc = "General | Quit", sile
 -- Close Buffer
 vim.keymap.set("n", "<leader>c", "<cmd>Bdelete!<cr>", { desc = "General | Close Buffer", silent = true })
 
+-- Better Jump Down/ Up
+vim.keymap.set("n","<C-d>", "<C-d>zz", { desc = "General | Better Page Down", expr = true, silent = true })
+vim.keymap.set("n","<C-u>", "<C-u>zz", { desc = "General | Better Page Up", expr = true, silent = true })
+
+-- Better Math Cycle
+vim.keymap.set("n","n", "nzzzv", { desc = "General | Better Next Match", expr = true, silent = true })
+vim.keymap.set("n","N", "Nzzzv", { desc = "General | Better Previous Match", expr = true, silent = true })
 
 
+-- Better Down/ Up
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { desc = "General | Better Down", expr = true, silent = true })
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { desc = "General | Better Up", expr = true, silent = true })
 
+-- Better Down/ Up  (Visual Mode)
+vim.keymap.set("v", "j", "v:count == 0 ? 'gj' : 'j'", { desc = "General | Better Down", expr = true, silent = true })
+vim.keymap.set("v", "k", "v:count == 0 ? 'gk' : 'k'", { desc = "General | Better Up", expr = true, silent = true })
 
+-- Go to upper window
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "General | Go to upper window", silent = true })
 
+-- Go to lower window
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "General | Go to lower window", silent = true })
+
+-- Go to left window
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "General | Go to left window", silent = true })
+
+-- Go to right window
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "General | Go to right window", silent = true })
+
+-- Close window
+vim.keymap.set("n", "<leader>w", function()
+  if vim.bo.buftype == "terminal" then
+    vim.cmd "Bdelete!"
+    vim.cmd "silent! close"
+  elseif #vim.api.nvim_list_wins() > 1 then
+    vim.cmd "silent! close"
+  else
+    vim.notify("Can't Close Window", vim.log.levels.WARN, { title = "Close Window" })
+  end
+end, { desc = "General | Close window", silent = true })
+
+-- Add size at the top
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "General | Add size at the top", silent = true })
+
+-- Add size at the bottom
+vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "General | Add size at the bottom", silent = true })
+
+-- Add size at the left
+vim.keymap.set(
+  "n",
+  "<C-Right>",
+  "<cmd>vertical resize +2<CR>",
+  { desc = "General | Add size at the left", silent = true }
+)
+
+-- Add size at the right
+vim.keymap.set(
+  "n",
+  "<C-Left>",
+  "<cmd>vertical resize -2<CR>",
+  { desc = "General | Add size at the right", silent = true }
+)
+
+-- Indent backward
+vim.keymap.set("n", "<", "<<", { desc = "General | Indent backward", silent = true })
+
+-- Indent forward
+vim.keymap.set("n", ">", ">>", { desc = "General | Indent forward", silent = true })
+
+-- Indent backward (Visual Mode)
+vim.keymap.set("v", "<", "<gv", { desc = "General | Indent backward", silent = true })
+
+-- Indent forward (Visual Mode)
+vim.keymap.set("v", ">", ">gv", { desc = "General | Indent forward", silent = true })
+
+-- Move the line up
+vim.keymap.set("n", "<S-j>", "<cmd>m .+1<CR>==", { desc = "General | Move the line up", silent = true })
+
+-- Move the line down
+vim.keymap.set("n", "<S-k>", "<cmd>m .-2<CR>==", { desc = "General | Move the line down", silent = true })
+
+-- Move the line up (Insert Mode)
+vim.keymap.set("i", "<S-j>", "<Esc>:m .+1<CR>==gi", { desc = "General | Move the line up", silent = true })
+
+-- Move the line down (Insert Mode)
+vim.keymap.set("i", "<S-k>", "<Esc>:m .-2<CR>==gi", { desc = "General | Move the line down", silent = true })
+
+-- Toggle Wrap
+vim.keymap.set("n", "<leader>ow", function()
+  vim.wo.wrap = not vim.wo.wrap
+  if vim.wo.wrap then
+    vim.notify("Toggled On", vim.log.levels.INFO, { title = "Line Wrap" })
+  else
+    vim.notify("Toggled Off", vim.log.levels.INFO, { title = "Line Wrap" })
+  end
+end, { desc = "Options | Toggle Wrap", silent = true })
 
 vim.keymap.set("n", "<leader>oS", function()
   vim.wo.spell = not vim.wo.spell
