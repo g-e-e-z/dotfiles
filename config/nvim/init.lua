@@ -2,8 +2,8 @@ require("core.globals")
 require("core.env")
 require("options")
 
--- [[ Install `lazy.nvim` plugin manager ]]
---    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
+-- NOTE: Install `lazy.nvim` plugin manager ]]
+-- See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 local lazy_config = require("core.lazy")
 
 require("lazy").setup({
-	-- "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	{ import = "plugins" },
 }, lazy_config)
 

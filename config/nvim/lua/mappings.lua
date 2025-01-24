@@ -54,15 +54,6 @@ vim.keymap.set("n", "<leader>q", "<cmd>qa!<cr>", { desc = "General | Quit", sile
 -- Close Buffer
 vim.keymap.set("n", "<leader>c", "<cmd>Bdelete!<cr>", { desc = "General | Close Buffer", silent = true })
 
--- Better Jump Down/ Up
-vim.keymap.set("n","<C-d>", "<C-d>zz", { desc = "General | Better Page Down", expr = true, silent = true })
-vim.keymap.set("n","<C-u>", "<C-u>zz", { desc = "General | Better Page Up", expr = true, silent = true })
-
--- Better Math Cycle
-vim.keymap.set("n","n", "nzzzv", { desc = "General | Better Next Match", expr = true, silent = true })
-vim.keymap.set("n","N", "Nzzzv", { desc = "General | Better Previous Match", expr = true, silent = true })
-
-
 -- Better Down/ Up
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { desc = "General | Better Down", expr = true, silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { desc = "General | Better Up", expr = true, silent = true })
@@ -134,12 +125,6 @@ vim.keymap.set("n", "<S-j>", "<cmd>m .+1<CR>==", { desc = "General | Move the li
 
 -- Move the line down
 vim.keymap.set("n", "<S-k>", "<cmd>m .-2<CR>==", { desc = "General | Move the line down", silent = true })
-
--- Move the line up (Insert Mode)
-vim.keymap.set("i", "<S-j>", "<Esc>:m .+1<CR>==gi", { desc = "General | Move the line up", silent = true })
-
--- Move the line down (Insert Mode)
-vim.keymap.set("i", "<S-k>", "<Esc>:m .-2<CR>==gi", { desc = "General | Move the line down", silent = true })
 
 -- Toggle Wrap
 vim.keymap.set("n", "<leader>ow", function()
