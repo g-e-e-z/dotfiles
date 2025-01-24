@@ -49,6 +49,11 @@ return {
 			-- You can put your default mappings / updates / etc. in here
 			--  All the info you're looking for is in `:help telescope.setup()`
 			--
+			defaults = {
+				-- layout_strategy = "vertical",
+                sorting_strategy = "ascending",
+				layout_config = { prompt_position = "top" },
+			},
 			-- defaults = {
 			--   mappings = {
 			--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
@@ -67,27 +72,102 @@ return {
 		pcall(require("telescope").load_extension, "ui-select")
 
 		--
-		vim.keymap.set("n", "<leader>fa", "<cmd>Telescope autocommands<cr>", { desc = "Telescope | Autocommands", silent = true })
-		vim.keymap.set("n", "<leader>fc", "<cmd>Telescope git_commits<cr>", { desc = "Telescope | Commits", silent = true })
-		vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Telescope | Files", silent = true })
+		vim.keymap.set(
+			"n",
+			"<leader>fa",
+			"<cmd>Telescope autocommands<cr>",
+			{ desc = "Telescope | Autocommands", silent = true }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>fc",
+			"<cmd>Telescope git_commits<cr>",
+			{ desc = "Telescope | Commits", silent = true }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>ff",
+			"<cmd>Telescope find_files<cr>",
+			{ desc = "Telescope | Files", silent = true }
+		)
 		-- vim.keymap.set("n", "<leader>fs", "<cmd>Telescope persisted<cr>", { desc = "Telescope | Sessions", silent = true })
 		vim.keymap.set("n", "<leader>fm", "<cmd>Telescope marks<cr>", { desc = "Telescope | Marks", silent = true })
-		vim.keymap.set("n", "<leader>fM", "<cmd>Telescope man_pages<cr>", { desc = "Telescope | Man Pages", silent = true })
-		vim.keymap.set("n", "<leader>fw", "<cmd>Telescope grep_string<cr>", { desc = "Telescope | Word", silent = true })
-		vim.keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Telescope | String", silent = true })
+		vim.keymap.set(
+			"n",
+			"<leader>fM",
+			"<cmd>Telescope man_pages<cr>",
+			{ desc = "Telescope | Man Pages", silent = true }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>fw",
+			"<cmd>Telescope grep_string<cr>",
+			{ desc = "Telescope | Word", silent = true }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>fs",
+			"<cmd>Telescope live_grep<cr>",
+			{ desc = "Telescope | String", silent = true }
+		)
 		vim.keymap.set("n", "<leader>ft", "<cmd>Telescope themes<cr>", { desc = "Telescope | Themes", silent = true })
 		vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Telescope | Buffers", silent = true })
-		vim.keymap.set("n", "<leader>fn", "<cmd>lua require('telescope').extensions.notify.notify()<cr>", { desc = "Telescope | Notify History", silent = true })
-		vim.keymap.set("n", "<leader>fp", "<cmd>Telescope projects<cr>", { desc = "Telescope | Projects", silent = true })
+		vim.keymap.set(
+			"n",
+			"<leader>fn",
+			"<cmd>lua require('telescope').extensions.notify.notify()<cr>",
+			{ desc = "Telescope | Notify History", silent = true }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>fp",
+			"<cmd>Telescope projects<cr>",
+			{ desc = "Telescope | Projects", silent = true }
+		)
 		vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Telescope | Help", silent = true })
 		vim.keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Telescope | Keymaps", silent = true })
-		vim.keymap.set("n", "<leader>fC", "<cmd>Telescope commands<cr>", { desc = "Telescope | Commands", silent = true })
-		vim.keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Telescope | Recent Files", silent = true })
-		vim.keymap.set("n", "<leader>fH", "<cmd>Telescope highlights<cr>", { desc = "Telescope | Highlights", silent = true })
-		vim.keymap.set("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Telescope | Buffer Symbols", silent = true })
-		vim.keymap.set("n", "<leader>lS", "<cmd>Telescope lsp_workspace_symbols<cr>", { desc = "Telescope | Workspace Symbols", silent = true })
-		vim.keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", { desc = "Telescope | Checkout branch", silent = true })
-		vim.keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", { desc = "Telescope | Checkout commit", silent = true })
+		vim.keymap.set(
+			"n",
+			"<leader>fC",
+			"<cmd>Telescope commands<cr>",
+			{ desc = "Telescope | Commands", silent = true }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>fr",
+			"<cmd>Telescope oldfiles<cr>",
+			{ desc = "Telescope | Recent Files", silent = true }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>fH",
+			"<cmd>Telescope highlights<cr>",
+			{ desc = "Telescope | Highlights", silent = true }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>ls",
+			"<cmd>Telescope lsp_document_symbols<cr>",
+			{ desc = "Telescope | Buffer Symbols", silent = true }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>lS",
+			"<cmd>Telescope lsp_workspace_symbols<cr>",
+			{ desc = "Telescope | Workspace Symbols", silent = true }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>gb",
+			"<cmd>Telescope git_branches<cr>",
+			{ desc = "Telescope | Checkout branch", silent = true }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>gc",
+			"<cmd>Telescope git_commits<cr>",
+			{ desc = "Telescope | Checkout commit", silent = true }
+		)
 
 		-- See `:help telescope.builtin`
 		-- local builtin = require("telescope.builtin")
