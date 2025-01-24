@@ -3,7 +3,7 @@ program = "/opt/homebrew/bin/zsh"
 args = ["-l", "-c", "export PATH=$PATH:/opt/homebrew/bin && tmux a || tmux new-session; exec zsh"]
 
 [font]
-size = 22
+size = 18
 
 [font.normal]
 family = "JetBrainsMono Nerd Font Mono"

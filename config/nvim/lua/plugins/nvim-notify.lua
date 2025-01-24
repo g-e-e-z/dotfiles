@@ -1,7 +1,7 @@
 -- NOTE: Notification
 return {
 	"rcarriga/nvim-notify",
-	-- lazy = false,
+	lazy = false,
 	event = "VeryLazy",
 	opts = {
 		level = 1,
