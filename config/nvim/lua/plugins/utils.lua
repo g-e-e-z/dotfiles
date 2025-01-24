@@ -4,9 +4,8 @@ return {
 	{
 		"nvim-lua/plenary.nvim",
 	},
-	-- TODO: This seems interesting
-	-- -- Schemas
-	-- { "b0o/schemastore.nvim" },
+	-- Schemas
+	{ "b0o/schemastore.nvim" },
 	-- Buffer Delete
 	{
 		"moll/vim-bbye",
