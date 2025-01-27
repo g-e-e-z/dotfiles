@@ -90,7 +90,7 @@ return {
 			"hrsh7th/cmp-cmdline",
 			config = function()
 				local cmdline_mappings = vim.tbl_extend("force", {}, require("cmp").mapping.preset.cmdline(), {
-					-- ["<CR>"] = { c = require("cmp").mapping.confirm { select = true } },
+					["<C-e>"] = { c = require("cmp").mapping.confirm { select = true } },
 				})
 
 				require("cmp").setup.cmdline(":", {
