@@ -56,6 +56,9 @@ return {
                 -- layout_strategy = "vertical",
                 sorting_strategy = "ascending",
                 layout_config = { prompt_position = "top" },
+                file_ignore_patterns = {
+                    "^%.git/"
+                },
             },
             -- defaults = {
             --   mappings = {
