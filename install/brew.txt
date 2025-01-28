@@ -26,3 +26,4 @@ luarocks
 zsh-syntax-highlighting
 newsboat
 pure
+uv
