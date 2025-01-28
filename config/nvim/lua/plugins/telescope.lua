@@ -43,6 +43,9 @@ return {
 
 		-- Useful for getting pretty icons, but requires a Nerd Font.
 		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+
+        -- Extension for switching colroschemes with preview
+        'andrew-george/telescope-themes',
 	},
 	config = function()
 		require("telescope").setup({
@@ -70,6 +73,7 @@ return {
 		-- Enable Telescope extensions if they are installed
 		pcall(require("telescope").load_extension, "fzf")
 		pcall(require("telescope").load_extension, "ui-select")
+        -- pcall(require("telescope").load_extension, "themes")
 
 		--
 		vim.keymap.set(
@@ -106,11 +110,11 @@ return {
 		)
 		vim.keymap.set(
 			"n",
-			"<leader>fs",
+			"<leader>fg",
 			"<cmd>Telescope live_grep<cr>",
-			{ desc = "Telescope | String", silent = true }
+			{ desc = "Telescope | Grep", silent = true }
 		)
-		vim.keymap.set("n", "<leader>ft", "<cmd>Telescope themes<cr>", { desc = "Telescope | Themes", silent = true })
+		vim.keymap.set("n", "<leader>ft", "<cmd>Telescope colorscheme<cr>", { desc = "Telescope | Themes", silent = true })
 		vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Telescope | Buffers", silent = true })
 		vim.keymap.set(
 			"n",

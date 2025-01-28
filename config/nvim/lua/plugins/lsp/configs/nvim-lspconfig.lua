@@ -108,6 +108,11 @@ return {
                 vim.keymap.set("n", "<leader>lh", function()
                     if vim.version().minor >= 10 then
                         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+                        if vim.lsp.inlay_hint.is_enabled() then
+                            vim.notify("Inlay hints enabled.", vim.log.levels.INFO, { title = "Hints" })
+                        else
+                            vim.notify("Inlay hints disabled.", vim.log.levels.INFO, { title = "Hints" })
+                        end
                     end
                 end, { desc = "LSP | Toggle Inlay Hints", silent = true })
                 -- Jump to the definition of the word under your cursor.
