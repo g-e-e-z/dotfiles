@@ -1,17 +1,22 @@
 # vim: filetype=sh
-# Manga
 
-# Software
-https://cloud.google.com/feeds/gcp-release-notes.xml
-https://kubernetes.io/feed.xml
-
-# Golang
-https://go.dev/blog/feed.atom?format=xml
-
-# Python
-https://www.blog.pythonlibrary.org/feed/
-
-# Programming
+# Influencers
+https://martinfowler.com/feed.atom
 https://ludic.mataroa.blog/rss/
 https://registerspill.thorstenball.com/feed
 https://fasterthanli.me/index.xml
+https://blog.bytebytego.com/feed
+
+# Cloud
+https://cloud.google.com/feeds/gcp-release-notes.xml
+https://kubernetes.io/feed.xml
+
+# Languages
+https://go.dev/blog/feed.atom?format=xml
+https://www.blog.pythonlibrary.org/feed/
+
+# Companies
+https://medium.com/feed/airbnb-engineering
+https://medium.com/feed/pinterest-engineering
+https://engineering.fb.com/feed/
+https://netflixtechblog.com/feed
