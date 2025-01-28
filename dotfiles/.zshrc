@@ -201,6 +201,10 @@ alias sed='gsed'
 alias sb="cd \$SECOND_BRAIN"
 alias in="pushd .> /dev/null; cd \$SECOND_BRAIN/0-inbox/"
 
+# newsboat
+alias nb="newsboat"
+alias nbu="newsboat -x print-unread"
+
 # kubectl
 alias k='kubectl'
 # source <(kubectl completion bash)
