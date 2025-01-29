@@ -29,8 +29,8 @@ export GOBIN="$HOME/.local/bin"
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
 
 # Needed for postgresql
-export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+export LDFLAGS="-L$(brew --prefix openssl)/lib"
+export CPPFLAGS="-I$(brew --prefix openssl)/include"
 
 # ~~~~~~~~~~~~~~~ Path ~~~~~~~~~~~~~~~~~~~~~~~~
 export PATH="$SCRIPTS:$PATH:$GOPATH"

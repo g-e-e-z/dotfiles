@@ -153,6 +153,13 @@ return {
         vim.keymap.set(
             "n",
             "<leader>fr",
+            "<cmd>Telescope lsp_references<cr>",
+            { desc = "Telescope | References", silent = true }
+        )
+
+        vim.keymap.set(
+            "n",
+            "<leader>fR",
             "<cmd>Telescope oldfiles<cr>",
             { desc = "Telescope | Recent Files", silent = true }
         )

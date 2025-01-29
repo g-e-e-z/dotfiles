@@ -5,3 +5,4 @@
 scripts/gcdb
 
 ./dotfiles/.newsboat/cache.db
+./dotfiles/.newsboat/history.cmdline
