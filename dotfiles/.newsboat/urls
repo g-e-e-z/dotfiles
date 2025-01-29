@@ -9,6 +9,8 @@ https://medium.com/feed/airbnb-engineering
 https://medium.com/feed/pinterest-engineering
 https://netflixtechblog.com/feed
 https://blog.janestreet.com/feed.xml
+https://discord.com/blog/rss.xml
+https://github.blog/engineering.atom
 
 # Influencers
 https://martinfowler.com/feed.atom
@@ -17,9 +19,10 @@ https://registerspill.thorstenball.com/feed
 https://fasterthanli.me/index.xml
 https://blog.bytebytego.com/feed
 
-# Cloud
+# Technologies
 https://cloud.google.com/feeds/gcp-release-notes.xml
 https://kubernetes.io/feed.xml
+https://www.docker.com/feed/
 
 # Languages
 https://go.dev/blog/feed.atom?format=xml
