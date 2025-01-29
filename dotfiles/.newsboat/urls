@@ -3,6 +3,13 @@
 # Neovim
 https://neovim.io/news.xml
 
+# Companies
+https://engineering.fb.com/rss
+https://medium.com/feed/airbnb-engineering
+https://medium.com/feed/pinterest-engineering
+https://netflixtechblog.com/feed
+https://blog.janestreet.com/feed.xml
+
 # Influencers
 https://martinfowler.com/feed.atom
 https://ludic.mataroa.blog/rss/
@@ -17,9 +24,3 @@ https://kubernetes.io/feed.xml
 # Languages
 https://go.dev/blog/feed.atom?format=xml
 https://www.blog.pythonlibrary.org/feed/
-
-# Companies
-https://medium.com/feed/airbnb-engineering
-https://medium.com/feed/pinterest-engineering
-https://engineering.fb.com/feed/
-https://netflixtechblog.com/feed
