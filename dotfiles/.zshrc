@@ -122,18 +122,13 @@ setopt SHARE_HISTORY
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
-# if [[ "$OSTYPE" == darwin* ]]; then
-#   fpath+=("$(brew --prefix)/share/zsh/site-functions")
-# else
-#   fpath+=($HOME/.zsh/pure)
-# fi
-#
-# autoload -U promptinit; promptinit
-# prompt pure
+if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
+      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
+    zle -N zle-keymap-select "";
+fi
 
 eval "$(starship init zsh)"
-starship preset pure-preset -o ~/.config/starship.toml
-# source ~/.config/zsh-themes/catppuccin_frappe-zsh-syntax-highlighting.zsh
+
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
