@@ -122,15 +122,18 @@ setopt SHARE_HISTORY
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
-if [[ "$OSTYPE" == darwin* ]]; then
-  fpath+=("$(brew --prefix)/share/zsh/site-functions")
-else
-  fpath+=($HOME/.zsh/pure)
-fi
+# if [[ "$OSTYPE" == darwin* ]]; then
+#   fpath+=("$(brew --prefix)/share/zsh/site-functions")
+# else
+#   fpath+=($HOME/.zsh/pure)
+# fi
+#
+# autoload -U promptinit; promptinit
+# prompt pure
 
-autoload -U promptinit; promptinit
-prompt pure
-
+eval "$(starship init zsh)"
+starship preset pure-preset -o ~/.config/starship.toml
+# source ~/.config/zsh-themes/catppuccin_frappe-zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -187,7 +190,13 @@ zstyle :prompt:pure:git:branch color '#458588'
 zstyle :prompt:pure:git:dirty color '#cc241d'
 zstyle :prompt:pure:git:action color '#cc241d'
 
-export FZF_DEFAULT_OPTS="--color=fg+:-1,bg+:-1,bg:-1,hl+:#cc241d,hl:#fb4934,prompt:#fb4934,pointer:#fb4934,spinner:#fb4934"
+# export FZF_DEFAULT_OPTS="--color=fg+:-1,bg+:-1,bg:-1,hl+:#cc241d,hl:#fb4934,prompt:#fb4934,pointer:#fb4934,spinner:#fb4934"
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
+--color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
+--color=marker:#babbf1,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284 \
+--color=selected-bg:#51576d \
+--multi"
 
 alias ez='v ~/.zshrc'
 alias sz='source ~/.zshrc'

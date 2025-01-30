@@ -25,5 +25,5 @@ rust
 luarocks
 zsh-syntax-highlighting
 newsboat
-pure
+starship
 uv
