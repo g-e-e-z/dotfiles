@@ -221,7 +221,7 @@ alias kgp='kubectl get pods'
 export VISUAL=nvim
 export EDITOR=nvim
 
-export BAT_THEME="gruvbox-dark"
+export BAT_THEME="Catppuccin Frappe"
 alias cat='bat --paging=never'
 
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~

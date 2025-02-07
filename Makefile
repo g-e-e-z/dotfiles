@@ -59,6 +59,12 @@ git: brew
 
 misc: git
 	is-executable git || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	# TODO: Find a better place for this
+	mkdir -p "$(bat --config-dir)/themes"
+	is-executable wget || wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
+	is-executable wget || wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
+	is-executable wget || wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
+	is-executable wget || wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
 
 brew-packages: brew
 	brew install $(shell cat $(DOTFILES_DIR)/install/brew.txt) || true

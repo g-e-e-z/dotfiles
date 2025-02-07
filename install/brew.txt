@@ -27,3 +27,4 @@ zsh-syntax-highlighting
 newsboat
 starship
 uv
+wget
