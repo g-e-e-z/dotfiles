@@ -42,6 +42,9 @@ vim.keymap.set("n", "<leader>R", "<cmd>%d+<cr>", { desc = "General | Remove All 
 -- Yank All Text
 vim.keymap.set("n", "<leader>y", "<cmd>%y+<cr>", { desc = "General | Yank All Text", silent = true })
 
+-- write
+vim.keymap.set("n", "<leader>w", "<cmd>wa!<cr>", { desc = "General | Write", silent = true })
+
 -- Quit
 vim.keymap.set("n", "<leader>q", "<cmd>qa!<cr>", { desc = "General | Quit", silent = true })
 
@@ -68,21 +71,21 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "General | Go to left window", s
 -- Go to right window
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "General | Go to right window", silent = true })
 
--- Close window
-vim.keymap.set("n", "<leader>w", function()
-  if vim.bo.buftype == "terminal" then
-    vim.cmd "Bdelete!"
-    vim.cmd "silent! close"
-  elseif #vim.api.nvim_list_wins() > 1 then
-    vim.cmd "silent! close"
-  else
-    vim.notify("Can't Close Window", vim.log.levels.WARN, { title = "Close Window" })
-  end
-end, { desc = "General | Close window", silent = true })
+-- -- Close window
+-- vim.keymap.set("n", "<leader>w", function()
+--   if vim.bo.buftype == "terminal" then
+--     vim.cmd "Bdelete!"
+--     vim.cmd "silent! close"
+--   elseif #vim.api.nvim_list_wins() > 1 then
+--     vim.cmd "silent! close"
+--   else
+--     vim.notify("Can't Close Window", vim.log.levels.WARN, { title = "Close Window" })
+--   end
+-- end, { desc = "General | Close window", silent = true })
 
 -- Add size at the top
-vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "General | Add size at the top", silent = true })
 
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "General | Add size at the top", silent = true })
 -- Add size at the bottom
 vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "General | Add size at the bottom", silent = true })
 
