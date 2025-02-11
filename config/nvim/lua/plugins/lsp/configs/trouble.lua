@@ -5,13 +5,13 @@ return {
   init = function()
     vim.keymap.set(
       "n",
-      "<leader>lb",
+      "<leader>db",
       "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
       { desc = "Trouble | Buffer Diagnostics", silent = true }
     )
     vim.keymap.set(
       "n",
-      "<leader>lw",
+      "<leader>dw",
       "<cmd>Trouble diagnostics toggle<cr>",
       { desc = "Trouble | Workspace Diagnostics", silent = true }
     )

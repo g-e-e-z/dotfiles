@@ -1,6 +1,7 @@
 -- NOTE: Keymaps
 --  See `:help vim.keymap.set()`
 local cwd = vim.fn.stdpath "config" .. "/"
+local notes_dir = { os.getenv("SECOND_BRAIN") }
 local config_dir = { cwd }
 local utils = require "core.utils"
 
@@ -43,7 +44,7 @@ vim.keymap.set("n", "<leader>R", "<cmd>%d+<cr>", { desc = "General | Remove All 
 -- Yank To Clipboard
 vim.keymap.set({"n","v"}, "<leader>y", "\"+y", { desc = "General | Yank To Clipboard", silent = true })
 
--- write
+-- Write
 vim.keymap.set("n", "<leader>w", "<cmd>wa!<cr>", { desc = "General | Write", silent = true })
 
 -- Quit
@@ -143,6 +144,33 @@ vim.keymap.set("n", "<leader>oS", function()
   end
 end, { desc = "Options | Toggle Spell Check", silent = true })
 
+-- Find Notes Files
+vim.keymap.set("n", "<leader>zf", function()
+  require("telescope.builtin").find_files {
+    prompt_title = "Notes Files",
+    search_dirs = notes_dir,
+    cwd = cwd,
+  }
+end, { desc = "Notes | Find Notes Files", silent = true })
+
+-- Grep Notes Files
+vim.keymap.set("n", "<leader>zg", function()
+  require("telescope.builtin").live_grep {
+    prompt_title = "Notes Files",
+    search_dirs = notes_dir,
+    cwd = cwd,
+  }
+end, { desc = "Notes | Grep Notes Files", silent = true })
+
+-- Create New Notes File
+vim.keymap.set("n", "<leader>zg", function()
+  require("telescope.builtin").live_grep {
+    prompt_title = "Notes Files",
+    search_dirs = notes_dir,
+    cwd = cwd,
+  }
+end, { desc = "Notes | Create New Note", silent = true })
+
 -- Find Config Files
 vim.keymap.set("n", "<leader>nf", function()
   require("telescope.builtin").find_files {
@@ -150,7 +178,7 @@ vim.keymap.set("n", "<leader>nf", function()
     search_dirs = config_dir,
     cwd = cwd,
   }
-end, { desc = "Neovim | Find Config Files", silent = true })
+end, { desc = "Neovim | Find Files", silent = true })
 
 -- Grep Config Files
 vim.keymap.set("n", "<leader>ng", function()
@@ -161,7 +189,7 @@ vim.keymap.set("n", "<leader>ng", function()
   }
 end, { desc = "Neovim | Grep Config Files", silent = true })
 
--- Toggle Cheatsheet
+-- TODO: Toggle Cheatsheet
 -- vim.keymap.set("n", "<leader>nc", "<cmd>NvCheatsheet<cr>", { desc = "Neovim | Toggle Cheatsheet", silent = true })
 
 -- Inspect
@@ -186,9 +214,9 @@ vim.keymap.set("n", "<leader>nv", function()
 end, { desc = "Neovim | Version", silent = true })
 
 -- Run Code
-vim.keymap.set("n", "<leader>nr", function()
+vim.keymap.set("n", "<leader>dr", function()
   utils.run_code()
-end, { desc = "Neovim | Run Code", silent = true })
+end, { desc = "Debug | Run Code", silent = true })
 
 -- Clean
 vim.keymap.set("n", "<leader>pc", "<cmd>Lazy clean<cr>", { desc = "Lazy | Clean", silent = true })

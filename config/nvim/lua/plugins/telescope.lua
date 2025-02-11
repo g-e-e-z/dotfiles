@@ -59,6 +59,7 @@ return {
                 file_ignore_patterns = {
                     "^%.git/"
                 },
+                path_display = {truncate= 3}
             },
             -- defaults = {
             --   mappings = {

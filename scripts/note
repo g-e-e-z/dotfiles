@@ -10,26 +10,28 @@ open_file() {
 	# Cd into the directory
 	cd "$1" || exit
 	# Create the file in the specified directory
-	touch "$1/$filename.md"
+    if [[ ! -f "$1/$filename.md" ]]; then
+        touch "$1/$filename.md"
 
-	# create unique identifier and links section
-	timestamp="$(date +"%Y%m%d%H%m")"
-	# format the file
-	{
-		echo "---"
-		echo "id: $timestamp"
-        echo "date: $(date +"%Y-%m-%d")"
-		echo "hubs:"
-		echo "    -"
-		echo "tags:"
-		echo "    -"
-		echo "urls:"
-		echo "    -"
-		echo "---"
-	} >>"$1/$filename.md"
+        # create unique identifier and links section
+        timestamp="$(date +"%Y%m%d%H%m")"
+        # format the file
+        {
+            echo "---"
+            echo "id: $timestamp"
+            echo "date: $(date +"%Y-%m-%d")"
+            echo "hubs:"
+            echo "    -"
+            echo "tags:"
+            echo "    -"
+            echo "urls:"
+            echo "    -"
+            echo "---"
+        } >>"$1/$filename.md"
+    fi
 
 	# Open the file in Neovim
-	nvim '+ normal ggzzi' "$1/$filename.md"
+	nvim '+ normal Gzzo' "$1/$filename.md"
 }
 
 # Prompt the user if no filename is provided
