@@ -60,6 +60,7 @@ git: brew
 misc: git
 	is-executable git || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	# TODO: Find a better place for this
+	gh ext install meiji163/gh-notify
 	mkdir -p "$(bat --config-dir)/themes"
 	is-executable wget || wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
 	is-executable wget || wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme

@@ -26,6 +26,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
+-- Delete Without Yank
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 vim.keymap.set("i","<C-c>", "<Esc>")
@@ -39,8 +40,8 @@ vim.keymap.set("n","<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- Remove All Text
 vim.keymap.set("n", "<leader>R", "<cmd>%d+<cr>", { desc = "General | Remove All Text", silent = true })
 
--- Yank All Text
-vim.keymap.set("n", "<leader>y", "<cmd>%y+<cr>", { desc = "General | Yank All Text", silent = true })
+-- Yank To Clipboard
+vim.keymap.set({"n","v"}, "<leader>y", "\"+y", { desc = "General | Yank To Clipboard", silent = true })
 
 -- write
 vim.keymap.set("n", "<leader>w", "<cmd>wa!<cr>", { desc = "General | Write", silent = true })

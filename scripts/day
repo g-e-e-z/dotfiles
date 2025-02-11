@@ -17,11 +17,9 @@ new_note() {
 
 	# Format the file with the daily template: https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash#:~:text=2.%20Pass%20multi%2Dline%20string%20to%20a%20file%20in%20Bash
 	cat <<EOF >"$file"
-# $today
-
 [[$last_date]] - [_placeholder_]
 
-$(cal -h)
+# $(date +"%B %d, %Y")
 
 ## Previous Tasks
 $(cat $daily_dir$last_file | grep "\- \[ \]")
@@ -31,7 +29,6 @@ $(cat $daily_dir$last_file | grep "\- \[ \]")
 
 ## Log
 EOF
-
 }
 
 

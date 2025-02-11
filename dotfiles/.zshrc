@@ -22,7 +22,7 @@ export DOTFILES="$GHREPOS/dotfiles"
 # export LAB="$GHREPOS/lab"
 export SCRIPTS="$DOTFILES/scripts"
 export ICLOUD="$HOME/icloud"
-export SECOND_BRAIN="$HOME/notes"
+export SECOND_BRAIN="$HOME/Notes"
 
 # Go related. In general all executables and scripts go in .local/bin
 export GOBIN="$HOME/.local/bin"
@@ -196,7 +196,7 @@ export FZF_DEFAULT_OPTS=" \
 alias ez='v ~/.zshrc'
 alias sz='source ~/.zshrc'
 alias ea="v $XDG_CONFIG_HOME/alacritty/alacritty.toml"
-alias ev='cd ~/.config/nvim/ && vim lua/geezee/packer.lua'
+alias ev='cd ~/.config/nvim/ && vim .'
 
 # other
 alias sed='gsed'

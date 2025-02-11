@@ -9,10 +9,9 @@ vim.opt.showmode = false -- Don't show the mode, since it's already in the statu
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
--- TODO: add yank to clipboard keymap and remove this
-vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
-end)
+-- vim.schedule(function()
+-- 	vim.opt.clipboard = "unnamedplus"
+-- end)
 vim.opt.breakindent = true -- Enable break indent
 vim.opt.undofile = true -- Save undo history
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
@@ -50,3 +49,4 @@ vim.opt.termguicolors = true
 vim.opt.cmdheight=1
 vim.opt.colorcolumn="80"
 vim.opt.formatoptions="co"
+vim.opt.conceallevel=1
