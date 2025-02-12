@@ -163,13 +163,13 @@ vim.keymap.set("n", "<leader>zg", function()
 end, { desc = "Notes | Grep Notes Files", silent = true })
 
 -- Create New Notes File
-vim.keymap.set("n", "<leader>zg", function()
-  require("telescope.builtin").live_grep {
-    prompt_title = "Notes Files",
-    search_dirs = notes_dir,
-    cwd = cwd,
-  }
-end, { desc = "Notes | Create New Note", silent = true })
+-- vim.keymap.set("n", "<leader>zg", function()
+--   require("telescope.builtin").live_grep {
+--     prompt_title = "Notes Files",
+--     search_dirs = notes_dir,
+--     cwd = cwd,
+--   }
+-- end, { desc = "Notes | Create New Note", silent = true })
 
 -- Find Config Files
 vim.keymap.set("n", "<leader>nf", function()
