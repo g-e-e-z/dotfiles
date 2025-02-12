@@ -16,14 +16,14 @@ if [[ $MODE == "Dark" ]]; then
     # Switch to light
     gsed -i "s|frappe|latte|" $ALAC
     gsed -i "s|frappe|latte|" $VIMD
-    gsed -i "s|frappe|latte|" $VIMD
+    gsed -i "s|frappe|latte|" $TMUXD
     # gsed -i "s|frappe|latte|" $K9S
     # FILE=$LIGHT_FILE
 else
     # Switch to frappe
     gsed -i "s|latte|frappe|" $ALAC
     gsed -i "s|latte|frappe|" $VIMD
-    gsed -i "s|latte|frappe|" $VIMD
+    gsed -i "s|latte|frappe|" $TMUXD
     # gsed -i "s|latte|frappe|" $K9S
     # FILE=$DARK_FILE
 fi
