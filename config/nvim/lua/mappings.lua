@@ -45,7 +45,11 @@ vim.keymap.set("n", "<leader>R", "<cmd>%d+<cr>", { desc = "General | Remove All 
 vim.keymap.set({"n","v"}, "<leader>y", "\"+y", { desc = "General | Yank To Clipboard", silent = true })
 
 -- Write
-vim.keymap.set("n", "<leader>w", "<cmd>wa!<cr>", { desc = "General | Write", silent = true })
+-- vim.keymap.set("n", "<leader>w", "<cmd>wa!<cr>", { desc = "General | Write", silent = true })
+vim.keymap.set("n", "<leader>w", function()
+  vim.cmd("wa!")
+  vim.notify("Buffer Writen", vim.log.levels.INFO, { title = "Info" })
+end, { desc = "General | Write", silent = true })
 
 -- Quit
 vim.keymap.set("n", "<leader>q", "<cmd>qa!<cr>", { desc = "General | Quit", silent = true })
