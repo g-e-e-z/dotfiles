@@ -21,6 +21,7 @@ M.lsp_keymaps = function(bufnr)
 		require("telescope.builtin").lsp_dynamic_workspace_symbols,
 		{ buffer = bufnr, desc = "Dynamic Workspace Symbols", silent = true }
 	)
+	keymap("n", "<leader>lr", vim.lsp.buf.rename, { desc = "LSP | Rename", silent = true })
 	keymap("n", "K", vim.lsp.buf.hover, { buffer = bufnr, silent = true })
 	keymap("n", "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, desc = "LSP | Code Action", silent = true })
 
