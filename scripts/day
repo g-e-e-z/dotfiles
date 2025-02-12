@@ -23,7 +23,7 @@ date: $(date +"%Y-%m-%d")
 hubs:
     -
 tags:
-    -
+    - #daily
 urls:
     -
 ---
