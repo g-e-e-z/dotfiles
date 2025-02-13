@@ -78,7 +78,7 @@ return {
             init = function()
                 vim.keymap.set(
                     "n",
-                    "<leader>oc",
+                    "<leader>Oc",
                     "<cmd>TSContextToggle<cr>",
                     { desc = "Treesitter | Toggle Context", silent = true }
                 )

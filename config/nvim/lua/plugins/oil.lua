@@ -3,12 +3,14 @@ return {
 	"stevearc/oil.nvim",
     lazy = false,
 	init = function()
-		vim.keymap.set("n", "<leader>O", function()
-			if vim.bo.filetype == "oil" then
-				vim.cmd(":q")
-			else
-				vim.cmd("Oil --float")
-			end
+		-- vim.keymap.set("n", "<leader>O", function()
+		vim.keymap.set("n", "-", function()
+            vim.cmd("Oil --float --preview")
+			-- if vim.bo.filetype == "oil" then
+			-- 	vim.cmd(":q")
+			-- else
+			-- 	vim.cmd("Oil --float")
+			-- end
 		end, { desc = "Oil | Toggle Oil" })
 	end,
 	cmd = "Oil",
@@ -23,8 +25,8 @@ return {
 		float = {
 			-- Padding around the floating window
 			padding = 2,
-			max_height = math.ceil(vim.o.lines * 0.8 - 4),
-			max_width = math.ceil(vim.o.columns * 0.4),
+			max_height = math.ceil(vim.o.lines * 0.9 - 4),
+			max_width = math.ceil(vim.o.columns * 0.8),
 			border = "rounded",
 			win_options = {
 				winblend = 0,

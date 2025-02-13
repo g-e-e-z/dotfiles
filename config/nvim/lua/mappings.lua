@@ -35,7 +35,7 @@ vim.keymap.set("n","Q", "<nop>")
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
-vim.keymap.set("n","<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n","<leader>x", "<cmd>!chmod +x %<CR>", { desc = "General | Executable", silent = true })
 
 -- Remove All Text
 vim.keymap.set("n", "<leader>R", "<cmd>%d+<cr>", { desc = "General | Remove All Text", silent = true })
@@ -64,17 +64,17 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { desc = "General | Better
 vim.keymap.set("v", "j", "v:count == 0 ? 'gj' : 'j'", { desc = "General | Better Down", expr = true, silent = true })
 vim.keymap.set("v", "k", "v:count == 0 ? 'gk' : 'k'", { desc = "General | Better Up", expr = true, silent = true })
 
--- Go to upper window
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "General | Go to upper window", silent = true })
-
--- Go to lower window
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "General | Go to lower window", silent = true })
-
--- Go to left window
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "General | Go to left window", silent = true })
-
--- Go to right window
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "General | Go to right window", silent = true })
+-- -- Go to upper window
+-- vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "General | Go to upper window", silent = true })
+--
+-- -- Go to lower window
+-- vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "General | Go to lower window", silent = true })
+--
+-- -- Go to left window
+-- vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "General | Go to left window", silent = true })
+--
+-- -- Go to right window
+-- vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "General | Go to right window", silent = true })
 
 -- -- Close window
 -- vim.keymap.set("n", "<leader>w", function()
@@ -129,7 +129,7 @@ vim.keymap.set("n", "<A-j>", "<cmd>m .+1<CR>==", { desc = "General | Move the li
 vim.keymap.set("n", "<A-k>", "<cmd>m .-2<CR>==", { desc = "General | Move the line down", silent = true })
 
 -- Toggle Wrap
-vim.keymap.set("n", "<leader>ow", function()
+vim.keymap.set("n", "<leader>Ow", function()
   vim.wo.wrap = not vim.wo.wrap
   if vim.wo.wrap then
     vim.notify("Toggled On", vim.log.levels.INFO, { title = "Line Wrap" })
@@ -138,7 +138,7 @@ vim.keymap.set("n", "<leader>ow", function()
   end
 end, { desc = "Options | Toggle Wrap", silent = true })
 
-vim.keymap.set("n", "<leader>oS", function()
+vim.keymap.set("n", "<leader>Os", function()
   vim.wo.spell = not vim.wo.spell
   if vim.wo.spell then
     vim.notify("Toggled On", vim.log.levels.INFO, { title = "Spell Check" })

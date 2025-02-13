@@ -19,6 +19,7 @@ return {
 	opts = {
 		-- delay between pressing a key and opening which-key (milliseconds)
 		-- this setting is independent of vim.opt.timeoutlen
+        preset = "helix",
 		delay = 100,
 		icons = {
 			-- set icon mappings to true if you have a Nerd Font
@@ -66,12 +67,12 @@ return {
 			{ "<leader>h", group = "Harpoon", icon = "" },
 			{ "<leader>l", group = "LSP", icon = "" },
 			{ "<leader>n", group = "Neovim", icon = "" },
-			{ "<leader>o", group = "Options", icon = "" },
+			{ "<leader>O", group = "Options", icon = "" },
 			{ "<leader>p", group = "Plugins", icon = "" },
 			{ "<leader>r", group = "Runner", icon = "" },
 			{ "<leader>t", group = "Terminal", icon = "" },
 			{ "<leader>v", group = "Venv", icon = "" },
-			{ "<leader>z", group = "Notes", icon = "" },
+			{ "<leader>o", group = "Obsidian", icon = "" },
 		},
 	},
 }

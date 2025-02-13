@@ -79,14 +79,14 @@ return {
 
         obsidian.setup(opts)
 
-        vim.keymap.set("n", "<leader><leader>", obsidian.util.toggle_checkbox, { desc = "Notes | Toggle Checkbox" })
-        vim.keymap.set("n", "<leader>zo", "<cmd>ObsidianOpen<CR>", { desc = "Notes | Open in Obsidian App" })
-        vim.keymap.set("n", "<leader>zb", "<cmd>ObsidianBacklinks<CR>", { desc = "Notes | Show Obsidian Backlinks" })
-        vim.keymap.set("n", "<leader>zl", "<cmd>ObsidianLinks<CR>", { desc = "Notes | Show Obsidian Links" })
-        vim.keymap.set("n", "<leader>zs", "<cmd>ObsidianSearch<CR>", { desc = "Notes | Search Obsidian" })
-        vim.keymap.set("n", "<leader>zq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Notes | Quick Switch" })
-        vim.keymap.set("n", "<leader>zp", "<cmd>ObsidianPasteImg<CR>", { desc = "Notes | Paste Image" })
-        vim.keymap.set("n", "<leader>zdd", ":!rm '%:p'<CR>:bd<CR>", { desc = "Notes | Delete File", silent = true })
+        vim.keymap.set("n", "<leader><leader>", obsidian.util.toggle_checkbox, { desc = "Obsidian | Toggle Checkbox" })
+        vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "Obsidian | Open in Obsidian App" })
+        vim.keymap.set("n", "<leader>ob", "<cmd>ObsidianBacklinks<CR>", { desc = "Obsidian | Show Obsidian Backlinks" })
+        vim.keymap.set("n", "<leader>ol", "<cmd>ObsidianLinks<CR>", { desc = "Obsidian | Show Obsidian Links" })
+        vim.keymap.set("n", "<leader>os", "<cmd>ObsidianSearch<CR>", { desc = "Obsidian | Search Obsidian" })
+        vim.keymap.set("n", "<leader>oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Obsidian | Quick Switch" })
+        vim.keymap.set("n", "<leader>op", "<cmd>ObsidianPasteImg<CR>", { desc = "Obsidian | Paste Image" })
+        vim.keymap.set("n", "<leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "Obsidian | Delete File", silent = true })
 
         local function format_title(line_num)
             local title = vim.fn.getline(line_num)
@@ -99,7 +99,7 @@ return {
             vim.fn.setline(line_num, "# " .. title)
         end
 
-        vim.keymap.set("n", "<leader>zn", function()
+        vim.keymap.set("n", "<leader>on", function()
             -- Get the current date
             local current_date = os.date("%Y-%m-%d")
 
@@ -125,31 +125,31 @@ return {
             else
                 print("Filename not provided, note creation cancelled.")
             end
-        end, { desc = "Notes | Create New Note" })
+        end, { desc = "Obsidian | Create New Note" })
 
         -- Inserts template and formats first title by removing date and file name chars
-        vim.keymap.set("n", "<leader>zt", function()
+        vim.keymap.set("n", "<leader>ot", function()
             vim.cmd("ObsidianTemplate note")
             -- Format Title
             format_title(11)
             vim.cmd("noh")
-        end, { desc = "Notes | Insert Template" })
+        end, { desc = "Obsidian | Insert Template" })
 
         -- Find Notes Files
         local notes_dir = { os.getenv("SECOND_BRAIN") }
-        vim.keymap.set("n", "<leader>zf", function()
+        vim.keymap.set("n", "<leader>of", function()
             require("telescope.builtin").find_files {
                 prompt_title = "Notes Files",
                 search_dirs = notes_dir,
             }
-        end, { desc = "Notes | Find Notes Files", silent = true })
+        end, { desc = "Obsidian | Find Notes Files", silent = true })
 
         -- Grep Notes Files
-        vim.keymap.set("n", "<leader>zg", function()
+        vim.keymap.set("n", "<leader>og", function()
             require("telescope.builtin").live_grep {
                 prompt_title = "Notes Files",
                 search_dirs = notes_dir,
             }
-        end, { desc = "Notes | Grep Notes Files", silent = true })
+        end, { desc = "Obsidian | Grep Notes Files", silent = true })
     end,
 }
