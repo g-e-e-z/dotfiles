@@ -1,48 +1,40 @@
 #!/bin/bash
-# function to prompt the user for a filename
-get_filename() {
-	read -p "Enter a filename: " filename
-	echo "$filename"
-}
-# function to create and open a file in the specified directory
+
+# Function to create and open a file in the specified directory
 open_file() {
+    local dir="$1"
+    local file="$2"
 
-	# Cd into the directory
-	cd "$1" || exit
-	# Create the file in the specified directory
-    if [[ ! -f "$1/$filename.md" ]]; then
-        touch "$1/$filename.md"
+    # Ensure directory exists
+    mkdir -p "$dir"
 
-        # create unique identifier and links section
-        timestamp="$(date +"%Y%m%d%H%m")"
-        # format the file
-        {
-            echo "---"
-            echo "id: $timestamp"
-            echo "date: $(date +"%Y-%m-%d")"
-            echo "hubs:"
-            echo "    -"
-            echo "tags:"
-            echo "    -"
-            echo "urls:"
-            echo "    -"
-            echo "---"
-        } >>"$1/$filename.md"
-    fi
+    # Create the file
+    touch "$dir/$file"
 
-	# Open the file in Neovim
-	nvim '+ normal Gzzo' "$1/$filename.md"
+    # Open the file in Neovim
+    nvim "$dir/$file"
 }
 
-# Prompt the user if no filename is provided
+# Check if the environment variable is set
+if [[ -z "$SECOND_BRAIN" ]]; then
+    echo "Error: SECOND_BRAIN is not set."
+    exit 1
+fi
+
+# Define the directory
+TARGET_DIR="$SECOND_BRAIN/0-inbox"
+
+# Ensure at least one argument is provided
 if [[ $# -eq 0 ]]; then
-    raw_filename=$(get_filename)
-    filename=$(echo $raw_filename | tr " " "_")
+    echo "Usage: note <filename words>"
+    exit 1
 fi
 
-# set filename to the argument formatted arg
-if [[ $# -eq 1 ]]; then
-	filename=$1
-fi
+# Convert all arguments into a single underscore-separated string
+raw_filename="$*"
+filename=$(echo "$raw_filename" | tr " " "_")
+formatted_file_name="$(date "+%Y-%m-%d")_${filename}.md"
 
-open_file "$SECOND_BRAIN/0-inbox/"
+# Call the function
+open_file "$TARGET_DIR" "$formatted_file_name"
+

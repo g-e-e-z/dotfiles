@@ -1,7 +1,6 @@
 -- NOTE: Keymaps
 --  See `:help vim.keymap.set()`
 local cwd = vim.fn.stdpath "config" .. "/"
-local notes_dir = { os.getenv("SECOND_BRAIN") }
 local config_dir = { cwd }
 local utils = require "core.utils"
 
@@ -147,33 +146,6 @@ vim.keymap.set("n", "<leader>oS", function()
     vim.notify("Toggled Off", vim.log.levels.INFO, { title = "Spell Check" })
   end
 end, { desc = "Options | Toggle Spell Check", silent = true })
-
--- Find Notes Files
-vim.keymap.set("n", "<leader>zf", function()
-  require("telescope.builtin").find_files {
-    prompt_title = "Notes Files",
-    search_dirs = notes_dir,
-    cwd = cwd,
-  }
-end, { desc = "Notes | Find Notes Files", silent = true })
-
--- Grep Notes Files
-vim.keymap.set("n", "<leader>zg", function()
-  require("telescope.builtin").live_grep {
-    prompt_title = "Notes Files",
-    search_dirs = notes_dir,
-    cwd = cwd,
-  }
-end, { desc = "Notes | Grep Notes Files", silent = true })
-
--- Create New Notes File
--- vim.keymap.set("n", "<leader>zg", function()
---   require("telescope.builtin").live_grep {
---     prompt_title = "Notes Files",
---     search_dirs = notes_dir,
---     cwd = cwd,
---   }
--- end, { desc = "Notes | Create New Note", silent = true })
 
 -- Find Config Files
 vim.keymap.set("n", "<leader>nf", function()

@@ -71,7 +71,7 @@ return {
 			{ "<leader>r", group = "Runner", icon = "" },
 			{ "<leader>t", group = "Terminal", icon = "" },
 			{ "<leader>v", group = "Venv", icon = "" },
-			{ "<leader>z", group = "Notes", icon = "Z" },
+			{ "<leader>z", group = "Notes", icon = "" },
 		},
 	},
 }
