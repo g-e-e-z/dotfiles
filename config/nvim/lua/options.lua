@@ -46,6 +46,7 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.incsearch = true
 vim.opt.termguicolors = true
+vim.o.termguicolors = true
 vim.opt.cmdheight=1
 vim.opt.colorcolumn="80"
 vim.opt.formatoptions="co"
