@@ -53,9 +53,9 @@ return {
             --  All the info you're looking for is in `:help telescope.setup()`
             --
             defaults = {
-                -- layout_strategy = "vertical",
+                layout_strategy = "vertical",
                 sorting_strategy = "ascending",
-                layout_config = { prompt_position = "top" },
+                -- layout_config = { prompt_position = "top" },
                 file_ignore_patterns = {
                     "^%.git/"
                 },
