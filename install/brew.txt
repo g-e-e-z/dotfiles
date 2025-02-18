@@ -28,3 +28,4 @@ newsboat
 starship
 uv
 wget
+pngpaste
