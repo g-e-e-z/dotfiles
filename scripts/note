@@ -22,7 +22,7 @@ if [[ -z "$SECOND_BRAIN" ]]; then
 fi
 
 # Define the directory
-TARGET_DIR="$SECOND_BRAIN/0-inbox"
+TARGET_DIR="$SECOND_BRAIN/inbox"
 
 # Ensure at least one argument is provided
 if [[ $# -eq 0 ]]; then

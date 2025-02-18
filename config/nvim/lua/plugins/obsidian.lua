@@ -20,10 +20,10 @@ return {
 	opts = {
 		workspaces = {
 			{
-				name = "personal",
+				name = "second_brain",
 				path = os.getenv("SECOND_BRAIN"),
 				overrides = {
-					notes_subdir = "0-inbox",
+					notes_subdir = "inbox",
 				},
 			},
 		},

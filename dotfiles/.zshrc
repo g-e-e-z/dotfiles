@@ -22,7 +22,7 @@ export DOTFILES="$GHREPOS/dotfiles"
 # export LAB="$GHREPOS/lab"
 export SCRIPTS="$DOTFILES/scripts"
 export ICLOUD="$HOME/icloud"
-export SECOND_BRAIN="$HOME/Notes/personal"
+export SECOND_BRAIN="$HOME/second_brain"
 
 # Go related. In general all executables and scripts go in .local/bin
 export GOBIN="$HOME/.local/bin"
@@ -203,7 +203,7 @@ alias sed='gsed'
 
 # vim & second brain
 alias sb="cd \$SECOND_BRAIN"
-alias in="pushd .> /dev/null; cd \$SECOND_BRAIN/0-inbox/"
+alias in="pushd .> /dev/null; cd \$SECOND_BRAIN/inbox/"
 
 # newsboat
 alias nb="newsboat"
