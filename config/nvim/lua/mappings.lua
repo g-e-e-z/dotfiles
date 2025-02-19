@@ -51,7 +51,8 @@ vim.keymap.set("n", "<leader>w", function()
 end, { desc = "General | Write", silent = true })
 
 -- Quit
-vim.keymap.set("n", "<leader>q", "<cmd>qa!<cr>", { desc = "General | Quit", silent = true })
+vim.keymap.set("n", "<leader>Q", "<cmd>qa!<cr>", { desc = "General | Quit All", silent = true })
+vim.keymap.set("n", "<leader>q", "<cmd>q!<cr>", { desc = "General | Quit", silent = true })
 
 -- Close Buffer
 vim.keymap.set("n", "<leader>c", "<cmd>Bdelete!<cr>", { desc = "General | Close Buffer", silent = true })

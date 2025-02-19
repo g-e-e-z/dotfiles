@@ -8,8 +8,8 @@ return {
 		minimum_width = 50,
 		render = "default",
 		stages = "fade_in_slide_out",
-		timeout = 3000,
-		top_down = false,
+		timeout = 2000,
+		top_down = true,
 		background_color = "#000000",
 	},
 	config = function(_, opts)
