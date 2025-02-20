@@ -15,8 +15,12 @@ while IFS= read -r file; do
   files+=("$file")
 done < <(find "$SECOND_BRAIN/inbox" -type f -name "*.md")
 
-# Get the total number of files
+# Check if there are no files in the inbox
 total_files=${#files[@]}
+if [ "$total_files" -eq 0 ]; then
+  echo "No markdown files found in the inbox. Exiting..."
+  exit 0
+fi
 
 # Iterate through all markdown files in the array
 for index in "${!files[@]}"; do
@@ -40,5 +44,5 @@ for index in "${!files[@]}"; do
   fi
 done
 
-echo "Done
+echo "Done"
 
