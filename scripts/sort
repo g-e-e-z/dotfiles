@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Enable immediate exit on error or signal interruption
+set -e
+
+# Trap SIGINT (Ctrl-C) to terminate the entire script
+trap "echo 'Exiting...'; exit 0" SIGINT
+
+# Collect all directories (without hidden directories)
+DIRS=$(find . -not -path './.*' -type d)
+
+# Preload all markdown files in the source directory into an array
+files=()
+while IFS= read -r file; do
+  files+=("$file")
+done < <(find "$SECOND_BRAIN/inbox" -type f -name "*.md")
+
+# Get the total number of files
+total_files=${#files[@]}
+
+# Iterate through all markdown files in the array
+for index in "${!files[@]}"; do
+  # Get the current file
+  file="${files[$index]}"
+  filename=$(basename "$file")
+
+  # Calculate the current index (1-based index)
+  current_index=$((index + 1))
+
+  # Use fzf to select the target directory, showing the current file index and total number of files
+  TARGET_DIR=$(echo "$DIRS" | fzf --tmux --reverse --prompt="Move $filename ($current_index/$total_files) to: ")
+
+  if [ -n "$TARGET_DIR" ]; then
+    echo "Selected target directory: $TARGET_DIR"
+    # Move the file to the selected target directory
+    mv "$file" "$TARGET_DIR/"
+    echo "Moved $filename to $TARGET_DIR"
+  else
+    echo "No directory selected, skipping $filename"
+  fi
+done
+
+echo "Done
+

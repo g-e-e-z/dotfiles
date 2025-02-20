@@ -5,7 +5,7 @@ return {
 	init = function()
 		-- vim.keymap.set("n", "<leader>O", function()
 		vim.keymap.set("n", "-", function()
-            vim.cmd("Oil --float --preview")
+            vim.cmd("Oil --float")
 			-- if vim.bo.filetype == "oil" then
 			-- 	vim.cmd(":q")
 			-- else
@@ -28,6 +28,7 @@ return {
 			max_height = math.ceil(vim.o.lines * 0.9 - 4),
 			max_width = math.ceil(vim.o.columns * 0.8),
 			border = "rounded",
+            preview_split = "auto",
 			win_options = {
 				winblend = 0,
 			},
