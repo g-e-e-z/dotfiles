@@ -7,7 +7,7 @@ set -e
 trap "echo 'Exiting...'; exit 0" SIGINT
 
 # Collect all directories (without hidden directories)
-DIRS=$(find . -not -path './.*' -type d)
+DIRS=$(find "$SECOND_BRAIN/work" "$SECOND_BRAIN/personal" -type d ! -path '*/.*')
 
 # Preload all markdown files in the source directory into an array
 files=()
@@ -32,7 +32,7 @@ for index in "${!files[@]}"; do
   current_index=$((index + 1))
 
   # Use fzf to select the target directory, showing the current file index and total number of files
-  TARGET_DIR=$(echo "$DIRS" | fzf --tmux --reverse --prompt="Move $filename ($current_index/$total_files) to: ")
+  TARGET_DIR=$(echo "$DIRS" | fzf --tmux --reverse --prompt="Move $filename ($current_index/$total_files) to: " --preview "bat --style=numbers --color=always  $file")
 
   if [ -n "$TARGET_DIR" ]; then
     echo "Selected target directory: $TARGET_DIR"
