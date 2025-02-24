@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Enable immediate exit on error or signal interruption
-set -e
+# set -e
 
 # Trap SIGINT (Ctrl-C) to terminate the entire script
-trap "echo 'Exiting...'; exit 0" SIGINT
+# trap "echo 'Exiting...'; exit 0" SIGINT
 
 # Collect all directories (without hidden directories)
 DIRS=$(find "$SECOND_BRAIN/work" "$SECOND_BRAIN/personal" -type d ! -path '*/.*')
