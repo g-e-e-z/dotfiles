@@ -4,7 +4,13 @@ today=$(date +"%Y-%m-%d")
 tomorrow=$(gdate -d "tomorrow" '+%Y-%m-%d')
 # yesterday=$(gdate -d "yesterday" '+%Y-%m-%d')
 
-daily_dir="$SECOND_BRAIN"'/personal/periodic-notes/daily-notes'
+# Define target directories based on hostname
+if [[ "$MACHINE_TYPE" == "work" ]]; then
+    TARGET_DIR="$SECOND_BRAIN"'/work/periodic-notes/daily-notes'
+else
+    TARGET_DIR="$SECOND_BRAIN"'/personal/periodic-notes/daily-notes'
+fi
+daily_dir=$TARGET_DIR
 last_file=$(ls "$daily_dir" | tail -n 1)
 last_date=${last_file%.*}
 
