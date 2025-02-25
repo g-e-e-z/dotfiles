@@ -4,12 +4,9 @@ Lucene
 Denormalization
 Rebase
 Rebased
-<<<<<<< Updated upstream
 Chron
 DAU
 AWS
-=======
->>>>>>> Stashed changes
 Redis
 LRU
 PubSub
