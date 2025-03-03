@@ -205,6 +205,9 @@ alias sed='gsed'
 alias sb="cd \$SECOND_BRAIN"
 alias in="pushd .> /dev/null; cd \$SECOND_BRAIN/inbox/"
 
+alias wb="cd ~/work_brain/"
+alias wn="pushd .> /dev/null; cd ~/work_brain/inbox/"
+
 # newsboat
 alias nb="newsboat"
 alias nbu="newsboat -x print-unread"

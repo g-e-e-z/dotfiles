@@ -26,6 +26,13 @@ return {
 					notes_subdir = "inbox",
 				},
 			},
+			{
+				name = "work_brain",
+				path = os.getenv("HOME") .. "/work_brain",
+				overrides = {
+					notes_subdir = "inbox",
+				},
+			},
 		},
 		mappings = {
 			["gd"] = {
@@ -40,7 +47,7 @@ return {
 		end,
 		disable_frontmatter = true,
 		templates = {
-			folder = "templates",
+			folder = os.getenv("SECOND_BRAIN").."/templates",
 			date_format = "%Y-%m-%d",
 			time_format = "%H:%M",
 			-- A map for custom variables, the key should be the variable and the value a function
@@ -151,6 +158,8 @@ return {
 			require("telescope.builtin").find_files({
 				prompt_title = "Notes Files",
 				search_dirs = notes_dir,
+				no_ignore = true,
+                -- search_file = "%.md"
 			})
 		end, { desc = "Obsidian | Find Notes Files", silent = true })
 

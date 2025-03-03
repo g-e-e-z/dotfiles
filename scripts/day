@@ -6,17 +6,17 @@ tomorrow=$(gdate -d "tomorrow" '+%Y-%m-%d')
 
 # Define target directories based on hostname
 if [[ "$MACHINE_TYPE" == "work" ]]; then
-    TARGET_DIR="$SECOND_BRAIN"'/work/periodic-notes/daily-notes'
+    TARGET_DIR="$HOME"'/work_brain/periodic-notes/daily-notes/'
 else
-    TARGET_DIR="$SECOND_BRAIN"'/personal/periodic-notes/daily-notes'
+    TARGET_DIR="$SECOND_BRAIN"'/personal/periodic-notes/daily-notes/'
 fi
 daily_dir=$TARGET_DIR
 last_file=$(ls "$daily_dir" | tail -n 1)
 last_date=${last_file%.*}
 
-file="$daily_dir/$(date +"%Y-%m-%d").md"
+file="$daily_dir$(date +"%Y-%m-%d").md"
 
-cd "$SECOND_BRAIN" || exit
+cd "$TARGET_DIR" || exit
 
 new_note() {
 	touch "$file"
@@ -53,7 +53,7 @@ EOF
 if [ ! -f "$file" ]; then
 	echo "File does not exist, creating new daily note."
     # Populate the previous note with link to new note
-    gsed -i "s/_placeholder_/\[$today\]/" "$daily_dir""$last_file"
+    gsed -i "s/_placeholder_/\[$today\]/" "$daily_dir$last_file"
     # Create new note
 	new_note
 fi

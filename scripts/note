@@ -21,8 +21,12 @@ if [[ -z "$SECOND_BRAIN" ]]; then
     exit 1
 fi
 
-# Define the directory
-TARGET_DIR="$SECOND_BRAIN/inbox"
+
+if [[ "$MACHINE_TYPE" == "work" ]]; then
+    TARGET_DIR='~/work_brain/inbox'
+else
+    TARGET_DIR="$SECOND_BRAIN/inbox"
+fi
 
 # Ensure at least one argument is provided
 if [[ $# -eq 0 ]]; then
