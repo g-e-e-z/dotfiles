@@ -153,7 +153,7 @@ return {
 		end, { desc = "Obsidian | Insert Template" })
 
 		-- Find Notes Files
-		local notes_dir = { os.getenv("SECOND_BRAIN") }
+		local notes_dir = { os.getenv("SECOND_BRAIN"), os.getenv("HOME") .. "/work_brain" }
 		vim.keymap.set("n", "<leader>of", function()
 			require("telescope.builtin").find_files({
 				prompt_title = "Notes Files",
