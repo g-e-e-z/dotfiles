@@ -17,8 +17,8 @@ bind-key k up
 bind-key l open
 bind-key h quit
 
-bind-key Ctrl-d pagedown
-bind-key Ctrl-u pageup
+bind-key ^D pagedown
+bind-key ^U pageup
 
 # solarized
 # color background         default   default
