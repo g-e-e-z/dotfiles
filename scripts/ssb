@@ -7,18 +7,24 @@
 # trap "echo 'Exiting...'; exit 0" SIGINT
 
 # Collect all directories (without hidden directories)
-DIRS=$(find "$SECOND_BRAIN/work" "$SECOND_BRAIN/personal" -type d ! -path '*/.*')
+if [[ "$MACHINE_TYPE" == "work" ]]; then
+    INBOX_DIR="$HOME/work_brain/inbox"
+    DIRS=$(find "$HOME/work_brain" -type d ! -path '*/.*')
+else
+    INBOX_DIR="$SECOND_BRAIN/inbox"
+    DIRS=$(find "$SECOND_BRAIN/personal" -type d ! -path '*/.*')
+fi
 
 # Preload all markdown files in the source directory into an array
 files=()
 while IFS= read -r file; do
   files+=("$file")
-done < <(find "$SECOND_BRAIN/inbox" -type f -name "*.md")
+done < <(find "$INBOX_DIR" -type f -name "*.md")
 
 # Check if there are no files in the inbox
 total_files=${#files[@]}
 if [ "$total_files" -eq 0 ]; then
-  echo "No markdown files found in the inbox. Exiting..."
+  echo "No markdown files found in $INBOX_DIR. Exiting..."
   exit 0
 fi
 
