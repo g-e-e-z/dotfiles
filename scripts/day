@@ -8,7 +8,7 @@ tomorrow=$(gdate -d "tomorrow" '+%Y-%m-%d')
 if [[ "$MACHINE_TYPE" == "work" ]]; then
     TARGET_DIR="$HOME"'/work_brain/periodic-notes/daily-notes/'
 else
-    TARGET_DIR="$SECOND_BRAIN"'/personal/periodic-notes/daily-notes/'
+    TARGET_DIR="$SECOND_BRAIN"'/periodic-notes/daily-notes/'
 fi
 daily_dir=$TARGET_DIR
 last_file=$(ls "$daily_dir" | tail -n 1)

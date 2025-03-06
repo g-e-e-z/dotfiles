@@ -12,7 +12,7 @@ if [[ "$MACHINE_TYPE" == "work" ]]; then
     DIRS=$(find "$HOME/work_brain" -type d ! -path '*/.*')
 else
     INBOX_DIR="$SECOND_BRAIN/inbox"
-    DIRS=$(find "$SECOND_BRAIN/personal" -type d ! -path '*/.*')
+    DIRS=$(find "$SECOND_BRAIN" -type d ! -path '*/.*')
 fi
 
 # Preload all markdown files in the source directory into an array
