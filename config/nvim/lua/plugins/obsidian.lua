@@ -26,13 +26,6 @@ return {
 					notes_subdir = "inbox",
 				},
 			},
-			{
-				name = "work_brain",
-				path = os.getenv("HOME") .. "/work_brain",
-				overrides = {
-					notes_subdir = "inbox",
-				},
-			},
 		},
 		mappings = {
 			["gd"] = {
@@ -153,7 +146,7 @@ return {
 		end, { desc = "Obsidian | Insert Template" })
 
 		-- Find Notes Files
-		local notes_dir = { os.getenv("SECOND_BRAIN"), os.getenv("HOME") .. "/work_brain" }
+		local notes_dir = { os.getenv("SECOND_BRAIN"), os.getenv("HOME")}
 		vim.keymap.set("n", "<leader>of", function()
 			require("telescope.builtin").find_files({
 				prompt_title = "Notes Files",

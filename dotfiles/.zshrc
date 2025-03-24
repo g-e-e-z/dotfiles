@@ -128,6 +128,7 @@ if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
 fi
 
 eval "$(starship init zsh)"
+eval "$(starship preset pure-preset -o ~/.config/starship.toml)"
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
