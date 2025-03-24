@@ -59,16 +59,16 @@ git: brew
 
 misc: git
 	# is-executable git || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-	# TODO: Find a better place for this
-	gh ext install meiji163/gh-notify
-	mkdir -p "$(bat --config-dir)/themes"
-	wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
-	wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
-	wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
-	wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
+	# TODO: Find a better place for this, requires gh auth login
+	# gh ext install meiji163/gh-notify
+	# mkdir -p "$(bat --config-dir)/themes"
+	# wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
+	# wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
+	# wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
+	# wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
 
 brew-packages: brew
 	brew install $(shell cat $(DOTFILES_DIR)/install/brew.txt) || true
 
 cask-apps: brew
-	brew install $(shell cat $(DOTFILES_DIR)/install/cask.txt) || true
+	brew install --cask $(shell cat $(DOTFILES_DIR)/install/cask.txt) || true

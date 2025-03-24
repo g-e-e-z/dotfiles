@@ -1,6 +1,5 @@
 alacritty
 docker
-google-chrome
 hammerspoon
 font-jetbrains-mono-nerd-font
 postman
