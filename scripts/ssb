@@ -38,7 +38,7 @@ for index in "${!files[@]}"; do
   current_index=$((index + 1))
 
   # Use fzf to select the target directory, showing the current file index and total number of files
-  TARGET_DIR=$(echo "$DIRS" | fzf --tmux --reverse --prompt="Move $filename ($current_index/$total_files) to: " --preview "bat --style=numbers --color=always  $file")
+  TARGET_DIR=$(echo "$DIRS" | fzf --tmux 70% --reverse --prompt="Move $filename ($current_index/$total_files) to: " --preview "bat --style=numbers --color=always  $file")
 
   if [ -n "$TARGET_DIR" ]; then
     echo "Selected target directory: $TARGET_DIR"
