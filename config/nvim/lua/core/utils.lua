@@ -60,7 +60,7 @@ M.run_code = function()
       default = "go run %",
     },
     html = {
-      default = "firefox $filePath", -- NOTE: Change this based on your browser that you use
+      default = "google-chrome $filePath", -- NOTE: Change this based on your browser that you use
     },
     java = {
       default = "java %",

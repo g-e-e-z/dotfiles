@@ -1,11 +1,7 @@
 alacritty
 docker
-firefox
+google-chrome
 hammerspoon
-slack
-spotify
-font-ubuntu-mono-nerd-font
 font-jetbrains-mono-nerd-font
 postman
-zoom
 1password
