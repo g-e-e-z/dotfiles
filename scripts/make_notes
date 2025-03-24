@@ -12,3 +12,21 @@ mkdir -p "$SECOND_BRAIN"/periodic-notes
 mkdir -p "$SECOND_BRAIN"/periodic-notes/daily-notes
 mkdir -p "$SECOND_BRAIN"/periodic-notes/weekly-notes
 mkdir -p "$SECOND_BRAIN"/periodic-notes/yearly-notes
+
+file="$SECOND_BRAIN"/templates/note.md
+
+touch "$file"
+cat <<EOF >"$file"
+---
+date: {{date}}
+tags:
+  -
+hubs:
+  - "[[]]"
+urls:
+  -
+---
+
+# {{title}}
+
+EOF
