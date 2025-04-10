@@ -2,7 +2,7 @@ hyperShortcutsWork = {
     {"1", "Alacritty"}, {"2", "Firefox"}, {"3", "Postman"}, {"4", "Slack"}
 }
 hyperShortcutsHome = {
-    {"1", "Alacritty"}, {"2", "Firefox"}, {"3", "Spotify"}, {"4", "Discord"}
+    {"1", "Alacritty"}, {"2", "Google Chrome"}, {"3", "Spotify"}, {"4", "Discord"}
 }
 
 function launchOrFocusOrHide(appName)
