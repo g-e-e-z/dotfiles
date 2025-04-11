@@ -11,8 +11,7 @@ setopt inc_append_history
 bindkey -v
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
-# config
-export BROWSER="firefox"
+export BROWSER="google chrome"
 
 # directories
 export REPOS="$HOME/Repos"
@@ -21,7 +20,6 @@ export GHREPOS="$REPOS/github.com/$GITUSER"
 export DOTFILES="$GHREPOS/dotfiles"
 # export LAB="$GHREPOS/lab"
 export SCRIPTS="$DOTFILES/scripts"
-export ICLOUD="$HOME/icloud"
 export SECOND_BRAIN="$HOME/second_brain"
 
 # Go related. In general all executables and scripts go in .local/bin
@@ -31,6 +29,9 @@ export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
 # Needed for postgresql
 export LDFLAGS="-L$(brew --prefix openssl)/lib"
 export CPPFLAGS="-I$(brew --prefix openssl)/include"
+
+export VISUAL=nvim
+export EDITOR=nvim
 
 # ~~~~~~~~~~~~~~~ Path ~~~~~~~~~~~~~~~~~~~~~~~~
 export PATH="$SCRIPTS:$PATH:$GOPATH"
@@ -94,8 +95,8 @@ setopt HIST_IGNORE_DUPS
 setopt SHARE_HISTORY
 
 # ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
-#
-# ~~~~~~~~~~~~~~~ SSH ~~~~~~~~~~~~~~~~~~~~~~~~ Figure this out
+# TODO: Figure this out
+# ~~~~~~~~~~~~~~~ SSH ~~~~~~~~~~~~~~~~~~~~~~~~
 # SSH Script from arch wiki
 
 # if ! pgrep -u "$USER" ssh-agent >/dev/null; then
@@ -132,6 +133,11 @@ eval "$(starship preset pure-preset -o ~/.config/starship.toml)"
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+zstyle :prompt:pure:path color '#d79921'
+zstyle :prompt:pure:git:branch color '#458588'
+zstyle :prompt:pure:git:dirty color '#cc241d'
+zstyle :prompt:pure:git:action color '#cc241d'
+
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
 alias v=nvim
@@ -156,6 +162,8 @@ alias ls='ls --color=auto'
 
 alias tree='tree -C'
 
+alias cat='bat --paging=never'
+
 # finds all files recursively and sorts by last modification, ignore hidden files
 alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 
@@ -169,6 +177,7 @@ alias gl='git pull'
 alias gst='git status'
 alias gcd='git checkout development'
 alias lg='lazygit'
+# TODO: find a new home for these 2
 git config --global alias.co checkout
 git config --global alias.br branch
 
@@ -180,34 +189,14 @@ alias dcb='docker compose up --build'
 # gcloud
 alias gproj='gcloud config get-value project'
 
-# ricing
-zstyle :prompt:pure:path color '#d79921'
-zstyle :prompt:pure:git:branch color '#458588'
-zstyle :prompt:pure:git:dirty color '#cc241d'
-zstyle :prompt:pure:git:action color '#cc241d'
-
-# export FZF_DEFAULT_OPTS="--color=fg+:-1,bg+:-1,bg:-1,hl+:#cc241d,hl:#fb4934,prompt:#fb4934,pointer:#fb4934,spinner:#fb4934"
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
---color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
---color=marker:#babbf1,fg+:#f4b8e4,prompt:#ca9ee6,hl+:#e78284 \
---color=selected-bg:#51576d \
---multi"
-
 alias ez='v ~/.zshrc'
 alias sz='source ~/.zshrc'
-alias ea="v $XDG_CONFIG_HOME/alacritty/alacritty.toml"
-alias ev='cd ~/.config/nvim/ && vim .'
 
-# other
 alias sed='gsed'
 
 # vim & second brain
 alias sb="cd \$SECOND_BRAIN"
 alias in="pushd .> /dev/null; cd \$SECOND_BRAIN/inbox/"
-
-alias wb="cd ~/work_brain/"
-alias wn="pushd .> /dev/null; cd ~/work_brain/inbox/"
 
 # newsboat
 alias nb="newsboat"
@@ -221,12 +210,16 @@ alias kgp='kubectl get pods'
 # alias kc='kubectx'
 # alias kn='kubens'
 
-# env variables
-export VISUAL=nvim
-export EDITOR=nvim
+
+# ~~~~~~~~~~~~~~~ Theme ~~~~~~~~~~~~~~~~~~~~~~~~
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
+--color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
+--color=marker:#babbf1,fg+:#f4b8e4,prompt:#ca9ee6,hl+:#e78284 \
+--color=selected-bg:#51576d \
+--multi"
 
 export BAT_THEME="Catppuccin Frappe"
-alias cat='bat --paging=never'
 
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~
 if test -f "$HOME/.privaterc"; then
