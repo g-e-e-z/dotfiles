@@ -1,11 +1,11 @@
-hyperShortcutsWork = {
+local hyperShortcutsWork = {
     {"1", "Alacritty"}, {"2", "Firefox"}, {"3", "Postman"}, {"4", "Slack"}
 }
-hyperShortcutsHome = {
+local hyperShortcutsHome = {
     {"1", "Alacritty"}, {"2", "Google Chrome"}, {"3", "Spotify"}, {"4", "Discord"}
 }
 
-function launchOrFocusOrHide(appName)
+function LaunchOrFocusOrHide(appName)
     local frontApp = hs.application.frontmostApplication()
     if appName == frontApp:name() then
         frontApp:hide()
@@ -15,14 +15,13 @@ function launchOrFocusOrHide(appName)
 
 end
 
-machine = hs.host.localizedName()
-if machine == "monk" then
-    apps = hyperShortcutsHome
+if hs.host.localizedName() == "monk" then
+    Apps = hyperShortcutsHome
 else
-    apps = hyperShortcutsWork
+    Apps = hyperShortcutsWork
 end
 
-for _, shortcut in ipairs(apps) do
+for _, shortcut in ipairs(Apps) do
     hs.hotkey.bind({"cmd", "alt", "ctrl", "shift"}, shortcut[1],
-                   function() launchOrFocusOrHide(shortcut[2]) end)
+                   function() LaunchOrFocusOrHide(shortcut[2]) end)
 end
