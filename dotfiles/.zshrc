@@ -11,7 +11,8 @@ setopt inc_append_history
 bindkey -v
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
-export BROWSER="google chrome"
+export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+
 
 # directories
 export REPOS="$HOME/Repos"

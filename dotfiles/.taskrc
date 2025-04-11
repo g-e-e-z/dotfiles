@@ -31,4 +31,3 @@ uda.link.label=Link
 
 # tui hooks
 uda.taskwarrior-tui.shortcuts.1=~/.config/taskwarrior-tui/scripts/open_jira.sh
-

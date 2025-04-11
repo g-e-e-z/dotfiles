@@ -66,6 +66,7 @@ misc: git
 	# wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
 	# wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
 	# wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
+	# bat cache --build
 
 brew-packages: brew
 	brew install $(shell cat $(DOTFILES_DIR)/install/brew.txt) || true
