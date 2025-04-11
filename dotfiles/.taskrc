@@ -9,10 +9,23 @@ news.version=3.4.1
 #hooks.location=~/.config/task/hooks
 
 
-uda.link.type=string
-uda.link.label=Link
-
-
 report.list.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due,until.age,description.count,link,urgency
 report.list.labels=ID,Active,Age,D,P,Project,Tags,R,Sch,Due,Until,Description,Link,Urg
 
+report.next.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due,until.age,description.count,link,urgency
+report.next.labels=ID,Active,Age,D,P,Project,Tags,R,Sch,Due,Until,Description,Link,Urg
+# ~~~~~ User Defined Attributes ~~~~~
+color.uda.priority.H=color255
+color.uda.priority.L=color245
+color.uda.priority.M=color250
+
+uda.priority.label=Priority
+uda.priority.type=string
+uda.priority.values=H,M,L,
+
+urgency.uda.priority.H.coefficient=6.0
+urgency.uda.priority.L.coefficient=1.8
+urgency.uda.priority.M.coefficient=3.9
+
+uda.link.type=string
+uda.link.label=Link

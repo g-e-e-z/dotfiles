@@ -210,6 +210,7 @@ alias kgp='kubectl get pods'
 # alias kc='kubectx'
 # alias kn='kubens'
 
+alias tt='taskwarrior-tui'
 
 # ~~~~~~~~~~~~~~~ Theme ~~~~~~~~~~~~~~~~~~~~~~~~
 export FZF_DEFAULT_OPTS=" \
