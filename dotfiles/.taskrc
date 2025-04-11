@@ -1,5 +1,4 @@
 # [Created by task 3.3.0 1/28/2025 10:49:33]
-# data.location=/Users/alexgordon/.task
 news.version=3.4.1
 
 # To use the default location of the XDG directories,
@@ -29,3 +28,7 @@ urgency.uda.priority.M.coefficient=3.9
 
 uda.link.type=string
 uda.link.label=Link
+
+# tui hooks
+uda.taskwarrior-tui.shortcuts.1=~/.config/taskwarrior-tui/scripts/open_jira.sh
+
