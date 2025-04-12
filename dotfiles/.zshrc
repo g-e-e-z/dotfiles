@@ -214,14 +214,31 @@ alias kgp='kubectl get pods'
 alias tt='taskwarrior-tui'
 
 # ~~~~~~~~~~~~~~~ Theme ~~~~~~~~~~~~~~~~~~~~~~~~
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
---color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
---color=marker:#babbf1,fg+:#f4b8e4,prompt:#ca9ee6,hl+:#e78284 \
---color=selected-bg:#51576d \
---multi"
+# Catpuccin
+# export FZF_DEFAULT_OPTS=" \
+# --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
+# --color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
+# --color=marker:#babbf1,fg+:#f4b8e4,prompt:#ca9ee6,hl+:#e78284 \
+# --color=selected-bg:#51576d \
+# --multi"
 
-export BAT_THEME="Catppuccin Frappe"
+# export BAT_THEME="Catppuccin Frappe"
+
+# Kanagawa Wave
+# export FZF_DEFAULT_OPTS=" \
+#   --color=bg+:#1F1F28,bg:#1F1F28,spinner:#DCA561,hl:#7E9CD8 \
+#   --color=fg:#DCD7BA,header:#7FB4CA,info:#98BB6C,pointer:#C34043 \
+#   --color=marker:#E82424,fg+:#DCD7BA,prompt:#957FB8,hl+:#7E9CD8\
+#   --color=selected-bg:#C34043 \
+#   --multi"
+
+# gruvbox
+export FZF_DEFAULT_OPTS=" \
+  --color=bg+:#282828,bg:#282828,spinner:#FE8019,hl:#83A598 \
+  --color=fg:#D8D8D8,header:#8EC07C,info:#B8BB26,pointer:#FB4934 \
+  --color=marker:#D75F5F,fg+:#D8D8D8,prompt:#D3869B,hl+:#83A598 \
+  --color=selected-bg:#FB4934 \
+  --multi"
 
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~
 if test -f "$HOME/.privaterc"; then
