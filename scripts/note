@@ -33,7 +33,8 @@ fi
 # Convert all arguments into a single underscore-separated string
 raw_filename="$*"
 filename=$(echo "$raw_filename" | tr " " "_")
-formatted_file_name="$(date "+%Y-%m-%d")_${filename}.md"
+# formatted_file_name="$(date "+%Y-%m-%d")_${filename}.md"
+formatted_file_name="${filename}.md"
 
 echo $formatted_file_name
 # Call the function

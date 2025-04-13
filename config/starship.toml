@@ -11,19 +11,20 @@ $python\
 $character"""
 
 [directory]
-style = "fg:#b8bb26" # Gruvbox green
+style = "blue"
 
 [character]
-success_symbol = "[❯](fg:#fabd2f)"     # Gruvbox yellow
-error_symbol = "[❯](fg:#fb4934)"       # Gruvbox red
-vimcmd_symbol = "[❮](fg:#83a598)"      # Gruvbox blue
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
 [git_branch]
 format = "[$branch]($style)"
 style = "bright-black"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "fg:#d3869b"  # Gruvbox purple
+style = "cyan"
 conflicted = "​"
 untracked = "​"
 modified = "​"
@@ -38,7 +39,7 @@ style = "bright-black"
 
 [cmd_duration]
 format = "[$duration]($style) "
-style = "fg:#fe8019" # Gruvbox orange
+style = "yellow"
 
 [python]
 format = "[$virtualenv]($style) "

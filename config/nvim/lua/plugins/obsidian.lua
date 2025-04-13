@@ -38,6 +38,7 @@ return {
 		note_id_func = function(title)
 			return string.gsub(title, " ", "_")
 		end,
+        new_notes_location = "notes_subdir",
 		disable_frontmatter = true,
 		templates = {
 			folder = os.getenv("SECOND_BRAIN").."/templates",
@@ -99,7 +100,7 @@ return {
 		local function format_title(line_num)
 			local title = vim.fn.getline(line_num)
 
-			title = title:sub(14)
+			title = title:sub(3)
 			title = title:gsub("_", " ")
 			title = title:gsub("(%w+)", function(word)
 				return word:sub(1, 1):upper() .. word:sub(2):lower()
@@ -111,14 +112,15 @@ return {
 
 		vim.keymap.set("n", "<leader>on", function()
 			-- Get the current date
-			local current_date = os.date("%Y-%m-%d")
+			-- local current_date = os.date("%Y-%m-%d")
 
 			-- Prompt user for the filename
 			local user_input = vim.fn.input("Enter filename: ")
 
 			-- If user provides an input, prepend the date and create the file
 			if user_input and user_input ~= "" then
-				local formatted_filename = current_date .. "_" .. user_input
+				-- local formatted_filename = current_date .. "_" .. user_input
+				local formatted_filename = user_input
 				vim.cmd("ObsidianNew " .. formatted_filename)
 
 				-- Delete all text
