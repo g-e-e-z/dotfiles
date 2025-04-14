@@ -33,11 +33,9 @@ urls:
 
 # $(date +"%B %d, %Y")
 
-## Previous Tasks
-$(cat $daily_dir$last_file | grep "\- \[ \]")
-
 ## Tasks
-- [ ] Task 1
+
+$(cat $daily_dir$last_file | grep "\- \[ \]")
 
 ## Log
 EOF
