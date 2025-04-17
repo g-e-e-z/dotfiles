@@ -34,6 +34,8 @@ export CPPFLAGS="-I$(brew --prefix openssl)/include"
 export VISUAL=nvim
 export EDITOR=nvim
 
+export MANPAGER="nvim +Man\!"
+
 # ~~~~~~~~~~~~~~~ Path ~~~~~~~~~~~~~~~~~~~~~~~~
 export PATH="$SCRIPTS:$PATH:$GOPATH"
 
