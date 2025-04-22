@@ -60,6 +60,7 @@ return {
 	},
 	config = function()
 		local config = {
+			-- virtual_text = { current_line = true },
 			virtual_text = true,
 			update_in_insert = false,
 			underline = true,

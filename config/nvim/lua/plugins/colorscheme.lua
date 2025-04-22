@@ -8,16 +8,17 @@ return {
     -- "catppuccin/nvim",
     -- "rebelot/kanagawa.nvim",
     -- name = "kanagawa",
-	"ellisonleao/gruvbox.nvim",
-	name = "gruvbox",
+	"sainnhe/gruvbox-material",
+	-- name = "gruvbox",
     lazy = false,
 	priority = 1000, -- Make sure to load this before all the other start plugins.
 	init = function()
-		vim.cmd.colorscheme "gruvbox"
+		vim.cmd.colorscheme "gruvbox-material"
         -- vim.cmd.colorscheme "catppuccin-frappe"
+        -- vim.cmd.colorscheme "kanagawa dragon"
         -- vim.cmd.colorscheme "kanagawa"
 
 		-- You can configure highlights by doing something like:
-		-- vim.cmd.hi("Comment gui=none")
+		vim.cmd.hi("Comment gui=none")
 	end,
 }
