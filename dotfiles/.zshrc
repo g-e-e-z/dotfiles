@@ -13,7 +13,6 @@ bindkey -v
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
-
 # directories
 export REPOS="$HOME/Repos"
 export GITUSER="g-e-e-z"
