@@ -1,5 +1,5 @@
 return {
-	"epwalsh/obsidian.nvim",
+	"obsidian-nvim/obsidian.nvim",
 	version = "*", -- recommended, use latest release instead of latest commit
 	lazy = false,
 	ft = "markdown",
@@ -27,6 +27,15 @@ return {
 				},
 			},
 		},
+		-- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
+		completion = {
+			-- Enables completion using nvim_cmp
+			nvim_cmp = true,
+			-- Enables completion using blink.cmp
+			blink = false,
+			-- Trigger completion at 2 chars.
+			min_chars = 2,
+		},
 		mappings = {
 			["gd"] = {
 				action = function()
@@ -38,10 +47,10 @@ return {
 		note_id_func = function(title)
 			return string.gsub(title, " ", "_")
 		end,
-        new_notes_location = "notes_subdir",
+		new_notes_location = "notes_subdir",
 		disable_frontmatter = true,
 		templates = {
-			folder = os.getenv("SECOND_BRAIN").."/templates",
+			folder = os.getenv("SECOND_BRAIN") .. "/templates",
 			date_format = "%Y-%m-%d",
 			time_format = "%H:%M",
 			-- A map for custom variables, the key should be the variable and the value a function
@@ -154,7 +163,7 @@ return {
 				prompt_title = "Notes Files",
 				search_dirs = notes_dir,
 				no_ignore = true,
-                -- search_file = "%.md"
+				-- search_file = "%.md"
 			})
 		end, { desc = "Obsidian | Find Notes Files", silent = true })
 
