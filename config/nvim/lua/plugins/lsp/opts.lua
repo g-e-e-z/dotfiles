@@ -45,7 +45,7 @@ end
 -- See `:help CursorHold` for information about when this is executed
 -- Highlight symbol under cursor
 M.lsp_highlight = function(client, bufnr)
-	if client.supports_method("textDocument/documentHighlight") then
+	if client:supports_method("textDocument/documentHighlight") then
 		local highlight_augroup = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
 		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 			buffer = bufnr,
@@ -74,7 +74,7 @@ M.on_attach = function(_, bufnr)
 end
 
 M.on_init = function(client, _)
-	if client.supports_method("textDocument/semanticTokens") then
+	if client:supports_method("textDocument/semanticTokens") then
 		client.server_capabilities.semanticTokensProvider = nil
 	end
 end
