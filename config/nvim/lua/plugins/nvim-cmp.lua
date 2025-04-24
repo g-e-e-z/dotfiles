@@ -41,9 +41,9 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-e>"] = cmp.mapping.confirm({ select = true }), -- Accept ([e]nter) the completion.
 
-				["<C-Space>"] = cmp.mapping.complete({}), -- Manually trigger a completion from nvim-cmp.
+				-- ["<C-Space>"] = cmp.mapping.complete({}), -- Manually trigger a completion from nvim-cmp.
 
-				["<C-l>"] = cmp.mapping(
+				["<C-Space>"] = cmp.mapping(
 					function() -- <c-l> will move you to the right of each of the expansion locations.
 						if luasnip.expand_or_locally_jumpable() then
 							luasnip.expand_or_jump()
