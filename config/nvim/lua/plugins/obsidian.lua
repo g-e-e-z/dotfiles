@@ -97,8 +97,8 @@ return {
 
 		obsidian.setup(opts)
 
-		vim.keymap.set("n", "<leader>ot>", obsidian.util.toggle_checkbox, { desc = "Obsidian | Toggle Checkbox" })
-		vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "Obsidian | Open in Obsidian App" })
+		vim.keymap.set("n", "<leader>oo", obsidian.util.toggle_checkbox, { desc = "Obsidian | Toggle Checkbox" })
+		-- vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "Obsidian | Open in Obsidian App" })
 		vim.keymap.set("n", "<leader>ob", "<cmd>ObsidianBacklinks<CR>", { desc = "Obsidian | Show Obsidian Backlinks" })
 		vim.keymap.set("n", "<leader>ol", "<cmd>ObsidianLinks<CR>", { desc = "Obsidian | Show Obsidian Links" })
 		vim.keymap.set("n", "<leader>os", "<cmd>ObsidianSearch<CR>", { desc = "Obsidian | Search Obsidian" })

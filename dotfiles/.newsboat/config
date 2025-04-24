@@ -1,6 +1,6 @@
 # general settings
 text-width 72
-browser "open -a 'firefox' %u"
+browser "open -a 'google chrome' %u"
 auto-reload yes
 max-items 100
 
