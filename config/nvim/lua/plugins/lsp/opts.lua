@@ -9,12 +9,22 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 M.capabilities = cmp_nvim_lsp.default_capabilities()
 
 M.lsp_keymaps = function(bufnr)
-	keymap("n", "gd", require("telescope.builtin").lsp_definitions, { buffer = bufnr, desc = "Go To Definition" , silent = true })
-	keymap("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "Go To Declaration" , silent = true })
+	keymap("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "Go To Definition", silent = true })
+	keymap("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "Go To Declaration", silent = true })
 	-- keymap("n", "gr", require("telescope.builtin").lsp_references, { buffer = bufnr, silent = true })
 	keymap("n", "gI", require("telescope.builtin").lsp_implementations, { buffer = bufnr, silent = true }) -- Never used this
-	keymap("n", "<leader>D", require("telescope.builtin").lsp_type_definitions, { buffer = bufnr, desc = "Go To Type Definitions", silent = true })
-	keymap("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols, { buffer = bufnr, desc = "Document Symbols" , silent = true })
+	keymap(
+		"n",
+		"<leader>D",
+		require("telescope.builtin").lsp_type_definitions,
+		{ buffer = bufnr, desc = "Go To Type Definitions", silent = true }
+	)
+	keymap(
+		"n",
+		"<leader>ds",
+		require("telescope.builtin").lsp_document_symbols,
+		{ buffer = bufnr, desc = "Document Symbols", silent = true }
+	)
 	keymap(
 		"n",
 		"<leader>Ds",
@@ -40,6 +50,39 @@ M.lsp_keymaps = function(bufnr)
 			end
 		end
 	end, { desc = "LSP | Toggle Inlay Hints", silent = true })
+	---
+	------ TODO: Find how to make this only apply to clangd
+	keymap("n", "<leader>ls", function()
+		local fname = vim.fn.expand("%:t:r")    -- filename without extension
+		local ext = vim.fn.expand("%:e")        -- current extension
+		local targets = {}
+
+		if ext == "cpp" or ext == "cc" or ext == "cxx" then
+			targets = {
+				"include/**/" .. fname .. ".h",
+				"include/**/" .. fname .. ".hpp",
+				"inc/**/" .. fname .. ".h",
+			}
+		elseif ext == "h" or ext == "hpp" then
+			targets = {
+				"src/**/" .. fname .. ".cpp",
+				"lib/**/" .. fname .. ".cpp",
+			}
+		else
+			print("Unsupported file type: " .. ext)
+			return
+		end
+
+		for _, pattern in ipairs(targets) do
+			local matches = vim.fn.glob(pattern, true, true)
+			if #matches > 0 then
+				vim.cmd("edit " .. matches[1])
+				return
+			end
+		end
+
+		print("No matching file found for: " .. fname)
+	end, { desc = "LSP CPP Smart switch .cpp/.h" })
 end
 
 -- See `:help CursorHold` for information about when this is executed
