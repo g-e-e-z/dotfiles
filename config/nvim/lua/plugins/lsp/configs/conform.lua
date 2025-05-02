@@ -41,5 +41,12 @@ return {
 			return { timeout_ms = 500, lsp_format = "fallback" }
 		end,
 		formatters_by_ft = formatters_by_ft,
+		formatters = {
+			clang_format = {
+				prepend_args = {
+					"--style={BasedOnStyle: Google, IndentWidth: 4}",
+				},
+			},
+		},
 	},
 }
