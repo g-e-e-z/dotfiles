@@ -100,3 +100,16 @@ autocmd("FileType", {
 	group = general,
 	desc = "Enable Wrap in these filetypes",
 })
+
+local overseer = augroup("Overseer", { clear = true })
+
+autocmd("FileType", {
+  pattern = "OverseerList",
+  callback = function()
+    vim.opt_local.relativenumber = false
+    vim.opt_local.number = false
+    vim.cmd "startinsert!"
+  end,
+  group = overseer,
+  desc = "Enter Normal Mode In OverseerList",
+})
