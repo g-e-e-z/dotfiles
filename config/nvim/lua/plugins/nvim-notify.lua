@@ -5,11 +5,11 @@ return {
 	event = "VeryLazy",
 	opts = {
 		level = 1,
-		minimum_width = 50,
+		minimum_width = 25,
 		render = "default",
 		stages = "fade_in_slide_out",
 		timeout = 2000,
-		top_down = true,
+		top_down = false,
 		background_color = "#000000",
 	},
 	config = function(_, opts)

@@ -7,6 +7,7 @@ return {
 		"leoluz/nvim-dap-go",
 		"rcarriga/nvim-dap-ui",
 		"williamboman/mason.nvim",
+		"julianolf/nvim-dap-lldb",
 	},
 	config = function()
 		local dap = require("dap")
@@ -14,6 +15,7 @@ return {
 
 		require("dapui").setup()
 		require("dap-go").setup()
+		require("dap-lldb").setup()
 
 		vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 
