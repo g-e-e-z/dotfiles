@@ -5,7 +5,7 @@ return {
 	event = "VeryLazy",
 	opts = {
 		level = 1,
-		minimum_width = 25,
+		minimum_width = 35,
 		render = "default",
 		stages = "fade_in_slide_out",
 		timeout = 2000,

@@ -128,6 +128,17 @@ vim.keymap.set("n", "<A-j>", "<cmd>m .+1<CR>==", { desc = "General | Move the li
 -- Move the line down
 vim.keymap.set("n", "<A-k>", "<cmd>m .-2<CR>==", { desc = "General | Move the line down", silent = true })
 
+-- Toggle Theme Mode
+vim.keymap.set("n", "<leader>Ot", function()
+    if vim.opt.background:get() == "dark" then
+		vim.opt.background = "light"
+        vim.notify("Background set to light", vim.log.levels.INFO, { title = "Light Mode" })
+	else
+		vim.opt.background = "dark"
+        vim.notify("Background set to dark", vim.log.levels.INFO, { title = "Dark Mode" })
+	end
+end, { desc = "Options | Toggle Theme Mode", silent = true })
+
 -- Toggle Wrap
 vim.keymap.set("n", "<leader>Ow", function()
   vim.wo.wrap = not vim.wo.wrap
