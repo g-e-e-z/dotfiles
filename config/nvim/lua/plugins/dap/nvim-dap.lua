@@ -15,7 +15,7 @@ return {
 
 		require("dapui").setup()
 		require("dap-go").setup()
-		require("dap-lldb").setup()
+		-- require("dap-lldb").setup()
 
 		vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 

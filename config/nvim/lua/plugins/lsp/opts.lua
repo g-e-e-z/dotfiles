@@ -35,10 +35,10 @@ M.lsp_keymaps = function(bufnr)
 	keymap("n", "K", vim.lsp.buf.hover, { buffer = bufnr, silent = true })
 	keymap("n", "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, desc = "LSP | Code Action", silent = true })
 
-	keymap("n", "<leader>lf", "<cmd>Format<cr>", { desc = "LSP | Format", silent = true })
-	keymap("n", "<leader>lF", "<cmd>FormatToggle<cr>", { desc = "LSP | Toggle Autoformat", silent = true })
-	keymap("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP | Info", silent = true })
-	keymap("n", "<leader>lR", "<cmd>LspRestart<cr>", { desc = "LSP | Restart", silent = true })
+	-- keymap("n", "<leader>lf", "<cmd>Format<cr>", { desc = "LSP | Format", silent = true })
+	-- keymap("n", "<leader>lF", "<cmd>FormatToggle<cr>", { desc = "LSP | Toggle Autoformat", silent = true })
+	-- keymap("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP | Info", silent = true })
+	-- keymap("n", "<leader>lR", "<cmd>LspRestart<cr>", { desc = "LSP | Restart", silent = true })
 
 	keymap("n", "<leader>lh", function()
 		if vim.version().minor >= 10 then
@@ -112,8 +112,9 @@ M.lsp_highlight = function(client, bufnr)
 	end
 end
 
-M.on_attach = function(_, bufnr)
-	M.lsp_keymaps(bufnr)
+M.on_attach = function(client, bufnr)
+  M.lsp_keymaps(bufnr)
+  M.lsp_highlight(client, bufnr)
 end
 
 M.on_init = function(client, _)

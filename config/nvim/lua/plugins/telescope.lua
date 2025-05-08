@@ -170,12 +170,12 @@ return {
 			"<cmd>Telescope highlights<cr>",
 			{ desc = "Telescope | Highlights", silent = true }
 		)
-		vim.keymap.set(
-			"n",
-			"<leader>ls",
-			"<cmd>Telescope lsp_document_symbols<cr>",
-			{ desc = "Telescope | Buffer Symbols", silent = true }
-		)
+		-- vim.keymap.set(
+		-- 	"n",
+		-- 	"<leader>ls",
+		-- 	"<cmd>Telescope lsp_document_symbols<cr>",
+		-- 	{ desc = "Telescope | Buffer Symbols", silent = true }
+		-- )
 		vim.keymap.set(
 			"n",
 			"<leader>lS",
