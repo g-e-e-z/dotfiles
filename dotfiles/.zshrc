@@ -18,7 +18,7 @@ export REPOS="$HOME/Repos"
 export GITUSER="g-e-e-z"
 export GHREPOS="$REPOS/github.com/$GITUSER"
 export DOTFILES="$GHREPOS/dotfiles"
-# export LAB="$GHREPOS/lab"
+export LAB="$GHREPOS/homelab"
 export SCRIPTS="$DOTFILES/scripts"
 export SECOND_BRAIN="$HOME/second_brain"
 
@@ -149,6 +149,7 @@ alias vim=nvim
 alias ..="cd .."
 alias scripts='cd $SCRIPTS'
 alias dot='cd $GHREPOS/dotfiles'
+alias lab='cd $GHREPOS/homelab'
 alias repos='cd $REPOS'
 alias cdgo='cd $GHREPOS/go/'
 alias c="clear"

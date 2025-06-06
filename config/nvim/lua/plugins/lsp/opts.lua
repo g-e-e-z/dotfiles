@@ -55,16 +55,22 @@ M.lsp_keymaps = function(bufnr)
 	keymap("n", "<leader>ls", function()
 		local fname = vim.fn.expand("%:t:r")    -- filename without extension
 		local ext = vim.fn.expand("%:e")        -- current extension
+        local dir = vim.fn.expand("%:p:h")
 		local targets = {}
 
 		if ext == "cpp" or ext == "cc" or ext == "cxx" then
 			targets = {
+                dir .. "/" .. fname .. ".h",
+                dir .. "/" .. fname .. ".hpp",
 				"include/**/" .. fname .. ".h",
 				"include/**/" .. fname .. ".hpp",
 				"inc/**/" .. fname .. ".h",
 			}
 		elseif ext == "h" or ext == "hpp" then
 			targets = {
+                dir .. "/" .. fname .. ".cpp",
+                dir .. "/" .. fname .. ".cc",
+                dir .. "/" .. fname .. ".cxx",
 				"src/**/" .. fname .. ".cpp",
 				"lib/**/" .. fname .. ".cpp",
 			}

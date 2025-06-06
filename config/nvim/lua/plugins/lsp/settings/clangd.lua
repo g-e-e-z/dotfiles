@@ -3,6 +3,7 @@ return {
     "clangd",
     -- "--all-scopes-completion",
     -- "--suggest-missing-includes",
+    "--compile-commands-dir=build",
     -- "--background-index",
     -- "--pch-storage=disk",
     -- "--cross-file-rename",

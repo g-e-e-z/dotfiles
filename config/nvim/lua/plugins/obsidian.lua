@@ -1,3 +1,4 @@
+local SECOND_BRAIN = os.getenv("SECOND_BRAIN") or "$HOME/second_brain"
 return {
 	"obsidian-nvim/obsidian.nvim",
 	version = "*", -- recommended, use latest release instead of latest commit
@@ -21,7 +22,7 @@ return {
 		workspaces = {
 			{
 				name = "second_brain",
-				path = os.getenv("SECOND_BRAIN"),
+				path = SECOND_BRAIN,
 				overrides = {
 					notes_subdir = "inbox",
 				},
@@ -50,7 +51,7 @@ return {
 		new_notes_location = "notes_subdir",
 		disable_frontmatter = true,
 		templates = {
-			folder = os.getenv("SECOND_BRAIN") .. "/templates",
+			folder = SECOND_BRAIN .. "/templates",
 			date_format = "%Y-%m-%d",
 			time_format = "%H:%M",
 			-- A map for custom variables, the key should be the variable and the value a function
