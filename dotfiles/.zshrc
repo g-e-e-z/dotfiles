@@ -1,4 +1,3 @@
-# ~/.zshrc
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # If not running interactively, don't do anything
@@ -36,7 +35,7 @@ export EDITOR=nvim
 export MANPAGER="nvim +Man\!"
 
 # ~~~~~~~~~~~~~~~ Path ~~~~~~~~~~~~~~~~~~~~~~~~
-export PATH="$SCRIPTS:$PATH:$GOPATH"
+# export PATH="$PATH:$GOPATH" # GOPATH isnt defined here
 
 pathappend() {
     local arg
@@ -95,6 +94,7 @@ SAVEHIST=100000
 setopt HIST_IGNORE_SPACE
 setopt HIST_IGNORE_DUPS
 setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
 
 # ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
 # TODO: Figure this out
@@ -173,6 +173,7 @@ alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 alias sv='sudoedit'
 alias t='tmux'
 alias e='exit'
+alias sen='source .venv/bin/activate'
 
 # git
 alias gp='git push'
@@ -180,9 +181,10 @@ alias gl='git pull'
 alias gst='git status'
 alias gcd='git checkout development'
 alias lg='lazygit'
+
 # TODO: find a new home for these 2
-git config --global alias.co checkout
-git config --global alias.br branch
+# git config --global alias.co checkout
+# git config --global alias.br branch
 
 # docker
 alias ldo='lazydocker'
@@ -250,29 +252,38 @@ else
 fi
 
 # ~~~~~~~~~~~~~~~ Completion ~~~~~~~~~~~~~~~~~~~~~~~~
-
+# Add custom and Homebrew completion directories
 fpath+=~/.zfunc
+fpath+=/opt/homebrew/share/zsh-completions
 
-FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
+# Load completions
 autoload -Uz compinit
 compinit -u
 
+# Enable selection UI for completions
 zstyle ':completion:*' menu select
 
-# Example to install completion:
+# fzf integration
+# Load completion and key bindings from Homebrew FZF
+source /opt/homebrew/opt/fzf/shell/completion.zsh
+source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+
+# Load additional Homebrew-managed zsh completions
+if [[ -r "/opt/homebrew/etc/profile.d/zsh_completion.sh" ]]; then
+  source "/opt/homebrew/etc/profile.d/zsh_completion.sh"
+fi
+
+# Example: how to install completion manually
 # talosctl completion zsh > ~/.zfunc/_talosctl
 
+# ~~~~~~~~~~~~~~~ Startup Dashboard ~~~~~~~~~~~~~~~~~~~~~~~~
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    source /opt/homebrew/opt/fzf/shell/completion.zsh
-    source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
-    # brew zsh completion: TODO: What is this syntax below actually doing
-    [[ -r ""/opt/homebrew/etc/profile.d/zsh_completion.sh"" ]] && . "/opt/homebrew/etc/profile.d/zsh_completion.sh"
+if [[ -o interactive ]]; then
+  if command -v task &>/dev/null; then
+    task list
+  fi
 
-else
-    #	Figure this out when I start using a Linux machine
-	#	source /usr/share/fzf/key-bindings.bash
-	#	source /usr/share/fzf/completion.bash
-	[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+  if command -v newsboat &>/dev/null; then
+    newsboat -x print-unread
+  fi
 fi
