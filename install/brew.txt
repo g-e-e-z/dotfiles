@@ -3,6 +3,8 @@ tmux
 neovim
 stow
 kubectl
+kubectx
+kubens
 libpq
 lazygit
 lazydocker
