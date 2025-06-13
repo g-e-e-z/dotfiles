@@ -16,6 +16,7 @@ fzf
 gnu-sed
 grep
 jq
+yq
 jd
 ripgrep
 gh
@@ -26,6 +27,7 @@ go
 rust
 luarocks
 zsh-syntax-highlighting
+zsh-autosuggestions
 newsboat
 starship
 uv

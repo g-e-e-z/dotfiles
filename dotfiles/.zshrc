@@ -23,6 +23,7 @@ export SECOND_BRAIN="$HOME/second_brain"
 
 # Go related. In general all executables and scripts go in .local/bin
 export GOBIN="$HOME/.local/bin"
+export GOPATH="$HOME/go"
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
 
 # Needed for postgresql
@@ -131,14 +132,6 @@ if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
 fi
 
 eval "$(starship init zsh)"
-eval "$(starship preset pure-preset -o ~/.config/starship.toml)"
-
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-zstyle :prompt:pure:path color '#d79921'
-zstyle :prompt:pure:git:branch color '#458588'
-zstyle :prompt:pure:git:dirty color '#cc241d'
-zstyle :prompt:pure:git:action color '#cc241d'
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -178,6 +171,7 @@ alias sen='source .venv/bin/activate'
 # git
 alias gp='git push'
 alias gl='git pull'
+alias glog='git log -n 5 --graph --decorate --oneline'
 alias gst='git status'
 alias gcd='git checkout development'
 alias lg='lazygit'
@@ -209,24 +203,23 @@ alias nbu="newsboat -x print-unread"
 
 # kubectl
 alias k='kubectl'
+alias kgp='kubectl get pods'
+alias kc='kubectx'
+alias kn='kubens'
 # source <(kubectl completion bash)
 # complete -o default -F __start_kubectl k
-alias kgp='kubectl get pods'
-# alias kc='kubectx'
-# alias kn='kubens'
 
 alias tt='taskwarrior-tui'
 
 # ~~~~~~~~~~~~~~~ Theme ~~~~~~~~~~~~~~~~~~~~~~~~
 # Catpuccin
+# export BAT_THEME="Catppuccin Frappe"
 # export FZF_DEFAULT_OPTS=" \
 # --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
 # --color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
 # --color=marker:#babbf1,fg+:#f4b8e4,prompt:#ca9ee6,hl+:#e78284 \
 # --color=selected-bg:#51576d \
 # --multi"
-
-# export BAT_THEME="Catppuccin Frappe"
 
 # Kanagawa Wave
 # export FZF_DEFAULT_OPTS=" \
@@ -237,6 +230,7 @@ alias tt='taskwarrior-tui'
 #   --multi"
 
 # gruvbox
+export BAT_THEME="gruvbox-dark"
 export FZF_DEFAULT_OPTS=" \
   --color=bg+:#282828,bg:#282828,spinner:#FE8019,hl:#83A598 \
   --color=fg:#D8D8D8,header:#8EC07C,info:#B8BB26,pointer:#FB4934 \
@@ -275,6 +269,14 @@ fi
 
 # Example: how to install completion manually
 # talosctl completion zsh > ~/.zfunc/_talosctl
+
+# ~~~~~~~~~~~~~~~ Autosuggestions & Highlighting ~~~~~~~~~~~~~~~~~~~~~~~~
+
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#665c54'
+bindkey '^E' autosuggest-accept
 
 # ~~~~~~~~~~~~~~~ Startup Dashboard ~~~~~~~~~~~~~~~~~~~~~~~~
 
