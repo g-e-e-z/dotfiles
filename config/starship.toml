@@ -48,10 +48,26 @@ format = "[$symbol$context( \\($namespace\\))]($style) "
 style = "color_blue"
 disabled = false
 
+[[kubernetes.contexts]]
+context_pattern = ".*integration.*"
+context_alias = "gke-int"
+
+[[kubernetes.contexts]]
+context_pattern = ".*staging.*"
+context_alias = "gke-stg"
+
+[[kubernetes.contexts]]
+context_pattern = ".*blue.*"
+context_alias = "gke-prod-blue"
+
+[[kubernetes.contexts]]
+context_pattern = ".*green.*"
+context_alias = "gke-prod-green"
+
 [git_branch]
 format = "[$symbol$branch ]($style)"
 symbol = " "
-style = "color_bg3"
+style = "color_purple"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
@@ -70,15 +86,15 @@ format = "[$symbol $version](bold white) "
 symbol="⛵"
 disabled = false
 
-[aws]
-format = "on [$symbol $profile]($style) "
-symbol="⛅"
+# [aws]
+# format = "on [$symbol $profile]($style) "
+# symbol="⛅"
 
 # Display the environment variable used to vary the active gcloud configuration.
-[env_var]
-variable="CLOUDSDK_ACTIVE_CONFIG_NAME"
-format="$symbol  [$env_value]($style) "
-symbol="☁️"
+# [env_var]
+# variable="CLOUDSDK_ACTIVE_CONFIG_NAME"
+# format="$symbol  [$env_value]($style) "
+# symbol="☁️"
 
 # Run an Azure CLI command to display the current subscription.
 # This requires jq is installed.
@@ -94,4 +110,4 @@ style = "color_bg3"
 
 [cmd_duration]
 format = "[ $duration]($style) "
-style = "color_purple"
+style = "color_orange"
