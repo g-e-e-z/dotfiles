@@ -24,12 +24,21 @@ return {
         -- Autoinstall languages that are not installed
         auto_install = true,
         highlight = {
-            enable = true,
-            -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-            --  If you are experiencing weird indenting issues, add the language to
-            --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-            additional_vim_regex_highlighting = { "ruby" },
+          enable = true,
+          disable = function(_, bufnr)
+            local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+            local excluded = { "", "lspinfo", "checkhealth", "man", "help", "tsplayground", "starter", "null-ls-info" }
+            return vim.tbl_contains(excluded, ft)
+          end,
+          additional_vim_regex_highlighting = { "ruby" },
         },
+        -- highlight = {
+        --     enable = true,
+        --     -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+        --     --  If you are experiencing weird indenting issues, add the language to
+        --     --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+        --     additional_vim_regex_highlighting = { "ruby" },
+        -- },
         indent = { enable = true, disable = { "ruby" } },
         textobjects = {
             select = {
