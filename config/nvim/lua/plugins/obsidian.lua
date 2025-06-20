@@ -153,7 +153,7 @@ return {
 		vim.keymap.set("n", "<leader>ot", function()
 			vim.cmd("ObsidianTemplate note")
 			-- Format Title
-			format_title(11)
+			format_title(9)
 			vim.cmd("noh")
 		end, { desc = "Obsidian | Insert Template" })
 
