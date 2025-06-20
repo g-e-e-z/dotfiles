@@ -4,6 +4,7 @@ format = """\
 $username\
 $hostname\
 $directory\
+$gcloud\
 $kubernetes\
 $helm\
 $aws\
@@ -42,6 +43,16 @@ truncation_length = 8
 [directory.substitutions]
 "~" = "home"
 
+[gcloud]
+style = "color_aqua"
+symbol="• "
+format = '[$symbol$project]($style) '
+
+[gcloud.project_aliases]
+integration-e60c = 'int'
+staging-a7d1 = 'stg'
+production-9365 = 'prd'
+
 [kubernetes]
 symbol = "⎈ "
 format = "[$symbol$context( \\($namespace\\))]($style) "
@@ -58,11 +69,11 @@ context_alias = "gke-stg"
 
 [[kubernetes.contexts]]
 context_pattern = ".*blue.*"
-context_alias = "gke-prod-blue"
+context_alias = "gke-blue"
 
 [[kubernetes.contexts]]
 context_pattern = ".*green.*"
-context_alias = "gke-prod-green"
+context_alias = "gke-green"
 
 [git_branch]
 format = "[$symbol$branch ]($style)"

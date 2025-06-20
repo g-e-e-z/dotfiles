@@ -98,6 +98,17 @@ setopt SHARE_HISTORY
 setopt INC_APPEND_HISTORY
 
 # ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
+
+function git-prune-branches() {
+        echo "switching to development.."
+        git checkout development
+        # git branch | grep 'main\|master' | xargs -n 1 git checkout
+        echo "fetching with -p option...";
+        git fetch -p;
+        echo "running pruning of local branches"
+        git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1; }' | xargs -r git branch -D ;
+}
+
 # TODO: Figure this out
 # ~~~~~~~~~~~~~~~ SSH ~~~~~~~~~~~~~~~~~~~~~~~~
 # SSH Script from arch wiki
@@ -163,7 +174,7 @@ alias cat='bat --paging=never'
 # finds all files recursively and sorts by last modification, ignore hidden files
 alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 
-alias sv='sudoedit'
+# alias sv='sudoedit'
 alias t='tmux'
 alias e='exit'
 alias sen='source .venv/bin/activate'
@@ -174,6 +185,7 @@ alias gl='git pull'
 alias glog='git log -n 5 --graph --decorate --oneline'
 alias gst='git status'
 alias gcd='git checkout development'
+alias gpb='git-prune-branches'
 alias lg='lazygit'
 
 # TODO: find a new home for these 2
@@ -184,9 +196,6 @@ alias lg='lazygit'
 alias ldo='lazydocker'
 alias dc='docker compose'
 alias dcb='docker compose up --build'
-
-# gcloud
-alias gproj='gcloud config get-value project'
 
 alias ez='v ~/.zshrc'
 alias sz='source ~/.zshrc'
