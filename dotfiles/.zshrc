@@ -175,7 +175,7 @@ alias cat='bat --paging=never'
 alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 
 # alias sv='sudoedit'
-alias t='tmux'
+alias t='tmux attach || tmux new -s base'
 alias e='exit'
 alias sen='source .venv/bin/activate'
 
@@ -289,12 +289,12 @@ bindkey '^E' autosuggest-accept
 
 # ~~~~~~~~~~~~~~~ Startup Dashboard ~~~~~~~~~~~~~~~~~~~~~~~~
 
-if [[ -o interactive ]]; then
-  if command -v task &>/dev/null; then
-    task list
-  fi
-
-  if command -v newsboat &>/dev/null; then
-    newsboat -x print-unread
-  fi
-fi
+# if [[ -o interactive ]]; then
+#   if command -v task &>/dev/null; then
+#     task list
+#   fi
+#
+#   if command -v newsboat &>/dev/null; then
+#     newsboat -x print-unread
+#   fi
+# fi
