@@ -4,7 +4,7 @@ return {
 	branch = "regexp",
 	cmd = { "VenvSelect", "VenvSelectCached" },
 	init = function()
-		vim.keymap.set("n", "<leader>vs", "<cmd>VenvSelect<cr>", { desc = "Venv Selector | Select Python venv" })
+		vim.keymap.set("n", "<leader>V", "<cmd>VenvSelect<cr>", { desc = "Venv Selector | Select Python venv" })
 	end,
 	opts = {},
 	config = function(_, opts)
