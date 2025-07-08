@@ -35,3 +35,4 @@ wget
 pngpaste
 task
 taskwarrior-tui
+terraform

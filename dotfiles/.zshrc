@@ -218,6 +218,9 @@ alias kn='kubens'
 # source <(kubectl completion bash)
 # complete -o default -F __start_kubectl k
 
+# terraform
+alias tf='terraform'
+
 alias tt='taskwarrior-tui'
 
 # ~~~~~~~~~~~~~~~ Theme ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -298,3 +301,6 @@ bindkey '^E' autosuggest-accept
 #     newsboat -x print-unread
 #   fi
 # fi
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
