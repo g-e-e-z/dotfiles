@@ -280,7 +280,10 @@ if [[ -r "/opt/homebrew/etc/profile.d/zsh_completion.sh" ]]; then
 fi
 
 # Example: how to install completion manually
-# talosctl completion zsh > ~/.zfunc/_talosctl
+# talosctl completion zsh > "${fpath[1]}/_talosctl"
+# TODO: This seems wrong, bash?
+# autoload -U +X bashcompinit && bashcompinit
+# complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 # ~~~~~~~~~~~~~~~ Autosuggestions & Highlighting ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -302,5 +305,3 @@ bindkey '^E' autosuggest-accept
 #   fi
 # fi
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform

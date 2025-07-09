@@ -36,3 +36,4 @@ pngpaste
 task
 taskwarrior-tui
 terraform
+talosctl
