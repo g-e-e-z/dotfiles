@@ -23,8 +23,6 @@ new_note() {
 date: $(date +"%Y-%m-%d")
 tags:
   - daily
-hubs:
-  -
 urls:
   -
 ---
