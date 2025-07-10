@@ -22,6 +22,6 @@ else
 end
 
 for _, shortcut in ipairs(Apps) do
-    hs.hotkey.bind({"cmd", "alt", "ctrl", "shift"}, shortcut[1],
+    hs.hotkey.bind({"alt"}, shortcut[1],
                    function() LaunchOrFocusOrHide(shortcut[2]) end)
 end
