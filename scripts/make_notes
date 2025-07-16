@@ -1,0 +1,32 @@
+#!/bin/bash
+
+mkdir -p "$SECOND_BRAIN"
+mkdir -p "$SECOND_BRAIN"/archive
+mkdir -p "$SECOND_BRAIN"/inbox
+mkdir -p "$SECOND_BRAIN"/hubs
+mkdir -p "$SECOND_BRAIN"/images
+mkdir -p "$SECOND_BRAIN"/projects
+mkdir -p "$SECOND_BRAIN"/resources
+mkdir -p "$SECOND_BRAIN"/templates
+mkdir -p "$SECOND_BRAIN"/periodic-notes
+mkdir -p "$SECOND_BRAIN"/periodic-notes/daily-notes
+mkdir -p "$SECOND_BRAIN"/periodic-notes/weekly-notes
+mkdir -p "$SECOND_BRAIN"/periodic-notes/yearly-notes
+
+file="$SECOND_BRAIN"/templates/note.md
+
+touch "$file"
+cat <<EOF >"$file"
+---
+date: {{date}}
+tags:
+  -
+hubs:
+  - "[[]]"
+urls:
+  -
+---
+
+# {{title}}
+
+EOF

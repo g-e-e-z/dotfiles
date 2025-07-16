@@ -1,0 +1,33 @@
+#!/bin/bash
+
+ALAC="$XDG_CONFIG_HOME/alacritty/alacritty.toml"
+K9S="$XDG_CONFIG_HOME/k9s/config.yaml"
+VIMD="$XDG_CONFIG_HOME/nvim/lua/plugins/colorscheme.lua"
+TMUXD="$XDG_CONFIG_HOME/tmux/plugins/catppuccin/tmux/catppuccin_options_tmux.conf"
+# BG_DIR="$HOME/Pictures/Backgrounds"
+# LIGHT_FILE="gruvbox-light.png"
+# DARK_FILE="gruvbox-dark.png"
+
+clear
+
+MODE=$(defaults read -g AppleInterfaceStyle 2>/dev/null)
+
+if [[ $MODE == "Dark" ]]; then
+    # Switch to light
+    gsed -i "s|frappe|latte|" $ALAC
+    gsed -i "s|frappe|latte|" $VIMD
+    gsed -i "s|frappe|latte|" $TMUXD
+    # gsed -i "s|frappe|latte|" $K9S
+    # FILE=$LIGHT_FILE
+else
+    # Switch to frappe
+    gsed -i "s|latte|frappe|" $ALAC
+    gsed -i "s|latte|frappe|" $VIMD
+    gsed -i "s|latte|frappe|" $TMUXD
+    # gsed -i "s|latte|frappe|" $K9S
+    # FILE=$DARK_FILE
+fi
+
+# /usr/libexec/PlistBuddy -c "set AllSpacesAndDisplays:Desktop:Content:Choices:0:Files:0:relative file:///$BG_DIR/$FILE" ~/Library/Application\ Support/com.apple.wallpaper/Store/Index.plist && \
+# killall WallpaperAgent
+osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to not dark mode'

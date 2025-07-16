@@ -1,0 +1,11 @@
+#!/bin/bash
+
+selected=$(
+    docker ps |
+    awk 'NR>1{print $NF}' |
+    fzf --tmux 70% --reverse --prompt="Select container: " --preview "docker inspect -f '{{json .State}}' {} | jq"
+)
+
+[[ -z $selected ]] && exit 1
+
+docker exec -it $selected bash

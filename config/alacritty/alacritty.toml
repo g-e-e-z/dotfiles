@@ -1,0 +1,27 @@
+[terminal.shell]
+program = "/opt/homebrew/bin/zsh"
+args = ["-l"]
+# args = ["-l", "-c", "export PATH=$PATH:/opt/homebrew/bin && tmux a || tmux new-session; exec zsh"]
+
+[font]
+size = 18
+
+[font.normal]
+family = "JetBrainsMono Nerd Font Mono"
+
+[window]
+decorations = "none"
+startup_mode = "Maximized"
+opacity = 0.98
+
+[window.padding]
+x = 7
+y = 0
+
+[general]
+import = ["~/.config/alacritty/themes/gruvbox_dark.toml"]
+# import = ["~/.config/alacritty/themes/catppuccin-frappe.toml"]
+# import = ["~/.config/alacritty/themes/kanagawa-wave.toml"]
+# import = ["~/.config/alacritty/themes/kanagawa-dragon.toml"]
+
+[terminal]

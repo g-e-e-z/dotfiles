@@ -1,0 +1,5 @@
+scripts/gcdb
+
+dotfiles/.newsboat/history.cmdline
+dotfiles/.newsboat/cache.db*
+config/nvim/spell/*

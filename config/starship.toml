@@ -1,0 +1,124 @@
+add_newline = false
+
+format = """\
+$username\
+$hostname\
+$directory\
+$gcloud\
+$kubernetes\
+$helm\
+$aws\
+$env_var\
+${custom.azure}\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$character"""
+
+palette = 'gruvbox_dark'
+
+[palettes.gruvbox_dark]
+color_fg0 = '#fbf1c7'
+color_bg1 = '#3c3836'
+color_bg3 = '#665c54'
+color_blue = '#458588'
+color_aqua = '#689d6a'
+color_green = '#98971a'
+color_orange = '#d65d0e'
+color_purple = '#b16286'
+color_red = '#cc241d'
+color_yellow = '#d79921'
+
+[character]
+success_symbol = "[❯](color_yellow)"
+error_symbol = "[❯](color_red)"
+vimcmd_symbol = "[❮](color_green)"
+
+[directory]
+style = "color_yellow"
+truncation_length = 8
+[directory.substitutions]
+"~" = "home"
+
+[gcloud]
+style = "color_aqua"
+symbol="• "
+format = '[$symbol$project]($style) '
+
+[gcloud.project_aliases]
+integration-e60c = 'int'
+staging-a7d1 = 'stg'
+production-9365 = 'prd'
+
+[kubernetes]
+symbol = "⎈ "
+format = "[$symbol$context( \\($namespace\\))]($style) "
+style = "color_blue"
+disabled = false
+
+[[kubernetes.contexts]]
+context_pattern = ".*integration.*"
+context_alias = "gke-int"
+
+[[kubernetes.contexts]]
+context_pattern = ".*staging.*"
+context_alias = "gke-stg"
+
+[[kubernetes.contexts]]
+context_pattern = ".*blue.*"
+context_alias = "gke-blue"
+
+[[kubernetes.contexts]]
+context_pattern = ".*green.*"
+context_alias = "gke-green"
+
+[git_branch]
+format = "[$symbol$branch ]($style)"
+symbol = " "
+style = "color_purple"
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "color_aqua"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+[line_break]
+
+[helm]
+format = "[$symbol $version](bold white) "
+symbol="⛵"
+disabled = false
+
+# [aws]
+# format = "on [$symbol $profile]($style) "
+# symbol="⛅"
+
+# Display the environment variable used to vary the active gcloud configuration.
+# [env_var]
+# variable="CLOUDSDK_ACTIVE_CONFIG_NAME"
+# format="$symbol  [$env_value]($style) "
+# symbol="☁️"
+
+# Run an Azure CLI command to display the current subscription.
+# This requires jq is installed.
+# [custom.azure]
+# command="az account show -o json |jq -r .name"
+# when="true"
+# format="$symbol [$output]($style) "
+# symbol="⛈️"
+
+[python]
+format = "[$virtualenv]($style) "
+style = "color_bg3"
+
+[cmd_duration]
+format = "[ $duration]($style) "
+style = "color_orange"

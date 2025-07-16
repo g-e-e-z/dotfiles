@@ -1,0 +1,53 @@
+# general settings
+text-width 72
+browser "open -a 'google chrome' %u"
+auto-reload yes
+max-items 100
+
+# unbind keys
+# unbind-key ENTER
+unbind-key j
+unbind-key k
+unbind-key J
+unbind-key K
+
+# bind keys - vim style
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
+
+bind-key ^D pagedown
+bind-key ^U pageup
+
+# solarized
+# color background         default   default
+# color listnormal         default   default
+# color listnormal_unread  default   default
+# color listfocus          black     cyan
+# color listfocus_unread   black     cyan
+# color info               default   black
+# color article            default   default
+color listnormal         color15 default
+color listnormal_unread  color2  default
+color listfocus_unread   color2  color0
+color listfocus          default color1
+color background         default default
+color article            default default
+color end-of-text-marker color8  default
+color info               color4  color8
+color hint-separator     default color8
+color hint-description   default color8
+color title              color14 color8
+
+highlight article "^(Feed|Title|Author|Link|Date): .+" color4 default bold
+highlight article "^(Feed|Title|Author|Link|Date):" color14 default bold
+
+highlight article "\\((link|image|video)\\)" color8 default
+highlight article "https?://[^ ]+" color4 default
+highlight article "\[[0-9]+\]" color6 default bold
+
+# highlights
+highlight article "^(Title):.*$" blue default
+highlight article "https?://[^ ]+" red default
+highlight article "\\[image\\ [0-9]+\\]" green default

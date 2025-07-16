@@ -1,0 +1,35 @@
+# vim: filetype=sh
+
+# Neovim
+https://neovim.io/news.xml
+
+# Companies
+https://engineering.fb.com/rss
+https://medium.com/feed/airbnb-engineering
+https://medium.com/feed/pinterest-engineering
+https://netflixtechblog.com/feed
+https://blog.janestreet.com/feed.xml
+https://discord.com/blog/rss.xml
+https://github.blog/engineering.atom
+
+# Influencers
+https://blog.stonegarden.dev/index.xml
+https://martinfowler.com/feed.atom
+https://ludic.mataroa.blog/rss/
+https://registerspill.thorstenball.com/feed
+https://fasterthanli.me/index.xml
+https://jordanhasnolife.substack.com/feed
+
+# Technologies
+https://cloud.google.com/feeds/gcp-release-notes.xml
+https://aws.amazon.com/blogs/aws/feed/
+https://kubernetes.io/feed.xml
+https://www.docker.com/feed/
+
+# Languages
+https://go.dev/blog/feed.atom?format=xml
+https://www.blog.pythonlibrary.org/feed/
+
+# Cybersecurity
+https://krebsonsecurity.com/feed/
+https://threatpost.com/feed/

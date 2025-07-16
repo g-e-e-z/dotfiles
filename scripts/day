@@ -1,0 +1,54 @@
+#!/bin/bash
+
+today=$(date +"%Y-%m-%d")
+tomorrow=$(gdate -d "tomorrow" '+%Y-%m-%d')
+# yesterday=$(gdate -d "yesterday" '+%Y-%m-%d')
+
+# Define target directories based on hostname
+TARGET_DIR="$SECOND_BRAIN"'/periodic-notes/daily-notes/'
+daily_dir=$TARGET_DIR
+last_file=$(ls "$daily_dir" | tail -n 1)
+last_date=${last_file%.*}
+
+file="$daily_dir$(date +"%Y-%m-%d").md"
+
+cd "$TARGET_DIR" || exit
+
+new_note() {
+	touch "$file"
+
+	# Format the file with the daily template: https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash#:~:text=2.%20Pass%20multi%2Dline%20string%20to%20a%20file%20in%20Bash
+	cat <<EOF >"$file"
+---
+date: $(date +"%Y-%m-%d")
+tags:
+  - daily
+urls:
+  -
+---
+
+[[$last_date]] - [_placeholder_]
+
+# $(date +"%B %d, %Y")
+
+## Tasks
+
+$(cat $daily_dir$last_file | grep "\- \[ \]")
+
+## Log
+EOF
+}
+
+
+# If the daily note does not exist, create a new one.
+# this uses the test command with the -f flag.
+if [ ! -f "$file" ]; then
+	echo "File does not exist, creating new daily note."
+    # Populate the previous note with link to new note
+    gsed -i "s/_placeholder_/\[$today\]/" "$daily_dir$last_file"
+    # Create new note
+	new_note
+fi
+
+# Open the daily note at the bottom of the file in insert mode
+nvim "$file"

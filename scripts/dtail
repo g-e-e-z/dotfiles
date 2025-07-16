@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Change prompt pending if arg is present
+if [ -z "$1" ]; then
+    prompt="Select container to tail: "
+else
+    prompt="Select container to tail and filter for '$1': "
+fi
+
+selected=$(
+    docker ps |
+    awk 'NR>1{print $NF}' |
+    fzf --tmux 80% --reverse --prompt="$prompt" --preview "docker logs -f --tail 50 {}" --preview-window=down:70%:follow
+
+)
+
+[[ -z $selected ]] && exit 1
+
+# if $1 is empty, show all logs
+if [ -z "$1" ]; then
+    docker logs -f $selected 2>&1
+    exit 0
+fi
+docker logs -f $selected 2>&1 | grep $1

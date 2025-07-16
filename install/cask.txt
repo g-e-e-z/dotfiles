@@ -1,0 +1,6 @@
+alacritty
+docker
+hammerspoon
+font-jetbrains-mono-nerd-font
+postman
+1password

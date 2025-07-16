@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Function to create and open a file in the specified directory
+open_file() {
+    local dir="$1"
+    local file="$2"
+
+    # Ensure directory exists
+    mkdir -p "$dir"
+
+    # Create the file
+    touch "$dir/$file"
+
+    # Open the file in Neovim
+    nvim "$dir/$file"
+}
+
+# Check if the environment variable is set
+if [[ -z "$SECOND_BRAIN" ]]; then
+    echo "Error: SECOND_BRAIN is not set."
+    exit 1
+fi
+
+
+TARGET_DIR="$SECOND_BRAIN/inbox"
+
+# Ensure at least one argument is provided
+if [[ $# -eq 0 ]]; then
+    echo "Usage: note <filename words>"
+    exit 1
+fi
+
+# Convert all arguments into a single underscore-separated string
+raw_filename="$*"
+filename=$(echo "$raw_filename" | tr " " "_")
+# formatted_file_name="$(date "+%Y-%m-%d")_${filename}.md"
+formatted_file_name="${filename}.md"
+
+echo $formatted_file_name
+# Call the function
+open_file "$TARGET_DIR" "$formatted_file_name"
+

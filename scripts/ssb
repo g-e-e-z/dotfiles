@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Enable immediate exit on error or signal interruption
+# set -e
+
+# Trap SIGINT (Ctrl-C) to terminate the entire script
+# trap "echo 'Exiting...'; exit 0" SIGINT
+
+# Collect all directories (without hidden directories)
+INBOX_DIR="$SECOND_BRAIN/inbox"
+DIRS=$(find "$SECOND_BRAIN" -type d ! -path '*/.*')
+
+# Preload all markdown files in the source directory into an array
+files=()
+while IFS= read -r file; do
+  files+=("$file")
+done < <(find "$INBOX_DIR" -type f -name "*.md")
+
+# Check if there are no files in the inbox
+total_files=${#files[@]}
+if [ "$total_files" -eq 0 ]; then
+  echo "No markdown files found in $INBOX_DIR. Exiting..."
+  exit 0
+fi
+
+# Iterate through all markdown files in the array
+for index in "${!files[@]}"; do
+  # Get the current file
+  file="${files[$index]}"
+  filename=$(basename "$file")
+
+  # Calculate the current index (1-based index)
+  current_index=$((index + 1))
+
+  # Use fzf to select the target directory, showing the current file index and total number of files
+  TARGET_DIR=$(echo "$DIRS" | fzf --tmux 70% --reverse --prompt="Move $filename ($current_index/$total_files) to: " --preview "bat --style=numbers --color=always  $file")
+
+  if [ -n "$TARGET_DIR" ]; then
+    echo "Selected target directory: $TARGET_DIR"
+    # Move the file to the selected target directory
+    mv "$file" "$TARGET_DIR/"
+    echo "Moved $filename to $TARGET_DIR"
+  else
+    echo "No directory selected, skipping $filename"
+  fi
+done
+
+echo "Done"
+

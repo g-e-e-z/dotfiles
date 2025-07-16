@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Usage: tmux-switch-to-dir /path/to/repo
+
+dir="$1"
+if [[ -z "$dir" || ! -d "$dir" ]]; then
+  echo "Invalid directory: $dir" >&2
+  exit 1
+fi
+
+# Convert directory name to session-safe name
+name=$(basename "$dir" | tr . _)
+
+# Create session if it doesn't exist
+if ! tmux has-session -t="$name" 2>/dev/null; then
+  tmux new-session -ds "$name" -c "$dir"
+fi
+
+# Switch to the session
+tmux switch-client -t "$name"
