@@ -37,21 +37,14 @@ return {
 			-- Trigger completion at 2 chars.
 			min_chars = 2,
 		},
-		mappings = {
-			["gd"] = {
-				action = function()
-					return require("obsidian").util.gf_passthrough()
-				end,
-				opts = { noremap = false, expr = true, buffer = true },
-			},
-		},
 		note_id_func = function(title)
 			return string.gsub(title, " ", "_")
 		end,
 		new_notes_location = "notes_subdir",
 		disable_frontmatter = true,
 		templates = {
-			folder = SECOND_BRAIN .. "/templates",
+			folder = "templates",
+			-- folder = SECOND_BRAIN .. "/templates",
 			date_format = "%Y-%m-%d",
 			time_format = "%H:%M",
 			-- A map for custom variables, the key should be the variable and the value a function
@@ -100,11 +93,11 @@ return {
 
 		vim.keymap.set("n", "<leader>oo", obsidian.util.toggle_checkbox, { desc = "Obsidian | Toggle Checkbox" })
 		-- vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "Obsidian | Open in Obsidian App" })
-		vim.keymap.set("n", "<leader>ob", "<cmd>ObsidianBacklinks<CR>", { desc = "Obsidian | Show Obsidian Backlinks" })
-		vim.keymap.set("n", "<leader>ol", "<cmd>ObsidianLinks<CR>", { desc = "Obsidian | Show Obsidian Links" })
-		vim.keymap.set("n", "<leader>os", "<cmd>ObsidianSearch<CR>", { desc = "Obsidian | Search Obsidian" })
-		vim.keymap.set("n", "<leader>oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Obsidian | Quick Switch" })
-		vim.keymap.set("n", "<leader>op", "<cmd>ObsidianPasteImg<CR>", { desc = "Obsidian | Paste Image" })
+		vim.keymap.set("n", "<leader>ob", "<cmd>Obsidian back_links<CR>", { desc = "Obsidian | Show Obsidian Backlinks" })
+		vim.keymap.set("n", "<leader>ol", "<cmd>Obsidian links<CR>", { desc = "Obsidian | Show Obsidian Links" })
+		vim.keymap.set("n", "<leader>os", "<cmd>Obsidian search<CR>", { desc = "Obsidian | Search Obsidian" })
+		vim.keymap.set("n", "<leader>oq", "<cmd>Obsidian quick_switch<CR>", { desc = "Obsidian | Quick Switch" })
+		vim.keymap.set("n", "<leader>op", "<cmd>Obsidian paste_image<CR>", { desc = "Obsidian | Paste Image" })
 		vim.keymap.set("n", "<leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "Obsidian | Delete File", silent = true })
 
 		local function format_title(line_num)
@@ -131,16 +124,16 @@ return {
 			if user_input and user_input ~= "" then
 				-- local formatted_filename = current_date .. "_" .. user_input
 				local formatted_filename = user_input
-				vim.cmd("ObsidianNew " .. formatted_filename)
+				vim.cmd("Obsidian new " .. formatted_filename)
 
 				-- Delete all text
 				vim.cmd("silent! %d")
 
 				-- Apply Template
-				vim.cmd("ObsidianTemplate note")
+				vim.cmd("Obsidian template note")
 
 				-- Format Title
-				format_title(11)
+				format_title(9)
 
 				-- Remove search highlight
 				vim.cmd("noh")
@@ -151,7 +144,8 @@ return {
 
 		-- Inserts template and formats first title by removing date and file name chars
 		vim.keymap.set("n", "<leader>ot", function()
-			vim.cmd("ObsidianTemplate note")
+			vim.cmd("Obsidian template note")
+			-- vim.cmd("Obsidian new")
 			-- Format Title
 			format_title(9)
 			vim.cmd("noh")
