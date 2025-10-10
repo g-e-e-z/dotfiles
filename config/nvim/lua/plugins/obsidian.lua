@@ -42,7 +42,9 @@ return {
 			return string.gsub(title, " ", "_")
 		end,
 		new_notes_location = "notes_subdir",
-		disable_frontmatter = true,
+        frontmatter = {
+            enabled = false
+        },
 		templates = {
 			folder = "templates",
 			-- folder = SECOND_BRAIN .. "/templates",
