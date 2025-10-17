@@ -1,26 +1,24 @@
 #!/bin/bash
 
+# --- Setup ---
 today=$(date +"%Y-%m-%d")
-tomorrow=$(gdate -d "tomorrow" '+%Y-%m-%d')
-# yesterday=$(gdate -d "yesterday" '+%Y-%m-%d')
 
-# Define target directories based on hostname
-TARGET_DIR="$SECOND_BRAIN"'/periodic-notes/daily-notes/'
+TARGET_DIR="$SECOND_BRAIN/periodic-notes/daily-notes/"
 daily_dir=$TARGET_DIR
+
 last_file=$(ls "$daily_dir" | tail -n 1)
 last_date=${last_file%.*}
-
-file="$daily_dir$(date +"%Y-%m-%d").md"
+file="$daily_dir${today}.md"
 
 cd "$TARGET_DIR" || exit
 
+# --- Template Generator ---
 new_note() {
-	touch "$file"
+  touch "$file"
 
-	# Format the file with the daily template: https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash#:~:text=2.%20Pass%20multi%2Dline%20string%20to%20a%20file%20in%20Bash
-	cat <<EOF >"$file"
+  cat <<EOF >"$file"
 ---
-date: $(date +"%Y-%m-%d")
+date: ${today}
 tags:
   - daily
 urls:
@@ -31,24 +29,51 @@ urls:
 
 # $(date +"%B %d, %Y")
 
-## Tasks
+## Standup / Planning
+- Top 2 priorities:
+- [ ]
+- [ ]
+- Blockers:
+- [ ]
+- Notes:
+-
 
-$(cat $daily_dir$last_file | grep "\- \[ \]")
+## Deep Work Block #1 (10:00–12:00)
+- [ ] Focus goal:
+- [ ] Notes or insights:
+- [ ] Next small step:
 
-## Log
+## Gym / Lunch (12:00–1:30)
+
+## Deep Work Block #2 (1:30–3:30)
+- [ ] Focus goal:
+- [ ] Notes or insights:
+- [ ] Next small step:
+
+## Collaboration & Reviews (3:30–4:30)
+- [ ] PRs or design docs reviewed:
+- [ ] Knowledge shared or documented:
+
+## Shutdown (4:30–5:00)
+- [ ] What moved forward today:
+- [ ] Recurring blockers:
+- [ ] Tomorrow’s top 2 priorities:
+- [ ]
+- [ ]
+
+## Reflections
+- Technical concept I learned:
+- What went well:
+- What to improve:
 EOF
 }
 
-
-# If the daily note does not exist, create a new one.
-# this uses the test command with the -f flag.
+# --- Create New File If Missing ---
 if [ ! -f "$file" ]; then
-	echo "File does not exist, creating new daily note."
-    # Populate the previous note with link to new note
-    gsed -i "s/_placeholder_/\[$today\]/" "$daily_dir$last_file"
-    # Create new note
-	new_note
+  echo "Creating new daily engineering note for $today."
+  gsed -i "s/_placeholder_/[$today]/" "$daily_dir$last_file"
+  new_note
 fi
 
-# Open the daily note at the bottom of the file in insert mode
-nvim "$file"
+# --- Open File in Neovim ---
+nvim "+ normal gg" "$file"
