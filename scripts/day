@@ -29,6 +29,9 @@ urls:
 
 # $(date +"%B %d, %Y")
 
+## Log
+
+
 ## Standup / Planning
 - Top 2 priorities:
 - [ ]
@@ -43,7 +46,7 @@ urls:
 - [ ] Notes or insights:
 - [ ] Next small step:
 
-## Gym / Lunch (12:00–1:30)
+## Lunch (12:00–1:30)
 
 ## Deep Work Block #2 (1:30–3:30)
 - [ ] Focus goal:
