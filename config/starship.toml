@@ -9,7 +9,7 @@ $kubernetes\
 $helm\
 $aws\
 $env_var\
-${custom.azure}\
+$golang\
 $git_branch\
 $git_state\
 $git_status\
@@ -118,6 +118,11 @@ disabled = false
 [python]
 format = "[$virtualenv]($style) "
 style = "color_bg3"
+
+[golang]
+format = "go [$version]($style) "
+style = "color_blue"
+# style = "color_aqua"
 
 [cmd_duration]
 format = "[ $duration]($style) "
