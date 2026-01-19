@@ -1,40 +1,43 @@
--- NOTE: lazy.nvim(Plugin Manager) options
-return {
-	-- defaults = { lazy = true },
-	-- install = { colorscheme = { "nvchad" } },
+-- NOTE: Install `lazy.nvim` plugin manager ]]
+-- See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		error("Error cloning lazy.nvim:\n" .. out)
+	end
+end
+
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+	spec = {
+		-- add LazyVim and import its plugins
+		-- { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+		-- import/override with your plugins
+		{ import = "plugins" },
+	},
+	defaults = {
+		-- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
+		-- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
+		lazy = false,
+		version = false,
+		-- version = "*", -- try installing the latest stable version for plugins that support semver
+	},
+
+	install = { colorscheme = { "tokyonight", "catpuccin" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
+	diff = {
+		cmd = "diffview.nvim",
+	},
 	change_detection = {
 		-- automatically check for config file changes and reload the ui
-		enabled = false,
+		enabled = true,
 		notify = false, -- get a notification when changes are found
 	},
 	lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
-	-- diff = {
-	--   cmd = "diffview.nvim",
-	-- },
-	ui = {
-		border = vim.g.border_enabled and "rounded" or "none",
-		icons = vim.g.have_nerd_font and {} or {
-			-- ft = "",
-			-- lazy = "󰂠 ",
-			loaded = "",
-			not_loaded = "",
-			cmd = "⌘",
-			config = "🛠",
-			event = "📅",
-			ft = "📂",
-			init = "⚙",
-			keys = "🗝",
-			plugin = "🔌",
-			runtime = "💻",
-			require = "🌙",
-			source = "📄",
-			start = "🚀",
-			task = "📌",
-			lazy = "💤 ",
-		},
-	},
 	performance = {
 		rtp = {
 			disabled_plugins = {
@@ -68,4 +71,4 @@ return {
 			},
 		},
 	},
-}
+})
