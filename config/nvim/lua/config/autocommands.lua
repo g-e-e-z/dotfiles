@@ -65,59 +65,91 @@ autocmd("TextYankPost", {
 	desc = "Highlight when yanking",
 })
 
--- TODO: Redundancy somewhere here
-autocmd("FileType", {
-	pattern = { "c", "cpp", "py", "java", "cs" },
-	callback = function()
-		vim.bo.shiftwidth = 4
-	end,
-	group = general,
-	desc = "Set shiftwidth to 4 in these filetypes",
-})
-autocmd("FileType", {
-	pattern = { "markdown" },
-	callback = function()
-		vim.bo.tabstop = 2
-		vim.bo.shiftwidth = 2
-		vim.bo.softtabstop = 2
-		-- Define Prettier formatting function for Markdown
-		vim.api.nvim_create_user_command("Prettier", function()
-			vim.cmd("!prettier --write %")
-			vim.cmd("edit")
-		end, {})
-		vim.api.nvim_set_keymap("n", "<leader>lf", ":Prettier<CR>", { noremap = true, silent = true })
-	end,
-	group = general,
-	desc = "Set shiftwidth to 2 in these filetypes",
-})
+local ft_augroup = vim.api.nvim_create_augroup("FiletypeLocalSettings", { clear = true })
 
-autocmd("FileType", {
-	pattern = { "gitcommit", "markdown", "text", "log" },
-	callback = function()
-		vim.opt_local.wrap = true
-		vim.opt_local.spell = true
+vim.api.nvim_create_autocmd("FileType", {
+	group = ft_augroup,
+	callback = function(event)
+		local ft = event.match
+
+		-- Default local indentation (inherits global: 4 spaces)
+		vim.opt_local.expandtab = true
+
+		-- 2-space indentation languages
+		if
+			vim.tbl_contains({
+				"css",
+				"html",
+				"javascript",
+				"typescript",
+				"lua",
+				"yaml",
+				"markdown",
+			}, ft)
+		then
+			vim.opt_local.tabstop = 2
+			vim.opt_local.shiftwidth = 2
+			vim.opt_local.softtabstop = 2
+		end
+
+		-- Explicit 4-space languages (clarity > necessity)
+		if vim.tbl_contains({
+			"c",
+			"cpp",
+			"python",
+			"java",
+			"cs",
+		}, ft) then
+			vim.opt_local.tabstop = 4
+			vim.opt_local.shiftwidth = 4
+			vim.opt_local.softtabstop = 4
+		end
+
+		-- Wrapped + spellchecked text-like buffers
+		if vim.tbl_contains({
+			"gitcommit",
+			"markdown",
+			"text",
+			"log",
+		}, ft) then
+			vim.opt_local.wrap = true
+			vim.opt_local.spell = true
+		end
+
+		-- Markdown-specific tooling
+		if ft == "markdown" then
+			vim.api.nvim_buf_create_user_command(0, "Prettier", function()
+				vim.cmd("!prettier --write %")
+				vim.cmd("edit")
+			end, { desc = "Format markdown with Prettier" })
+
+			vim.keymap.set(
+				"n",
+				"<leader>lf",
+				"<cmd>Prettier<cr>",
+				{ buffer = true, silent = true, desc = "Format Markdown" }
+			)
+		end
 	end,
-	group = general,
-	desc = "Enable Wrap in these filetypes",
 })
 
 local overseer = augroup("Overseer", { clear = true })
 
 autocmd("FileType", {
-  pattern = "OverseerList",
-  callback = function()
-    vim.opt_local.relativenumber = false
-    vim.opt_local.number = false
-    vim.cmd "startinsert!"
-  end,
-  group = overseer,
-  desc = "Enter Normal Mode In OverseerList",
+	pattern = "OverseerList",
+	callback = function()
+		vim.opt_local.relativenumber = false
+		vim.opt_local.number = false
+		vim.cmd("startinsert!")
+	end,
+	group = overseer,
+	desc = "Enter Normal Mode In OverseerList",
 })
 
 autocmd("LspAttach", {
-  callback = function(args)
-    local bufnr = args.buf
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    require("plugins.lsp.opts").on_attach(client, bufnr)
-  end,
+	callback = function(args)
+		local bufnr = args.buf
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		require("plugins.lsp.opts").on_attach(client, bufnr)
+	end,
 })

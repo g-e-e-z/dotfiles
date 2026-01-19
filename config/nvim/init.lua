@@ -1,5 +1,3 @@
-require("config.globals")
-require("config.env")
 require("config.options")
 require("config.lazy")
 require("config.commands")
