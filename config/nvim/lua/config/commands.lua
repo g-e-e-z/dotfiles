@@ -1,4 +1,10 @@
 -- NOTE: Commands
+
+-- ====================================================================
+-- User Commands Configuration
+-- Define custom Neovim commands using `vim.api.nvim_create_user_command`
+-- ====================================================================
+
 local command = vim.api.nvim_create_user_command
 
 command("Format", function(args)
