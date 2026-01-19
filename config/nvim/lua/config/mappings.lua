@@ -2,7 +2,7 @@
 --  See `:help vim.keymap.set()`
 local cwd = vim.fn.stdpath "config" .. "/"
 local config_dir = { cwd }
-local utils = require "core.utils"
+local utils = require "config.utils"
 
 --  See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")

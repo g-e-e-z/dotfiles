@@ -1,6 +1,6 @@
-require("core.globals")
-require("core.env")
-require("options")
+require("config.globals")
+require("config.env")
+require("config.options")
 
 -- NOTE: Install `lazy.nvim` plugin manager ]]
 -- See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -15,12 +15,12 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local lazy_config = require("core.lazy")
+local lazy_config = require("config.lazy")
 
 require("lazy").setup({
 	{ import = "plugins" },
 }, lazy_config)
 
-require("core.commands")
-require("core.autocommands")
-require("mappings")
+require("config.commands")
+require("config.autocommands")
+require("config.mappings")
