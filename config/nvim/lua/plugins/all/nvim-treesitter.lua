@@ -2,9 +2,16 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
 		build = ":TSUpdate",
 		lazy = false,
 		config = function()
+      vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+        callback = function(args)
+          pcall(vim.treesitter.start, args.buf)
+        end,
+      })
+
 			require("nvim-treesitter.config").setup({
 				ensure_installed = "maintained",
 				highlight = { enable = true },

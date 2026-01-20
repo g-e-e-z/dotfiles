@@ -146,10 +146,10 @@ autocmd("FileType", {
 	desc = "Enter Normal Mode In OverseerList",
 })
 
-autocmd("LspAttach", {
-	callback = function(args)
-		local bufnr = args.buf
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		require("plugins.lsp.opts").on_attach(client, bufnr)
-	end,
-})
+-- autocmd("LspAttach", {
+-- 	callback = function(args)
+-- 		local bufnr = args.buf
+-- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
+-- 		require("plugins.lsp.opts").on_attach(client, bufnr)
+-- 	end,
+-- })
