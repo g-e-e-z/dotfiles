@@ -3,7 +3,7 @@ return {
 	lazy = false,
 	opts = function()
 		vim.keymap.set("n", "<leader>lf", "<cmd>Format<cr>", { desc = "LSP | Format", silent = true })
-		vim.keymap.set("n", "<leader>lF", "<cmd>FormatToggle<cr>", { desc = "LSP | Toggle Autoformat", silent = true })
+		vim.keymap.set("n", "<leader>Of", "<cmd>FormatToggle<cr>", { desc = "Options | Toggle Autoformat", silent = true })
 		vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP | Info", silent = true })
 		vim.keymap.set("n", "<leader>lR", "<cmd>LspRestart<cr>", { desc = "LSP | Restart", silent = true })
 
