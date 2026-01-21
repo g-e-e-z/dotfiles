@@ -1,6 +1,8 @@
 -- NOTE: Marks
 return {
 	"ThePrimeagen/harpoon",
+	branch = "harpoon2",
+	opts = {},
 	init = function()
 		local harpoon = require("harpoon")
 
@@ -29,6 +31,4 @@ return {
 			harpoon:list():select(4)
 		end, { desc = "Harpoon | Select 4" })
 	end,
-	branch = "harpoon2",
-	opts = {},
 }
