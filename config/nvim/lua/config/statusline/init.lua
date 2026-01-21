@@ -98,7 +98,7 @@ M.modules = {
       active_indicators = { "[1]", "[2]", "[3]", "[4]" },
       separator = " ",
     }
-    local list = require("harpoon"):list()
+    local list = require("config.nvim.lua.plugins.editor.harpoon"):list()
     local root_dir = list.config:get_root_dir()
     local current_file_path = vim.api.nvim_buf_get_name(0)
 

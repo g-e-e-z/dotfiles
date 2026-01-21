@@ -133,23 +133,19 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-local overseer = augroup("Overseer", { clear = true })
-
-autocmd("FileType", {
-	pattern = "OverseerList",
-	callback = function()
-		vim.opt_local.relativenumber = false
-		vim.opt_local.number = false
-		vim.cmd("startinsert!")
-	end,
-	group = overseer,
-	desc = "Enter Normal Mode In OverseerList",
-})
-
 autocmd("LspAttach", {
 	callback = function(args)
 		local bufnr = args.buf
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
 		require("config.lsp_capabilities").on_attach(client, bufnr)
+	end,
+})
+
+-- Auto move help windows to the right and set width
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "help",
+	callback = function()
+		vim.cmd("wincmd L")
+		vim.cmd("vertical resize 85")
 	end,
 })

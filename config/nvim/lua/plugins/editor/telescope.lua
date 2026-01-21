@@ -162,7 +162,7 @@ return {
 		-- )
 		vim.keymap.set(
 			"n",
-			"<leader>lS",
+			"<leader>fS",
 			"<cmd>Telescope lsp_workspace_symbols<cr>",
 			{ desc = "Telescope | Workspace Symbols", silent = true }
 		)
