@@ -6,22 +6,22 @@ args = ["-l"]
 [font]
 size = 18
 
+[env]
+TERM = "xterm-256color"
+
 [font.normal]
 family = "JetBrainsMono Nerd Font Mono"
 
 [window]
 decorations = "none"
 startup_mode = "Maximized"
-opacity = 0.98
+# opacity = 0.98
 
 [window.padding]
 x = 7
 y = 0
 
 [general]
-import = ["~/.config/alacritty/themes/gruvbox_dark.toml"]
-# import = ["~/.config/alacritty/themes/catppuccin-frappe.toml"]
-# import = ["~/.config/alacritty/themes/kanagawa-wave.toml"]
-# import = ["~/.config/alacritty/themes/kanagawa-dragon.toml"]
+import = ["~/.config/alacritty/themes/tokyonight_night.toml"]
 
 [terminal]

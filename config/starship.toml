@@ -18,7 +18,21 @@ $line_break\
 $python\
 $character"""
 
-palette = 'gruvbox_dark'
+# palette = 'gruvbox_dark'
+palette = 'tokyo_night'
+
+# style = "fg:#e3e5e5 bg:#769ff0"
+[palettes.tokyo_night]
+color_fg0     = '#769ff0' # foreground
+color_bg1     = '#1d2230' # base background
+color_bg3     = '#212736' # elevated background / panels
+color_blue    = '#7aa2f7'
+color_aqua    = '#7dcfff'
+color_green   = '#9ece6a'
+color_orange  = '#ff9e64'
+color_purple  = '#bb9af7'
+color_red     = '#f7768e'
+color_yellow  = '#e0af68'
 
 [palettes.gruvbox_dark]
 color_fg0 = '#fbf1c7'
@@ -33,12 +47,12 @@ color_red = '#cc241d'
 color_yellow = '#d79921'
 
 [character]
-success_symbol = "[❯](color_yellow)"
+success_symbol = "[❯](color_purple)"
 error_symbol = "[❯](color_red)"
 vimcmd_symbol = "[❮](color_green)"
 
 [directory]
-style = "color_yellow"
+style = "color_blue"
 truncation_length = 8
 [directory.substitutions]
 "~" = "home"
@@ -122,7 +136,6 @@ style = "color_bg3"
 [golang]
 format = "go [$version]($style) "
 style = "color_blue"
-# style = "color_aqua"
 
 [cmd_duration]
 format = "[ $duration]($style) "

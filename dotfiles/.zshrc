@@ -175,7 +175,12 @@ alias cat='bat --paging=never'
 alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 
 # alias sv='sudoedit'
-alias t='tmux attach || tmux new -s base'
+# alias t='tmux attach || tmux new -s base'
+t() {
+  tmux attach -t base 2>/dev/null || tmux new -s base
+}
+
+
 alias e='exit'
 alias sen='source .venv/bin/activate'
 
@@ -241,13 +246,23 @@ alias tt='taskwarrior-tui'
 #   --color=selected-bg:#C34043 \
 #   --multi"
 
-# gruvbox
-export BAT_THEME="gruvbox-dark"
+# # gruvbox
+# export BAT_THEME="gruvbox-dark"
+# export FZF_DEFAULT_OPTS=" \
+#   --color=bg+:#282828,bg:#282828,spinner:#FE8019,hl:#83A598 \
+#   --color=fg:#D8D8D8,header:#8EC07C,info:#B8BB26,pointer:#FB4934 \
+#   --color=marker:#D75F5F,fg+:#D8D8D8,prompt:#D3869B,hl+:#83A598 \
+#   --color=selected-bg:#FB4934 \
+#   --multi"
+
+# tokyonight
+export BAT_THEME="tokyonight_night"
+
 export FZF_DEFAULT_OPTS=" \
-  --color=bg+:#282828,bg:#282828,spinner:#FE8019,hl:#83A598 \
-  --color=fg:#D8D8D8,header:#8EC07C,info:#B8BB26,pointer:#FB4934 \
-  --color=marker:#D75F5F,fg+:#D8D8D8,prompt:#D3869B,hl+:#83A598 \
-  --color=selected-bg:#FB4934 \
+  --color=bg+:#292e42,bg:#1a1b26,spinner:#7aa2f7,hl:#7aa2f7 \
+  --color=fg:#c0caf5,header:#9ece6a,info:#9ece6a,pointer:#f7768e \
+  --color=marker:#f7768e,fg+:#c0caf5,prompt:#bb9af7,hl+:#7aa2f7 \
+  --color=selected-bg:#3b4261 \
   --multi"
 
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~

@@ -6,7 +6,7 @@ return {
 	dependencies = {
 		"leoluz/nvim-dap-go",
 		"rcarriga/nvim-dap-ui",
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		"julianolf/nvim-dap-lldb",
 	},
 	config = function()
