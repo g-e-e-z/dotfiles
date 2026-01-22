@@ -31,43 +31,26 @@ urls:
 
 ## Log
 
+## Standup / Planning (9:00-9:30)
 
-## Standup / Planning
-- Top 2 priorities:
+- Primary Objective:
+- [ ]
+- Secondary Objectives:
 - [ ]
 - [ ]
-- Blockers:
-- [ ]
-- Notes:
--
-
-## Deep Work Block #1 (10:00–12:00)
-- [ ] Focus goal:
-- [ ] Notes or insights:
-- [ ] Next small step:
-
-## Lunch (12:00–1:30)
-
-## Deep Work Block #2 (1:30–3:30)
-- [ ] Focus goal:
-- [ ] Notes or insights:
-- [ ] Next small step:
-
-## Collaboration & Reviews (3:30–4:30)
-- [ ] PRs or design docs reviewed:
-- [ ] Knowledge shared or documented:
 
 ## Shutdown (4:30–5:00)
-- [ ] What moved forward today:
-- [ ] Recurring blockers:
-- [ ] Tomorrow’s top 2 priorities:
-- [ ]
-- [ ]
 
-## Reflections
-- Technical concept I learned:
-- What went well:
-- What to improve:
+- Reconciliation:
+- [ ] SB Inbox
+- [ ] Update Task Status
+
+- Timeblock Next Workday
+
+- Close Laptop
+
+## Notes
+
 EOF
 }
 
