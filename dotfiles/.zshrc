@@ -14,7 +14,7 @@ export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
 # directories
 export REPOS="$HOME/Repos"
-export GITUSER="g-e-e-z"
+export GITUSER="experteur"
 export GHREPOS="$REPOS/github.com/$GITUSER"
 export DOTFILES="$GHREPOS/dotfiles"
 export LAB="$GHREPOS/homelab"

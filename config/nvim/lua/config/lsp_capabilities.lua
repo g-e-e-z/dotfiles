@@ -11,8 +11,8 @@ M.capabilities = cmp_nvim_lsp.default_capabilities()
 M.lsp_keymaps = function(bufnr)
     keymap("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "Go To Definition", silent = true })
     keymap("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "Go To Declaration", silent = true })
-    keymap("n", "gR", require("telescope.builtin").lsp_references, { buffer = bufnr, silent = true })
-    keymap("n", "gI", require("telescope.builtin").lsp_implementations, { buffer = bufnr, silent = true }) -- Never used this
+    keymap("n", "gR", require("telescope.builtin").lsp_references, { buffer = bufnr, desc = "Go To References", silent = true })
+    keymap("n", "gI", require("telescope.builtin").lsp_implementations, { buffer = bufnr, desc = "Go To Implementations", silent = true })
     keymap(
         "n",
         "<leader>D",
