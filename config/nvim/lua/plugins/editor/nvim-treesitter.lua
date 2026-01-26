@@ -6,11 +6,11 @@ return {
 		build = ":TSUpdate",
 		lazy = false,
 		config = function()
-      vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
-        callback = function(args)
-          pcall(vim.treesitter.start, args.buf)
-        end,
-      })
+			vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+				callback = function(args)
+					pcall(vim.treesitter.start, args.buf)
+				end,
+			})
 
 			require("nvim-treesitter.config").setup({
 				ensure_installed = "maintained",
@@ -19,7 +19,23 @@ return {
 			})
 		end,
 	},
-
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		init = function()
+			vim.keymap.set(
+				"n",
+				"<leader>Oc",
+				"<cmd>TSContextToggle<cr>",
+				{ desc = "Treesitter | Toggle Context", silent = true }
+			)
+			vim.keymap.set("n", "[c", function()
+				require("treesitter-context").go_to_context(vim.v.count1)
+			end, { desc = "Treesitter | Jumping to context (upwards)", silent = true })
+		end,
+		opts = {
+			enable = true,
+		},
+	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		branch = "main",
