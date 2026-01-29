@@ -1,5 +1,23 @@
 #!/bin/bash
 
+new_note() {
+  touch "$file"
+
+  cat <<EOF >"$file"
+---
+date: ${today}
+tags:
+  - daily
+urls:
+  -
+---
+
+[[$last_date]] - [_placeholder_]
+
+# $(date +"%B %d, %Y")
+EOF
+}
+
 # Function to create and open a file in the specified directory
 open_file() {
     local dir="$1"
